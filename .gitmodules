@@ -1,0 +1,3 @@
+[submodule "CommonLibSSE-NG"]
+	path = Tailor-DD-Compat/lib/commonlibsse-ng
+	url = https://github.com/alandtse/CommonLibSSE-NG.git

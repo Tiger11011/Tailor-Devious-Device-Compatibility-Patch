@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fomod>
+  <Name>Tailor Devious Device Compatibility Patch</Name>
+  <Author>Tailor DD compatibility project</Author>
+  <Version MachineVersion="0.4.0">0.4 Experimental</Version>
+  <Description>Independent Tailor DD fitting compatibility. Choose 中文 or English during installation. Tailor and its translations are not included.</Description>
+</fomod>

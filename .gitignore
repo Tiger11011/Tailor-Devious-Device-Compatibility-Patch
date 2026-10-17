@@ -1,0 +1,14 @@
+# Local build products and private diagnostics
+**/build/
+**/.xmake*/
+**/.vs/
+**/__pycache__/
+*.pyc
+*.obj
+*.pdb
+*.dll
+*.exe
+*.zip
+*.log
+**/deployment/
+**/evidence/

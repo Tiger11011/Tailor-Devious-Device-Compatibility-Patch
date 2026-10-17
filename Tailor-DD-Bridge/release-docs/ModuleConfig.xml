@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://qconsulting.ca/fo3/ModConfig5.0.xsd">
+  <moduleName>Tailor Devious Device Compatibility Patch 0.4</moduleName>
+  <requiredInstallFiles>
+    <folder source="Common" destination="" priority="0" />
+  </requiredInstallFiles>
+  <installSteps order="Explicit">
+    <installStep name="语言 / Language">
+      <optionalFileGroups order="Explicit">
+        <group name="语言 / Language" type="SelectExactlyOne">
+          <plugins order="Explicit">
+            <plugin name="中文">
+              <description>只将本补丁新增的按钮与说明显示为中文。Tailor 汉化请另行安装，本包不包含汉化文件。
+Chinese labels for this add-on only. Obtain the supported Tailor translation separately.</description>
+              <image path="fomod/screenshot.png" />
+              <files>
+                <file source="Options/Chinese/TailorDDBridge.json" destination="SKSE/Plugins/TailorDDBridge.json" priority="10" />
+              </files>
+              <typeDescriptor><type name="Recommended" /></typeDescriptor>
+            </plugin>
+            <plugin name="English">
+              <description>English labels and help for this add-on. Tailor itself is installed separately.
+本补丁新增按钮与说明显示为英文。Tailor 本体仍需另行安装。</description>
+              <image path="fomod/screenshot.png" />
+              <files>
+                <file source="Options/English/TailorDDBridge.json" destination="SKSE/Plugins/TailorDDBridge.json" priority="10" />
+              </files>
+              <typeDescriptor><type name="Optional" /></typeDescriptor>
+            </plugin>
+          </plugins>
+        </group>
+      </optionalFileGroups>
+    </installStep>
+  </installSteps>
+</config>
