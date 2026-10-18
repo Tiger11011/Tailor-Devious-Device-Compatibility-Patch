@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.4-permissions.2 — 2026-10-18
+
+- Refresh bilingual README, permission documentation and log/reporting instructions.
+- Include the uploaded permission screenshot in Source.zip only; omit it from the FOMOD.
+- Retain the tested DLL/PEX, functional source, language choices and default Off setting unchanged.
+- Nexus descriptions are maintained separately by the maintainer; no Nexus description changes in this revision.
+
 ## 0.6.4-permissions.1 — 2026-10-18
 
 - Record the maintainer's confirmation of ColdSun's permission to publish this Tailor compatibility patch.

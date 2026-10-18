@@ -3,7 +3,7 @@ from pathlib import Path, PurePosixPath
 import argparse,hashlib,json,subprocess,sys,zipfile,xml.etree.ElementTree as ET
 
 project=Path(__file__).resolve().parents[1]; repo=project.parent
-version='0.6.4'; package_revision='0.6.4-permissions.1'
+version='0.6.4'; package_revision='0.6.4-permissions.2'
 prefix=f'Tailor-Devious-Device-Compatibility-Patch-{package_revision}'
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--dll',type=Path,required=True)
@@ -58,6 +58,7 @@ def writezip(path,entries):
    z.writestr(info,data)
  with zipfile.ZipFile(path) as z:assert z.testzip() is None
 
+assert not any(Path(n).name == 'PERMISSIONS.png' for n in files)
 installer=out/(prefix+'-FOMOD.zip');writezip(installer,files)
 config=ET.fromstring(files['fomod/ModuleConfig.xml']);ET.fromstring(files['fomod/info.xml'])
 group=config.find('./installSteps/installStep/optionalFileGroups/group')
@@ -130,14 +131,15 @@ assert 'Tailor-DD-Effects/Papyrus/TailorDDFreeWear.psc' in source
 assert 'Tailor-DD-Compat/lib/commonlibsse-ng/extern/openvr/headers/openvr.h' in source
 assert not any(b'C:\\Users\\Admin' in data or b'D:\\Modding\\MO2' in data for name,data in source.items() if name.startswith(('Tailor-DD-Effects/','Tailor-DD-SafeFitting/')))
 assert not any('StartupTrace' in name or 'NpcSaveScope' in name or Path(name).name.lower()=='tailor.dll' for name in source)
+assert source['PERMISSIONS.png'] == (repo/'PERMISSIONS.png').read_bytes()
+for name in ['README.md','README.zh-CN.md','AUTHOR-PERMISSIONS.md']:
+ assert source[name] == (repo/name).read_bytes()
 sourcezip=out/(prefix+'-Source.zip');writezip(sourcezip,source)
-for name in ['Release-Notes.md','README-English.md','README-中文.md','Nexus-Description-English.txt','Nexus-Description-中文.txt']:
+for name in ['Release-Notes.md','README-English.md','README-中文.md']:
  (out/name).write_bytes((docs/name).read_bytes())
-for language in ['English','中文']:
- (out/f'Upload-Description-{language}.md').write_bytes((docs/f'README-{language}.md').read_bytes())
 packages=[{'file':p.name,'bytes':p.stat().st_size,'sha256':sha(p.read_bytes())} for p in [installer,sourcezip]]
 (out/'SHA256SUMS.txt').write_text(''.join(f"{r['sha256']}  {r['file']}\n" for r in packages),encoding='utf8')
 report={'version':version,'packageRevision':package_revision,'sourceAndNoticeOnlyRevision':True,'dependencySourceArchivesVerified':8,'upstreamLicenseRevision':license_sources['revision'],'upstreamLicenseHashesVerified':True,'dllSha256':sha(dll),'helperSha256':sha(pex),'packages':packages,'installerFileCount':len(files),'sourceFileCount':len(source),'bothLanguageInstallMappingsVerified':True,'languageDifferences':differences,'defaultsOff':True,'originalTailorOrTranslationIncluded':False,'personalGeneratedDataIncluded':False,'startupDiagnosticsIncluded':False,'userConfirmedRuntimeScenario':'Local NPC DD switching and Mu fully-covered-to-visible-head appearance recovery','fullCompatibilityMatrixVerified':False,'MO2InstallerGuiRetested':False}
 (out/'PACKAGE-CHECK.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf8')
-(out/'上传说明.txt').write_text('主文件：'+installer.name+'\n对应开发源码：'+sourcezip.name+'\n安装包修订：'+package_revision+'；游戏内功能版本仍为 0.6.4。\n仅源码/说明/许可修订，DLL 和 PEX 保持原样。不要覆盖或删除旧 GitHub 标签。\nSource.zip 内已附 8 项实际版本依赖源码、配方、配置差异和校验清单，不要安装到 MO2。\nNexus 主文件旁提供本修订的对应 Source.zip（Optional Files），或清楚链接完全对应的 GitHub 发布页。\n英文/中文页面说明：Nexus-Description-English.txt / Nexus-Description-中文.txt（BBCode）；另有 Markdown 全文。\n前置、受支持版本及安装顺序见双语说明。FOMOD 默认关闭，二选一语言，不包含 Tailor 或他人汉化。\n不上传私人 Generated Data、存档、日志、备份和启动诊断工具。本目录尚未自动上传至 Nexus。\n',encoding='utf8')
+(out/'上传说明.txt').write_text('主文件：'+installer.name+'\n对应开发源码：'+sourcezip.name+'\n安装包修订：'+package_revision+'；游戏内功能版本仍为 0.6.4。\n仅源码/说明/许可修订，DLL 和 PEX 保持原样。不要覆盖或删除旧 GitHub 标签。\nSource.zip 内已附 8 项实际版本依赖源码、配方、配置差异和校验清单，不要安装到 MO2。\nNexus 主文件旁提供本修订的对应 Source.zip（Optional Files），或清楚链接完全对应的 GitHub 发布页。\nNexus 页面说明由维护者自行编写；本次不生成或更新 Nexus 页面说明。\n前置、受支持版本及安装顺序见双语说明。FOMOD 默认关闭，二选一语言，不包含 Tailor 或他人汉化。\n不上传私人 Generated Data、存档、日志、备份和启动诊断工具。本目录尚未自动上传至 Nexus。\n',encoding='utf8')
 print(json.dumps(report,ensure_ascii=False,indent=2))
