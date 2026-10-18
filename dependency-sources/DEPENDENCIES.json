@@ -1,5 +1,5 @@
 {
-  "packageRevision": "0.6.4-sources.4",
+  "packageRevision": "0.6.4-permissions.1",
   "functionalVersion": "0.6.4",
   "evidence": "Retained accepted-build linker inputs, package manifests and verified upstream source archive hashes; cached header comparison. This does not assert a bit-identical rebuild.",
   "recipeRepository": "https://github.com/xmake-io/xmake-repo",

@@ -2,12 +2,14 @@
 
 # Tailor Devious Device Compatibility Patch 0.6.4
 
-**源码与说明修订：0.6.4-sources.4，2026-10-18。** 功能、DLL、辅助 PEX 和功能源码保持实测成功的 0.6.4 不变，本次补全实际版本依赖源码、构建配置及 zlib 许可；保留此前补充的 ColdSun 版权署名和上游许可附件。安装包内 COPYRIGHT.md、licenses/LICENSE-SOURCES.json 记录来源和校验值。
+**源码与说明修订：0.6.4-permissions.1，2026-10-18。** 功能、DLL、辅助 PEX 和功能源码保持实测成功的 0.6.4 不变，本次补全实际版本依赖源码、构建配置及 zlib 许可；保留此前补充的 ColdSun 版权署名和上游许可附件。安装包内 COPYRIGHT.md、licenses/LICENSE-SOURCES.json 记录来源和校验值。
 
-**本二进制对应源码：**在[完全对应的发布页](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.4)免费下载 Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.4-Source.zip，与 FOMOD 同页提供。上传 Nexus 时，将这份源码放到 Optional Files，或在主文件下载说明旁明确链接该对应源码。源码包含构建文件及固定版本依赖源码。
+**本二进制对应源码：**在[完全对应的发布页](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-permissions.1)免费下载 Tailor-Devious-Device-Compatibility-Patch-0.6.4-permissions.1-Source.zip，与 FOMOD 同页提供。上传 Nexus 时，将这份源码放到 Optional Files，或在主文件下载说明旁明确链接该对应源码。源码包含构建文件及固定版本依赖源码。
 
 
 在 Tailor 中自由试穿受支持的 DD 装备。确认退出后保留真实 DD 的音效、动画等效果，由开关决定是否保留正常穿脱限制。独立补丁，不替换 Tailor.dll，不包含任何人的 Tailor 汉化。
+
+**Tailor 作者许可：**维护者已于 2026-10-18 确认取得 ColdSun 对发布本兼容补丁的许可。详见 AUTHOR-PERMISSIONS.md；安装包不附作者往来原文。
 
 ## 前置要求
 
@@ -33,7 +35,7 @@
 ## MO2 安装
 
 1. 关闭游戏，安装全部前置和服装。需要汉化时自行安装，并遵循汉化本身的覆盖顺序。
-2. 安装 **Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.4-FOMOD.zip**，右侧选择“中文”或“English”。左侧图片显示“你用什么语言？”和“What language do you use?”。这里只选择补丁新增文字的语言，不会安装 Tailor 汉化。
+2. 安装 **Tailor-Devious-Device-Compatibility-Patch-0.6.4-permissions.1-FOMOD.zip**，右侧选择“中文”或“English”。左侧图片显示“你用什么语言？”和“What language do you use?”。这里只选择补丁新增文字的语言，不会安装 Tailor 汉化。
 3. 禁用旧的独立 Chinese/English 补丁，以及曾替换 Tailor.dll 的旧实验版本，只启用一个新版补丁。从本地测试版升级时，禁用旧语言模组也可避免其临时启动诊断工具与新版一起载入。**仅更新 DLL 时，保留现有匹配的 Generated Data，不要为了更新而删除或重新编号。**
 4. 首次安装需要生成装备数据：在 MO2 选好要游玩的配置，启用服装及插件，再关闭 MO2 以保存列表。通过 Windows 终端运行补丁自带工具，替换为自己的路径；不要通过 MO2 虚拟文件系统运行：
 

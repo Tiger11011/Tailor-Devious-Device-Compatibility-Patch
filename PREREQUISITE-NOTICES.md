@@ -4,6 +4,14 @@ Checked **2026-10-18**. This is an evidence record, not a new license for other
 authors' mods and not a guarantee of legal or Nexus publication approval.
 See CREDITS.md for attribution and RESOURCE-AUDIT.json for file/call evidence.
 
+## Tailor author permission — confirmed by the maintainer
+
+ColdSun has granted permission to publish this compatibility patch, as confirmed
+by the maintainer on 2026-10-18. See AUTHOR-PERMISSIONS.md for the recorded scope
+and evidence status. The author correspondence is not reproduced. This updates
+Tailor's project-specific permission status; existing licenses and other authors'
+permissions remain separate.
+
 ## Devious Devices: an unresolved publication question
 
 The locally installed **DD 5.2** file
@@ -48,7 +56,7 @@ differently; retaining the terms and seeking clarification remains prudent.
 
 | Project | Evidence and treatment |
 | --- | --- |
-| Tailor | Current upstream LICENSING.md, EXCEPTIONS.md, LICENSE, API MIT and THIRD_PARTY_NOTICES are retained verbatim at commit a6088e2. GPL compliance and Nexus page/platform approval are separate. No Tailor.dll or artwork/translation is redistributed. |
+| Tailor | Current upstream LICENSING.md, EXCEPTIONS.md, LICENSE, API MIT and THIRD_PARTY_NOTICES are retained verbatim at commit a6088e2. ColdSun's permission to publish this compatibility patch has been confirmed by the maintainer; see AUTHOR-PERMISSIONS.md. Existing license/platform obligations remain separate. No Tailor.dll or artwork/translation is redistributed. |
 | PapyrusUtil SE | Official project page credits exiledviper and meh321. Our source has three minimal StorageUtil native signatures; our helper calls them in the separately installed runtime. No original implementation is copied. No unverified blanket redistribution license is claimed. https://www.nexusmods.com/skyrimspecialedition/mods/13048 |
 | Mu / MDNR | Acro / Acro748. Its page permits credited modifications but restricts original-file uploads and asset use. Our optional interoperability adapter does not bundle Mu files or presets. Its current page version is not substituted for the already-tested supported 2.1.4 DLL. https://www.nexusmods.com/skyrimspecialedition/mods/150931 |
 | RaceMenu | Expired / expired6978; PurpleLunchbox is also credited on the page. Its author instructions prohibit redistributing original files. We ship only our minimal compile-time CharGen signature, not original CharGen.psc/PEX, skee64.dll, presets or textures. https://www.nexusmods.com/skyrimspecialedition/mods/19080 |
@@ -96,6 +104,6 @@ commercial eligibility is established by this source/credit audit.
 DD 5.2 自带条款的纯 bug 修复例外处理。该记录不是“已经取得 DD 作者单独
 书面授权”的声明，也不能代替作者对例外范围的解释。保留原条款；后续若扩展
 用途应重新审查。DD NG 插件的 Apache 许可不能代替全部 DD 资产/脚本的授权。
-向 DD/Tailor 作者确认仍有助于减少范围解释和 Nexus 平台权限争议。
+Tailor 作者 ColdSun 的发布许可现已由维护者确认取得，见 AUTHOR-PERMISSIONS.md；不将此记录扩展为其他作者的授权。
 
 ImGui also retains its MIT-licensed ProggyClean default-font payload inside the accepted DLL. This is separate from the fixed-text Windows-font PNG and from Tailor's runtime fonts. Tristan Grimmer's copyright and full license are retained as ProggyClean-MIT.txt. No font payload or tested binary was changed.

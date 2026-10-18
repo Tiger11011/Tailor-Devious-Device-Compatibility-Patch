@@ -1,4 +1,4 @@
-Tailor Devious Device Compatibility Patch 0.6.4 — package 0.6.4-sources.4
+Tailor Devious Device Compatibility Patch 0.6.4 — package 0.6.4-permissions.1
 The patch is GPL-3.0-or-later. Third-party components retain their own terms.
 
 Complete author attribution and use/redistribution boundaries: CREDITS.md.
@@ -63,3 +63,5 @@ source, default Off and language choices remain unchanged.
 
 ImGui embedded ProggyClean font: Copyright (c) 2004, 2005 Tristan Grimmer; MIT.
 Full notice: licenses/ProggyClean-MIT.txt. Embedded payload already present in tested DLL; no font or binary changed.
+
+Tailor author permission / Tailor 作者许可（记录于 2026-10-18）：维护者确认已取得 ColdSun 对发布本兼容补丁的许可。ColdSun has granted permission to publish this compatibility patch, as confirmed by the maintainer. See AUTHOR-PERMISSIONS.md. Original correspondence is not included; other component rights and notices remain unchanged.

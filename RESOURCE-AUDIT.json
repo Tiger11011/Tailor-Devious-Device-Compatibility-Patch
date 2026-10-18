@@ -1,6 +1,6 @@
 {
   "checkedOn": "2026-10-18",
-  "revision": "0.6.4-sources.4",
+  "revision": "0.6.4-permissions.1",
   "scope": "All direct patch/helper/generator calls/includes, retained source references, accepted link/package manifests, FOMOD resources and bundled sources/notices. Not an attribution claim for every unrelated mod in a user profile.",
   "components": [
     {
@@ -352,5 +352,17 @@
   "helperPexDigest": "82162769dba8821dd75429a39ebd438a8dc5f3a80ef1370a2c83849158e0a311",
   "recompiled": false,
   "additionalNoticeManifest": "licenses/RESOURCE-NOTICE-SOURCES.json",
-  "sourceArchiveScope": "dependency-sources/VENDORED-SOURCE-SCOPE.md; no optional upstream sample/test/debug binaries."
+  "sourceArchiveScope": "dependency-sources/VENDORED-SOURCE-SCOPE.md; no optional upstream sample/test/debug binaries.",
+  "tailorAuthorPermission": {
+    "granted": true,
+    "author": "ColdSun",
+    "project": "Tailor Devious Device Compatibility Patch",
+    "scopeRecorded": "Permission to publish this compatibility patch",
+    "confirmationDate": "2026-10-18",
+    "confirmationSource": "Project maintainer",
+    "evidenceType": "Maintainer confirmation",
+    "originalCorrespondenceIncluded": false,
+    "originalGrantDate": null,
+    "record": "AUTHOR-PERMISSIONS.md"
+  }
 }

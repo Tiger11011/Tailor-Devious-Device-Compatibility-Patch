@@ -45,3 +45,5 @@ The same notice revision includes CREDITS.md, PREREQUISITE-NOTICES.md and RESOUR
 2026-10-18: sources.3 adds ProggyClean's existing embedded-font copyright/license; audit covers 29 components, without runtime changes.
 
 2026-10-18: sources.4 limits vendored CommonLib/OpenVR source delivery to build-relevant source and notices; it adds no runtime or functional change.
+
+Tailor author permission / Tailor 作者许可（记录于 2026-10-18）：维护者确认已取得 ColdSun 对发布本兼容补丁的许可。ColdSun has granted permission to publish this compatibility patch, as confirmed by the maintainer. See AUTHOR-PERMISSIONS.md. Original correspondence is not included; other component rights and notices remain unchanged.

@@ -1,8 +1,8 @@
 [b]Tailor Devious Device Compatibility Patch — 0.6.4[/b]
 
-[b]Source/notice package 0.6.4-sources.4[/b]
+[b]Source/notice package 0.6.4-permissions.1[/b]
 The tested 0.6.4 DLL, helper and functionality are unchanged. This package completes dependency source delivery and adds the zlib notice. Source.zip includes 8 verified upstream source archives and recorded build configurations.
-[b]Matching source:[/b] Source.zip is provided with this binary in Optional Files or from [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.4]this exact GitHub release[/url], without charge. It includes the corresponding build inputs and dependency source.
+[b]Matching source:[/b] Source.zip is provided with this binary in Optional Files or from [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-permissions.1]this exact GitHub release[/url], without charge. It includes the corresponding build inputs and dependency source.
 
 
 Try supported DD clothing freely in Tailor. After Set and a normal exit, keep genuine DD sounds, animations and other effects while choosing whether clothing locks remain active.
@@ -45,3 +45,6 @@ Thanks to ColdSun / heathbrownkeyworks (Tailor), DD/DD NG developers, Acro (Mu),
 
 [b]Full credits and notices[/b]
 SKSE team (Ian Patterson, Stephen Abel, Paul Connelly, Brendan Borthwick); Address Library (meh321); DD team (Kimy, Colycon, Zarantha, Min, Zadil and contributors); DD NG (ponzipyramid and IHateMyKite/DeviousDevicesNG contributors). All linked libraries and embedded-code authors are documented in [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/CREDITS.md]CREDITS.md[/url], included in the installer. [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/PREREQUISITE-NOTICES.md]Permission record[/url]: maintainer identifies the project as a pure Tailor/DD compatibility bug fix and relies on DD's bug-fix exception; separate author approval is not claimed. No third-party runtime implementations/assets are bundled.
+
+[b]Tailor author permission[/b]
+ColdSun has granted permission to publish this compatibility patch, as confirmed by the maintainer on 2026-10-18. See [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/AUTHOR-PERMISSIONS.md]AUTHOR-PERMISSIONS.md[/url]. The original correspondence is not included; this does not grant redistribution rights to Tailor or other authors' files.

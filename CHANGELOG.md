@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.4-permissions.1 — 2026-10-18
+
+- Record the maintainer's confirmation of ColdSun's permission to publish this Tailor compatibility patch.
+- Add AUTHOR-PERMISSIONS.md to the repository, both installer language choices and corresponding source; synchronize bilingual README/Nexus descriptions and permission records.
+- No original author message, grant date or unspecified conditions are invented. Existing licenses and all tested runtime/functional files remain unchanged.
+
 ## 0.6.4-sources.4 — 2026-10-18
 
 - Final notice/source packaging revision: all 29 reviewed component/resource credits and notices retained.

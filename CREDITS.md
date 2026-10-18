@@ -100,3 +100,5 @@ SkyUI、OAR、Papyrus Tweaks NG、MCM Helper 等；以各自所安装发行版�
 **鸣谢已补充不等于已经获得额外书面许可。**维护者确认本项目为纯兼容 bug 修复，
 据 DD 5.2 原条款的 bug 修复例外处理；详细依据和解释边界见
 `PREREQUISITE-NOTICES.md`，Nexus 平台规则仍独立适用。
+
+Tailor author permission / Tailor 作者许可（记录于 2026-10-18）：维护者确认已取得 ColdSun 对发布本兼容补丁的许可。ColdSun has granted permission to publish this compatibility patch, as confirmed by the maintainer. See AUTHOR-PERMISSIONS.md. Original correspondence is not included; other component rights and notices remain unchanged.
