@@ -9,7 +9,7 @@
 
 Try supported Devious Devices clothing freely in Tailor. After confirming an outfit, keep genuine DD sounds, animations and other effects, and choose whether normal clothing locks remain active. This is an independent add-on: it does not replace Tailor.dll or include anyone else's translation.
 
-**Tailor author permission:** ColdSun has granted permission to publish this compatibility patch, as confirmed by the maintainer on 2026-10-18. See AUTHOR-PERMISSIONS.md; original correspondence is not included.
+**Tailor author permission:** ColdSun has granted permission to publish this compatibility patch. See the [permission record](AUTHOR-PERMISSIONS.md) and [permission screenshot](PERMISSIONS.png) uploaded by the maintainer. The screenshot is available in this repository; it was added after the `0.6.4-permissions.1` archives were published.
 
 ## Requirements
 

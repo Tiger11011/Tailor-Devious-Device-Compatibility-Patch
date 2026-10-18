@@ -6,10 +6,14 @@ The maintainer confirms that **ColdSun**, author of
 [Tailor](https://github.com/heathbrownkeyworks/Tailor), has granted permission
 to publish **Tailor Devious Device Compatibility Patch**.
 
-This record is based on the maintainer's confirmation. The original author
-correspondence and its exact wording/conditions are not reproduced in this
-package; the date above is the date of this record, not an asserted grant date.
-Retain the original correspondence separately as evidence of its actual scope.
+The maintainer has uploaded a [screenshot of the permission exchange](PERMISSIONS.png).
+In response to the request to publish an independent compatibility patch that
+adds a Tailor UI button, requires Tailor separately, and does not redistribute
+Tailor itself, **coldsun1187** replies: “Sounds good, you have permission.”
+The screenshot shows relative timestamps only; the date above is the date of
+this record, not an asserted grant date. Retain the original conversation as
+well. The previously published `0.6.4-permissions.1` archives do not include
+this later-added screenshot.
 
 This permission record concerns this compatibility patch. It does not claim
 permission to redistribute Tailor itself, other authors' translations, DD,
@@ -22,9 +26,12 @@ unofficial compatibility add-on; permission is not a claim of author endorsement
 维护者确认：**已获得 Tailor 作者 ColdSun 对发布本兼容补丁
 Tailor Devious Device Compatibility Patch 的许可。**
 
-本记录依据维护者的确认；安装包不附作者往来原文，也不擅自补写未提供的
-具体条件。上方日期是记录日期，不代表原始授权日期。请单独保留作者回复，
-以其原文确定实际许可范围。
+维护者已上传[许可对话截图](PERMISSIONS.png)。请求内容是发布一个在 Tailor
+界面添加按钮、以 Tailor 为独立前置且不转载 Tailor 本体的兼容补丁；
+**coldsun1187** 对此回复：“Sounds good, you have permission.”
+（可以，你获得了许可。）截图只显示相对时间，上方日期仍是记录日期，
+不代表原始授权日期。请同时保留原始对话。此前发布的
+`0.6.4-permissions.1` 压缩包不包含这张后来补充的截图。
 
 这项许可针对本兼容补丁，不扩大为转载 Tailor 本体、他人汉化、DD、Mu、
 RaceMenu 或其他第三方资源的许可。现有版权和各组件许可文件保持不变。

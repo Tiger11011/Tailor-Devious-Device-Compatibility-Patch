@@ -9,7 +9,7 @@
 
 在 Tailor 中自由试穿受支持的 DD 装备。确认退出后保留真实 DD 的音效、动画等效果，由开关决定是否保留正常穿脱限制。独立补丁，不替换 Tailor.dll，不包含任何人的 Tailor 汉化。
 
-**Tailor 作者许可：**维护者已于 2026-10-18 确认取得 ColdSun 对发布本兼容补丁的许可。详见 AUTHOR-PERMISSIONS.md；安装包不附作者往来原文。
+**Tailor 作者许可：**已获得 ColdSun 对发布本兼容补丁的许可，详见[许可记录](AUTHOR-PERMISSIONS.md)及维护者上传的[许可截图](PERMISSIONS.png)。截图已公开于本仓库，补充时间晚于 `0.6.4-permissions.1` 压缩包的发布，因此该压缩包未包含截图。
 
 ## 前置要求
 
