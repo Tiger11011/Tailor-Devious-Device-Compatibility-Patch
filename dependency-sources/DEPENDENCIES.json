@@ -1,0 +1,175 @@
+{
+  "packageRevision": "0.6.4-sources.1",
+  "functionalVersion": "0.6.4",
+  "evidence": "Retained accepted-build linker inputs, package manifests and verified upstream source archive hashes; cached header comparison. This does not assert a bit-identical rebuild.",
+  "recipeRepository": "https://github.com/xmake-io/xmake-repo",
+  "recipeCommit": "bd29d77f242e247589457638272d9936a24a3fe0",
+  "dependencies": [
+    {
+      "name": "imgui",
+      "version": "v1.92.6",
+      "sourceArchive": "archives/imgui-v1.92.6.tar.gz",
+      "sourceUrl": "https://github.com/ocornut/imgui/archive/refs/tags/v1.92.6.tar.gz",
+      "sha256": "5b17c01f69545bde732b14936d89ce0f508adb83e8b56fa82448371845172bc3",
+      "sourceArchiveBytes": 2050368,
+      "recipeCommit": "bd29d77f242e247589457638272d9936a24a3fe0",
+      "recipePath": "recipes/packages/i/imgui",
+      "buildManifest": "imgui-build-manifest.lua",
+      "installedLibraryHashes": [
+        {
+          "file": "imgui.lib",
+          "sha256": "a4fa42d2b8d2ee7883b1d6a071a50b1b6ad7afdc130f1a89487b88fc36719e01"
+        }
+      ],
+      "installedHeaderMatches": 9,
+      "installedHeadersDifferentFromUpstream": [
+        {
+          "file": "include/imconfig.h",
+          "sha256": "0e176f74288c3f7692eab310d36187235593f703d6d2267b8c7b8f83345f072e"
+        }
+      ]
+    },
+    {
+      "name": "freetype",
+      "version": "2.14.1",
+      "sourceArchive": "archives/freetype-2.14.1.tar.gz",
+      "sourceUrl": "https://download.savannah.gnu.org/releases/freetype/freetype-2.14.1.tar.gz",
+      "sha256": "174d9e53402e1bf9ec7277e22ec199ba3e55a6be2c0740cb18c0ee9850fc8c34",
+      "sourceArchiveBytes": 4135293,
+      "recipeCommit": "bd29d77f242e247589457638272d9936a24a3fe0",
+      "recipePath": "recipes/packages/f/freetype",
+      "buildManifest": "freetype-build-manifest.lua",
+      "installedLibraryHashes": [
+        {
+          "file": "freetype.lib",
+          "sha256": "922b197b0417a8cbcdf8511cb1d6d05abcd2bc8f5e5872d808488a655a282244"
+        }
+      ],
+      "installedHeaderMatches": 55,
+      "installedHeadersDifferentFromUpstream": [
+        {
+          "file": "include/freetype2/freetype/config/ftconfig.h",
+          "sha256": "23c59f32971d813dbf827f27e133330ec8daedd8589e1a103a00dba5fdd3dca6"
+        },
+        {
+          "file": "include/freetype2/freetype/config/ftoption.h",
+          "sha256": "007f2a95aeb6242334ac6e733086370074019b3e81f8d594c8c05dee9ad8df1f"
+        }
+      ]
+    },
+    {
+      "name": "zlib",
+      "version": "v1.3.2",
+      "sourceArchive": "archives/zlib-v1.3.2.tar.gz",
+      "sourceUrl": "https://github.com/madler/zlib/archive/refs/tags/v1.3.2.tar.gz",
+      "sha256": "b99a0b86c0ba9360ec7e78c4f1e43b1cbdf1e6936c8fa0f6835c0cd694a495a1",
+      "sourceArchiveBytes": 1566911,
+      "recipeCommit": "bd29d77f242e247589457638272d9936a24a3fe0",
+      "recipePath": "recipes/packages/z/zlib",
+      "buildManifest": "zlib-build-manifest.lua",
+      "installedLibraryHashes": [
+        {
+          "file": "zlib.lib",
+          "sha256": "55b8df9985003ce774ad217d06eec08a67ea6a81d2faaf85778a8e2aef449888"
+        }
+      ],
+      "installedHeaderMatches": 2,
+      "installedHeadersDifferentFromUpstream": []
+    },
+    {
+      "name": "spdlog",
+      "version": "v1.16.0",
+      "sourceArchive": "archives/spdlog-v1.16.0.zip",
+      "sourceUrl": "https://github.com/gabime/spdlog/archive/refs/tags/v1.16.0.zip",
+      "sha256": "3d25808d2fc4db86621a46855800c99ab5734999b61c4cbf9470edf631555397",
+      "sourceArchiveBytes": 362720,
+      "recipeCommit": "bd29d77f242e247589457638272d9936a24a3fe0",
+      "recipePath": "recipes/packages/s/spdlog",
+      "buildManifest": "spdlog-build-manifest.lua",
+      "installedLibraryHashes": [
+        {
+          "file": "spdlog.lib",
+          "sha256": "224df6677348ada4f328eeb3d42726db61fd17f64d1a4bc27977975c0a99c68b"
+        }
+      ],
+      "installedHeaderMatches": 90,
+      "installedHeadersDifferentFromUpstream": []
+    },
+    {
+      "name": "nlohmann_json",
+      "version": "v3.12.0",
+      "sourceArchive": "archives/nlohmann_json-v3.12.0.tar.gz",
+      "sourceUrl": "https://github.com/nlohmann/json/archive/refs/tags/v3.12.0.tar.gz",
+      "sha256": "4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187",
+      "sourceArchiveBytes": 9678593,
+      "recipeCommit": "bd29d77f242e247589457638272d9936a24a3fe0",
+      "recipePath": "recipes/packages/n/nlohmann_json",
+      "buildManifest": "nlohmann_json-build-manifest.lua",
+      "installedLibraryHashes": [],
+      "installedHeaderMatches": 44,
+      "installedHeadersDifferentFromUpstream": [
+        {
+          "file": "include/nlohmann/detail/conversions/from_json.hpp",
+          "sha256": "0fb9eb48bf585609e5850a60d2a58da4b13e1743eff87622b1b792215dfb7b65"
+        },
+        {
+          "file": "include/nlohmann/detail/conversions/to_json.hpp",
+          "sha256": "6bc398832315d8a9b447897dd89cd638dc66878331ec0ede129fee68287e8c2c"
+        }
+      ]
+    },
+    {
+      "name": "directxtk",
+      "version": "24.2.0",
+      "sourceArchive": "archives/directxtk-24.2.0.zip",
+      "sourceUrl": "https://github.com/microsoft/DirectXTK/archive/feb2024.zip",
+      "sha256": "edb643b2444ff24925339cfb1bc9f76c671d5404a5549d32ecaa0d61bbab28c9",
+      "sourceArchiveBytes": 532180,
+      "recipeCommit": "bd29d77f242e247589457638272d9936a24a3fe0",
+      "recipePath": "recipes/packages/d/directxtk",
+      "buildManifest": "directxtk-build-manifest.lua",
+      "installedLibraryHashes": [
+        {
+          "file": "DirectXTK.lib",
+          "sha256": "69c028b2ed7a1634d334b6a0055285244e2be6fdd978cbe5c34d03644cee88d7"
+        }
+      ],
+      "installedHeaderMatches": 43,
+      "installedHeadersDifferentFromUpstream": []
+    },
+    {
+      "name": "directxmath",
+      "version": "2024.02",
+      "sourceArchive": "archives/directxmath-2024.02.zip",
+      "sourceUrl": "https://github.com/microsoft/DirectXMath/archive/refs/tags/feb2024.zip",
+      "sha256": "214d71420107249dfb4bbc37a573f288b0951cc9ffe323dbf662101f3df4d766",
+      "sourceArchiveBytes": 253579,
+      "recipeCommit": "bd29d77f242e247589457638272d9936a24a3fe0",
+      "recipePath": "recipes/packages/d/directxmath",
+      "buildManifest": "directxmath-build-manifest.lua",
+      "installedLibraryHashes": [],
+      "installedHeaderMatches": 10,
+      "installedHeadersDifferentFromUpstream": []
+    },
+    {
+      "name": "rapidcsv",
+      "version": "v8.92",
+      "sourceArchive": "archives/rapidcsv-v8.92.zip",
+      "sourceUrl": "https://github.com/d99kris/rapidcsv/archive/refs/tags/v8.92.zip",
+      "sha256": "e7d8026b2cfdcecd6a8bbf3539a5df15300f64036bbbc7c0ad7a96b80d3ee50e",
+      "sourceArchiveBytes": 285682,
+      "recipeCommit": "bd29d77f242e247589457638272d9936a24a3fe0",
+      "recipePath": "recipes/packages/r/rapidcsv",
+      "buildManifest": "rapidcsv-build-manifest.lua",
+      "installedLibraryHashes": [],
+      "installedHeaderMatches": 1,
+      "installedHeadersDifferentFromUpstream": []
+    }
+  ],
+  "bundledInExistingSource": {
+    "CommonLibSSE-NG": "8b032fa992750d654d6d38a33731714d8b86be1f",
+    "OpenVR": "60eb187801956ad277f1cae6680e3a410ee0873b",
+    "MinHook": "1.3.4"
+  },
+  "runtimeBinariesRecompiled": false
+}

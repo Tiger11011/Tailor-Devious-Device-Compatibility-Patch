@@ -1,10 +1,10 @@
 # Tailor Devious Device Compatibility Patch 0.6.4
 
-**Package revision: 0.6.4-licenses.1 (2026-10-18).** Attribution and license files only. The DLL, helper PEX and functional source are unchanged from the locally accepted 0.6.4 build. The original release is retained.
+**Package revision: 0.6.4-sources.1 (2026-10-18).** Source, documentation and license files only. The DLL, helper PEX and functional source are unchanged from the locally accepted 0.6.4 build. The original release is retained.
 
-Adds ColdSun's copyright notice plus verbatim Tailor GPL, licensing, exception, API MIT and third-party notice files, pinned to upstream commit a6088e2. See COPYRIGHT.md and licenses/LICENSE-SOURCES.json. The installer includes neither Tailor.dll nor any third-party translation.
+Retains ColdSun's copyright notice and verbatim upstream license files pinned to a6088e2. Adds verified source archives for ImGui 1.92.6, FreeType 2.14.1, zlib 1.3.2, spdlog 1.16.0, JSON 3.12.0, DirectXTK feb2024, DirectXMath feb2024 and rapidcsv 8.92; records build recipes/configurations and five installed header differences. Adds the previously missing zlib license notice. No runtime or functional source was changed. See COPYRIGHT.md and licenses/LICENSE-SOURCES.json. The installer includes neither Tailor.dll nor any third-party translation.
 
-For this exact binary, download **Tailor-Devious-Device-Compatibility-Patch-0.6.4-licenses.1-Source.zip** from this release alongside the FOMOD. Both are available without charge; source includes build files and pinned dependency source. When distributing the binary on Nexus, offer this matching Source.zip in Optional Files or link this exact GitHub release clearly next to the binary download.
+For this exact binary, download **Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.1-Source.zip** from this release alongside the FOMOD. Both are available without charge; source includes build files, eight verified upstream dependency archives, CommonLib/OpenVR/MinHook, package manifests, recipes and configured headers. See dependency-sources/README.md. The audit checks retained build evidence and source availability, not a fresh or bit-identical rebuild. When distributing the binary on Nexus, offer this matching Source.zip in Optional Files or link this exact GitHub release clearly next to the binary download.
 
 Local testing confirmed DD clothing switching and Mu NPC appearance recovery when changing from fully covering DD headgear to face-visible equipment.
 

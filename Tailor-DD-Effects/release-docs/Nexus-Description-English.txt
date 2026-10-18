@@ -1,8 +1,8 @@
 [b]Tailor Devious Device Compatibility Patch — 0.6.4[/b]
 
-[b]License-only package 0.6.4-licenses.1[/b]
-The tested 0.6.4 DLL, helper and functionality are unchanged. This package adds copyright and license notices.
-[b]Matching source:[/b] Source.zip is provided with this binary in Optional Files or from [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-licenses.1]this exact GitHub release[/url], without charge. It includes the corresponding build inputs and dependency source.
+[b]Source/notice package 0.6.4-sources.1[/b]
+The tested 0.6.4 DLL, helper and functionality are unchanged. This package completes dependency source delivery and adds the zlib notice. Source.zip includes 8 verified upstream source archives and recorded build configurations.
+[b]Matching source:[/b] Source.zip is provided with this binary in Optional Files or from [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.1]this exact GitHub release[/url], without charge. It includes the corresponding build inputs and dependency source.
 
 
 Try supported DD clothing freely in Tailor. After Set and a normal exit, keep genuine DD sounds, animations and other effects while choosing whether clothing locks remain active.

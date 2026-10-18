@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.4-sources.1 — 2026-10-18
+
+- Source/notice packaging revision only; tested DLL, helper PEX, C++/Papyrus/generator sources, settings and FOMOD language choices are unchanged.
+- Bundle eight exact upstream dependency source archives with SHA-256 values, retained xmake recipes/patches, sanitized package manifests and five installed configured-header copies.
+- Record actual linked FreeType 2.14.1 and zlib 1.3.2; add the missing zlib license notice.
+- Add SOURCE-ACCESS.md and a developer-only source retrieval/verification tool. Preserve earlier tags and binary assets.
+
 ## 0.6.4-licenses.1 — 2026-10-18
 
 - License-only packaging revision; runtime remains the tested 0.6.4.

@@ -1,0 +1,86 @@
+--- upstream/imgui/imconfig.h
++++ configured/imgui/imconfig.h
+@@ -86,15 +86,15 @@
+ // Requires FreeType headers to be available in the include path. Requires program to be compiled with 'misc/freetype/imgui_freetype.cpp' (in this repository) + the FreeType library (not provided).
+ // Note that imgui_freetype.cpp may be used _without_ this define, if you manually call ImFontAtlas::SetFontLoader(). The define is simply a convenience.
+ // On Windows you may use vcpkg with 'vcpkg install freetype --triplet=x64-windows' + 'vcpkg integrate install'.
+-//#define IMGUI_ENABLE_FREETYPE
++#define IMGUI_ENABLE_FREETYPE
+ 
+ //---- Use FreeType + plutosvg or lunasvg to render OpenType SVG fonts (SVGinOT)
+ // Only works in combination with IMGUI_ENABLE_FREETYPE.
+ // - plutosvg is currently easier to install, as e.g. it is part of vcpkg. It will support more fonts and may load them faster. See misc/freetype/README for instructions.
+ // - Both require headers to be available in the include path + program to be linked with the library code (not provided).
+ // - (note: lunasvg implementation is based on Freetype's rsvg-port.c which is licensed under CeCILL-C Free Software License Agreement)
+-//#define IMGUI_ENABLE_FREETYPE_PLUTOSVG
+-//#define IMGUI_ENABLE_FREETYPE_LUNASVG
++#define IMGUI_ENABLE_FREETYPE_PLUTOSVG
++#define IMGUI_ENABLE_FREETYPE_LUNASVG
+ 
+ //---- Use stb_truetype to build and rasterize the font atlas (default)
+ // The only purpose of this define is if you want force compilation of the stb_truetype backend ALONG with the FreeType backend.
+--- upstream/freetype/include/freetype/config/ftoption.h
++++ configured/freetype/include/freetype/config/ftoption.h
+@@ -224,7 +224,7 @@
+    *   `configure` script) and you define this macro, you also have to pass
+    *   `SYSTEM_ZLIB=yes` as an argument to make.
+    */
+-/* #define FT_CONFIG_OPTION_SYSTEM_ZLIB */
++#define FT_CONFIG_OPTION_SYSTEM_ZLIB
+ 
+ 
+   /**************************************************************************
+--- upstream/nlohmann_json/include/nlohmann/detail/conversions/from_json.hpp
++++ configured/nlohmann_json/include/nlohmann/detail/conversions/from_json.hpp
+@@ -540,7 +540,10 @@
+         JSON_THROW(type_error::create(302, concat("type must be string, but is ", j.type_name()), &j));
+     }
+     const auto& s = *j.template get_ptr<const typename BasicJsonType::string_t*>();
+-#ifdef JSON_HAS_CPP_20
++    // Checking for C++20 standard or later can be insufficient in case the
++    // library support for char8_t is either incomplete or was disabled
++    // altogether. Use the __cpp_lib_char8_t feature test instead.
++#if defined(__cpp_lib_char8_t) && (__cpp_lib_char8_t >= 201907L)
+     p = std_fs::path(std::u8string_view(reinterpret_cast<const char8_t*>(s.data()), s.size()));
+ #else
+     p = std_fs::u8path(s); // accepts UTF-8 encoded std::string in C++17, deprecated in C++20
+--- upstream/nlohmann_json/include/nlohmann/detail/conversions/to_json.hpp
++++ configured/nlohmann_json/include/nlohmann/detail/conversions/to_json.hpp
+@@ -15,7 +15,8 @@
+ 
+ #include <algorithm> // copy
+ #include <iterator> // begin, end
+-#include <string> // string
++#include <memory> // allocator_traits
++#include <string> //  basic_string, char_traits
+ #include <tuple> // tuple, get
+ #include <type_traits> // is_same, is_constructible, is_floating_point, is_enum, underlying_type
+ #include <utility> // move, forward, declval, pair
+@@ -440,15 +441,21 @@
+ }
+ 
+ #if JSON_HAS_FILESYSTEM || JSON_HAS_EXPERIMENTAL_FILESYSTEM
++#if defined(__cpp_lib_char8_t)
++template<typename BasicJsonType, typename Tr, typename Allocator>
++inline void to_json(BasicJsonType& j, const std::basic_string<char8_t, Tr, Allocator>& s)
++{
++    using OtherAllocator = typename std::allocator_traits<Allocator>::template rebind_alloc<char>;
++    j = std::basic_string<char, std::char_traits<char>, OtherAllocator>(s.begin(), s.end(), s.get_allocator());
++}
++#endif
++
+ template<typename BasicJsonType>
+ inline void to_json(BasicJsonType& j, const std_fs::path& p)
+ {
+-#ifdef JSON_HAS_CPP_20
+-    const std::u8string s = p.u8string();
+-    j = std::string(s.begin(), s.end());
+-#else
+-    j = p.u8string(); // returns std::string in C++17
+-#endif
++    // Returns either a std::string or a std::u8string depending whether library
++    // support for char8_t is enabled.
++    j = p.u8string();
+ }
+ #endif
+ 

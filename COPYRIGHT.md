@@ -32,6 +32,8 @@ CommonLibSSE-NG, MinHook, Dear ImGui, FreeType and the other included dependenci
 
 The included `TailorDDFreeWear.pex` is this patch's helper. Original Tailor, DD, Mu, RaceMenu and third-party translation implementations/assets must be obtained separately and are not redistributed here.
 
-## License-only packaging revision
+## License and source packaging revisions
 
-**2026-10-18 — package 0.6.4-licenses.1.** This revision adds attribution, verbatim upstream license files and clearer source-distribution directions. The tested 0.6.4 DLL, helper PEX, functional C++/Papyrus sources, default switch state and language choices are unchanged. The earlier v0.6.4 tag and release remain intact.
+**2026-10-18 — package 0.6.4-licenses.1.** Added attribution, verbatim upstream license files and source-distribution directions.
+
+**2026-10-18 — package 0.6.4-sources.1.** Adds eight exact dependency source archives, retained build recipes/configurations, configured-header copies and the zlib notice. See SOURCE-ACCESS.md and dependency-sources/README.md. The tested 0.6.4 DLL, helper PEX, functional C++/Papyrus sources, default switch state and language choices are unchanged. Earlier tags and releases remain intact.

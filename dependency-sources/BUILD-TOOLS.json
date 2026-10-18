@@ -1,0 +1,30 @@
+{
+  "xmake": {
+    "version": "3.1.1+HEAD.3ba37a0d4",
+    "role": "Version reported by the retained build utility; xmake.lua requires >=3.0.1. General-purpose tool, not linked into the DLL."
+  },
+  "meson": {
+    "installedVersion": "1.12.1",
+    "role": "General-purpose build tool available in the retained package environment; not linked into the DLL. Prebuilt library manifests do not prove each tool was executed locally."
+  },
+  "ninja": {
+    "installedVersion": "v1.13.2",
+    "role": "General-purpose build tool available in the retained package environment; not linked into the DLL. Prebuilt library manifests do not prove each tool was executed locally."
+  },
+  "pkgconf": {
+    "installedVersion": "2.5.1",
+    "role": "General-purpose build tool available in the retained package environment; not linked into the DLL. Prebuilt library manifests do not prove each tool was executed locally."
+  },
+  "python": {
+    "installedVersion": "3.14.3",
+    "role": "General-purpose build tool available in the retained package environment; not linked into the DLL. Prebuilt library manifests do not prove each tool was executed locally."
+  },
+  "MSVC": {
+    "version": "14.44.35207",
+    "role": "Accepted DLL linker record"
+  },
+  "WindowsSDK": {
+    "version": "10.0.22621.0",
+    "role": "Retained MSVC detection cache"
+  }
+}

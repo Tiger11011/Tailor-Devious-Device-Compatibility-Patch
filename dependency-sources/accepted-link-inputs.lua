@@ -1,0 +1,47 @@
+{
+    files = {
+        [[build\.objs\TailorDDBridge\windows\x64\release\gens\.\commonlib-plugin.rc.obj]],
+        [[build\.objs\TailorDDBridge\windows\x64\release\gens\.\commonlibsse-ng-plugin.cpp.obj]],
+        [[build\.objs\TailorDDBridge\windows\x64\release\gens\src\cxx\PCH.h_v143.pch.obj]],
+        [[build\.objs\TailorDDBridge\windows\x64\release\src\AppearanceTrace.cpp.obj]],
+        [[build\.objs\TailorDDBridge\windows\x64\release\src\EquipmentBridge.cpp.obj]],
+        [[build\.objs\TailorDDBridge\windows\x64\release\src\FreeWear.cpp.obj]],
+        [[build\.objs\TailorDDBridge\windows\x64\release\src\MuAppearance.cpp.obj]],
+        [[build\.objs\TailorDDBridge\windows\x64\release\src\main.cpp.obj]],
+        [[build\windows\x64\release\commonlibsse-ng.lib]],
+        [[build\windows\x64\release\minhook-local.lib]]
+    },
+    values = {
+        [[C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Tools\MSVC\14.44.35207\bin\HostX64\x64\link.exe]],
+        {
+            "-nologo",
+            "-machine:x64",
+            [[-libpath:<WORKSPACE>\Tailor-DD-Compat\.xmake-global\.xmake\packages\i\imgui\v1.92.6\2f509a8f1ad64832ac6d0b1c140f970c\lib]],
+            [[-libpath:<WORKSPACE>\Tailor-DD-Compat\.xmake-global\.xmake\packages\f\freetype\2.14.1\0a1a367b029f453fa4ed7e1b3db0871e\lib]],
+            [[-libpath:<WORKSPACE>\Tailor-DD-Compat\.xmake-global\.xmake\packages\z\zlib\v1.3.2\1087d98a25354760941affad70a541d9\lib]],
+            [[-libpath:<WORKSPACE>\Tailor-DD-Compat\.xmake-global\.xmake\packages\d\directxtk\24.2.0\f6fb9eaf439246fdb823f48a8816ec0c\lib]],
+            [[-libpath:<WORKSPACE>\Tailor-DD-Compat\.xmake-global\.xmake\packages\s\spdlog\v1.16.0\1053dccb2da94316b3bef3cb1db15374\lib]],
+            [[-libpath:build\windows\x64\release]],
+            "/opt:ref",
+            "/opt:icf",
+            "imgui.lib",
+            "freetype.lib",
+            "zlib.lib",
+            "commonlibsse-ng.lib",
+            "DirectXTK.lib",
+            "spdlog.lib",
+            "minhook-local.lib",
+            "imm32.lib",
+            "advapi32.lib",
+            "bcrypt.lib",
+            "d3d11.lib",
+            "d3dcompiler.lib",
+            "dbghelp.lib",
+            "dxgi.lib",
+            "ole32.lib",
+            "shell32.lib",
+            "user32.lib",
+            "version.lib"
+        }
+    }
+}

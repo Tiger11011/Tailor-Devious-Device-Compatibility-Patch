@@ -3,11 +3,12 @@ from pathlib import Path, PurePosixPath
 import argparse,hashlib,json,subprocess,sys,zipfile,xml.etree.ElementTree as ET
 
 project=Path(__file__).resolve().parents[1]; repo=project.parent
-version='0.6.4'; package_revision='0.6.4-licenses.1'
+version='0.6.4'; package_revision='0.6.4-sources.1'
 prefix=f'Tailor-Devious-Device-Compatibility-Patch-{package_revision}'
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--dll',type=Path,required=True)
 parser.add_argument('--pex',type=Path,required=True)
+parser.add_argument('--dependency-source-dir',type=Path,required=True,help='Directory containing the eight verified upstream source archives')
 parser.add_argument('--output',type=Path,default=project/'releases'/prefix)
 args=parser.parse_args();out=args.output.resolve();out.mkdir(parents=True,exist_ok=True)
 def sha(data):return hashlib.sha256(data).hexdigest()
@@ -19,6 +20,7 @@ docs=project/'release-docs';old=repo/'Tailor-DD-Bridge/package/Common'
 notices=(repo/'THIRD_PARTY_NOTICES.txt').read_bytes()
 base={'SKSE/Plugins/TailorDDBridge.dll':dll,'Scripts/TailorDDFreeWear.pex':pex,
       'LICENSE':(repo/'LICENSE').read_bytes(),'COPYRIGHT.md':(repo/'COPYRIGHT.md').read_bytes(),'THIRD_PARTY_NOTICES.txt':notices}
+base['SOURCE-ACCESS.md']=(repo/'SOURCE-ACCESS.md').read_bytes()
 for p in (old/'licenses').iterdir():
  if p.is_file():base['licenses/'+p.name]=p.read_bytes()
 for p in (project/'licenses').iterdir():
@@ -104,6 +106,13 @@ vr=common/'extern/openvr'
 assert subprocess.check_output(['git','-C',str(vr),'rev-parse','HEAD'],text=True).strip()=='60eb187801956ad277f1cae6680e3a410ee0873b'
 addtree(common,'Tailor-DD-Compat/lib/commonlibsse-ng')
 addtree(vr,'Tailor-DD-Compat/lib/commonlibsse-ng/extern/openvr')
+dependency_manifest=json.loads((repo/'dependency-sources/DEPENDENCIES.json').read_text(encoding='utf8'))
+for row in dependency_manifest['dependencies']:
+ archive=args.dependency_source_dir/Path(row['sourceArchive']).name
+ data=archive.read_bytes()
+ assert sha(data)==row['sha256'],row['name']
+ source['dependency-sources/'+row['sourceArchive']]=data
+assert len(dependency_manifest['dependencies'])==8
 assert 'Tailor-DD-Effects/Papyrus/TailorDDFreeWear.psc' in source
 assert 'Tailor-DD-Compat/lib/commonlibsse-ng/extern/openvr/headers/openvr.h' in source
 assert not any(b'C:\\Users\\Admin' in data or b'D:\\Modding\\MO2' in data for name,data in source.items() if name.startswith(('Tailor-DD-Effects/','Tailor-DD-SafeFitting/')))
@@ -115,7 +124,7 @@ for language in ['English','中文']:
  (out/f'Upload-Description-{language}.md').write_bytes((docs/f'README-{language}.md').read_bytes())
 packages=[{'file':p.name,'bytes':p.stat().st_size,'sha256':sha(p.read_bytes())} for p in [installer,sourcezip]]
 (out/'SHA256SUMS.txt').write_text(''.join(f"{r['sha256']}  {r['file']}\n" for r in packages),encoding='utf8')
-report={'version':version,'packageRevision':package_revision,'licenseOnlyRevision':True,'upstreamLicenseRevision':license_sources['revision'],'upstreamLicenseHashesVerified':True,'dllSha256':sha(dll),'helperSha256':sha(pex),'packages':packages,'installerFileCount':len(files),'sourceFileCount':len(source),'bothLanguageInstallMappingsVerified':True,'languageDifferences':differences,'defaultsOff':True,'originalTailorOrTranslationIncluded':False,'personalGeneratedDataIncluded':False,'startupDiagnosticsIncluded':False,'userConfirmedRuntimeScenario':'Local NPC DD switching and Mu fully-covered-to-visible-head appearance recovery','fullCompatibilityMatrixVerified':False,'MO2InstallerGuiRetested':False}
+report={'version':version,'packageRevision':package_revision,'sourceAndNoticeOnlyRevision':True,'dependencySourceArchivesVerified':8,'upstreamLicenseRevision':license_sources['revision'],'upstreamLicenseHashesVerified':True,'dllSha256':sha(dll),'helperSha256':sha(pex),'packages':packages,'installerFileCount':len(files),'sourceFileCount':len(source),'bothLanguageInstallMappingsVerified':True,'languageDifferences':differences,'defaultsOff':True,'originalTailorOrTranslationIncluded':False,'personalGeneratedDataIncluded':False,'startupDiagnosticsIncluded':False,'userConfirmedRuntimeScenario':'Local NPC DD switching and Mu fully-covered-to-visible-head appearance recovery','fullCompatibilityMatrixVerified':False,'MO2InstallerGuiRetested':False}
 (out/'PACKAGE-CHECK.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf8')
-(out/'上传说明.txt').write_text('主文件：'+installer.name+'\n对应开发源码：'+sourcezip.name+'\n安装包修订：'+package_revision+'；游戏内功能版本仍为 0.6.4。\n这是仅版权/许可修订，不要覆盖或删除原 GitHub v0.6.4 标签。\nNexus 主文件旁提供本修订的对应 Source.zip（Optional Files），或清楚链接完全对应的 GitHub 发布页。\n英文/中文页面说明：Nexus-Description-English.txt / Nexus-Description-中文.txt（BBCode）；另有 Markdown 全文。\n前置、受支持版本及安装顺序见双语说明。FOMOD 默认关闭，二选一语言，不包含 Tailor 或他人汉化。\n不上传私人 Generated Data、存档、日志、备份和启动诊断工具。本目录尚未自动上传至 Nexus。\n',encoding='utf8')
+(out/'上传说明.txt').write_text('主文件：'+installer.name+'\n对应开发源码：'+sourcezip.name+'\n安装包修订：'+package_revision+'；游戏内功能版本仍为 0.6.4。\n仅源码/说明/许可修订，DLL 和 PEX 保持原样。不要覆盖或删除旧 GitHub 标签。\nSource.zip 内已附 8 项实际版本依赖源码、配方、配置差异和校验清单，不要安装到 MO2。\nNexus 主文件旁提供本修订的对应 Source.zip（Optional Files），或清楚链接完全对应的 GitHub 发布页。\n英文/中文页面说明：Nexus-Description-English.txt / Nexus-Description-中文.txt（BBCode）；另有 Markdown 全文。\n前置、受支持版本及安装顺序见双语说明。FOMOD 默认关闭，二选一语言，不包含 Tailor 或他人汉化。\n不上传私人 Generated Data、存档、日志、备份和启动诊断工具。本目录尚未自动上传至 Nexus。\n',encoding='utf8')
 print(json.dumps(report,ensure_ascii=False,indent=2))

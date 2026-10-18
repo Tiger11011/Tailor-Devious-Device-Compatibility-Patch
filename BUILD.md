@@ -9,7 +9,7 @@ xmake -P Tailor-DD-Effects f -m release -y
 xmake -P Tailor-DD-Effects -j 8 -y TailorDDBridge
 ```
 
-Use Visual Studio 2022 C++ x64 tools and xmake 3.1.1 or compatible xmake >=3.0.1. The build uses C++23, CommonLibSSE-NG `8b032fa992750d654d6d38a33731714d8b86be1f`, MinHook 1.3.4, ImGui 1.92.6 and JSON 3.12.0. CommonLib pins its other dependencies; OpenVR is `60eb187801956ad277f1cae6680e3a410ee0873b`. Keep the sibling directories. Complete Source.zip includes dependency source; GitHub's automatic source archive omits submodules.
+Use Visual Studio 2022 C++ x64 tools and xmake 3.1.1 or compatible xmake >=3.0.1. The build uses C++23, CommonLibSSE-NG `8b032fa992750d654d6d38a33731714d8b86be1f`, MinHook 1.3.4, ImGui 1.92.6 and JSON 3.12.0. CommonLib pins its other dependencies; OpenVR is `60eb187801956ad277f1cae6680e3a410ee0873b`. Keep the sibling directories. The matching 0.6.4-sources.1 Source.zip includes eight upstream dependency archives plus recorded configurations and recipe patches; see dependency-sources/README.md. Git clones can retrieve/verify them with `python dependency-sources/fetch_sources.py --download`. The functional xmake.lua is unchanged; future transitive dependency resolution must be checked against DEPENDENCIES.json; GitHub's automatic source archive omits submodules.
 
 ## Independent Papyrus helper
 
@@ -44,7 +44,7 @@ The native DD hook test needs a separately obtained exact supported DeviousDevic
 ## Packaging
 
 ```powershell
-python Tailor-DD-Effects/tests/package_release.py --dll PATH/TO/TailorDDBridge.dll --pex PATH/TO/TailorDDFreeWear.pex
+python Tailor-DD-Effects/tests/package_release.py --dll PATH/TO/TailorDDBridge.dll --pex PATH/TO/TailorDDFreeWear.pex --dependency-source-dir dependency-sources/archives
 ```
 
 The script accepts the deliberately pinned tested DLL and helper hashes; review new binaries before changing the pins. Recompilation need not produce byte-identical output. Packaging checks both FOMOD language mappings and excluded files, then creates corresponding source and checksums. It never packages personal equipment data, presets, game files, logs, credentials, backups or startup diagnostics.
