@@ -3,7 +3,7 @@ from pathlib import Path, PurePosixPath
 import argparse,hashlib,json,subprocess,sys,zipfile,xml.etree.ElementTree as ET
 
 project=Path(__file__).resolve().parents[1]; repo=project.parent
-version='0.6.4'; package_revision='0.6.4-sources.3'
+version='0.6.4'; package_revision='0.6.4-sources.4'
 prefix=f'Tailor-Devious-Device-Compatibility-Patch-{package_revision}'
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--dll',type=Path,required=True)
@@ -96,12 +96,13 @@ subprocess.run([sys.executable,str(check/'Tools/build_cosmetics.py'),'--help'],s
 # backups, forensic projects, downloaded game/mod fixtures or build outputs.
 blocked={'.dll','.exe','.pex','.esp','.esm','.esl','.nif','.dds','.ttf','.otf','.pdb','.obj','.lib','.a','.so','.dylib','.zip','.7z','.log','.ess','.skse','.pyc','.pch','.ipch'}
 source={}
-def addtree(folder,prefix,untracked=False):
+def addtree(folder,prefix,untracked=False,roots=None):
  command=['git','-C',str(folder),'ls-files','-z','--cached']
  if untracked:command+=['--others','--exclude-standard']
  listing=subprocess.check_output(command).decode('utf8').split('\0')
  for name in listing:
   if not name:continue
+  if roots is not None and len(Path(name).parts)>1 and Path(name).parts[0] not in roots:continue
   p=folder/name
   if not p.is_file() or p.suffix.lower() in blocked:continue
   if any(part in ['.git','build','deployment','evidence','releases','diagnostics','__pycache__'] or part.startswith('.xmake') for part in Path(name).parts):continue
@@ -111,8 +112,11 @@ common=repo/'Tailor-DD-Compat/lib/commonlibsse-ng'
 assert subprocess.check_output(['git','-C',str(common),'rev-parse','HEAD'],text=True).strip()=='8b032fa992750d654d6d38a33731714d8b86be1f'
 vr=common/'extern/openvr'
 assert subprocess.check_output(['git','-C',str(vr),'rev-parse','HEAD'],text=True).strip()=='60eb187801956ad277f1cae6680e3a410ee0873b'
-addtree(common,'Tailor-DD-Compat/lib/commonlibsse-ng')
-addtree(vr,'Tailor-DD-Compat/lib/commonlibsse-ng/extern/openvr')
+addtree(common,'Tailor-DD-Compat/lib/commonlibsse-ng',roots={'include','src','cmake','scripts','res','licenses'})
+addtree(vr,'Tailor-DD-Compat/lib/commonlibsse-ng/extern/openvr',roots={'headers','src','cmake'})
+vendored={n:sha(data) for n,data in source.items() if n.startswith('Tailor-DD-Compat/lib/commonlibsse-ng/')}
+assert not any('/samples/' in n or '/tests/' in n or Path(n).suffix.lower() in {'.bin','.dbg','.unity','.eps'} for n in vendored)
+source['dependency-sources/VENDORED-SOURCE-SHA256.json']=(json.dumps(vendored,indent=2)+'\n').encode()
 dependency_manifest=json.loads((repo/'dependency-sources/DEPENDENCIES.json').read_text(encoding='utf8'))
 for row in dependency_manifest['dependencies']:
  archive=args.dependency_source_dir/Path(row['sourceArchive']).name

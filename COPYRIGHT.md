@@ -43,3 +43,5 @@ The included `TailorDDFreeWear.pex` is this patch's helper. Original Tailor, DD,
 The same notice revision includes CREDITS.md, PREREQUISITE-NOTICES.md and RESOURCE-AUDIT.json covering the 28 reviewed runtime/library/resource/reference components and their individual attribution/permission boundaries. Embedded and historical code notices remain their original authors' terms. The maintainer confirms compatibility bug-fix purpose and relies on DD's shipped bug-fix exception; no additional individual author approval is asserted.
 
 2026-10-18: sources.3 adds ProggyClean's existing embedded-font copyright/license; audit covers 29 components, without runtime changes.
+
+2026-10-18: sources.4 limits vendored CommonLib/OpenVR source delivery to build-relevant source and notices; it adds no runtime or functional change.

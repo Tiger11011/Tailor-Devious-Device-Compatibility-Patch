@@ -1,6 +1,6 @@
 {
   "checkedOn": "2026-10-18",
-  "revision": "0.6.4-sources.3",
+  "revision": "0.6.4-sources.4",
   "scope": "All direct patch/helper/generator calls/includes, retained source references, accepted link/package manifests, FOMOD resources and bundled sources/notices. Not an attribution claim for every unrelated mod in a user profile.",
   "components": [
     {
@@ -351,5 +351,6 @@
   "runtimeDlldigest": "561c55693a066cac0678a39fe44524449aecf83fe19476454cfb42ea7e32e78a",
   "helperPexDigest": "82162769dba8821dd75429a39ebd438a8dc5f3a80ef1370a2c83849158e0a311",
   "recompiled": false,
-  "additionalNoticeManifest": "licenses/RESOURCE-NOTICE-SOURCES.json"
+  "additionalNoticeManifest": "licenses/RESOURCE-NOTICE-SOURCES.json",
+  "sourceArchiveScope": "dependency-sources/VENDORED-SOURCE-SCOPE.md; no optional upstream sample/test/debug binaries."
 }

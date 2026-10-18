@@ -1,4 +1,4 @@
-# Corresponding dependency source — 0.6.4-sources.3
+# Corresponding dependency source — 0.6.4-sources.4
 
 This is a source/notice packaging revision. No C++, Papyrus, generator, game
 configuration or tested binary was changed or recompiled.
@@ -11,7 +11,7 @@ Git clones intentionally do not store these archives in Git history. From a
 clone, run `python dependency-sources/fetch_sources.py --download` to retrieve
 the same archives. Without `--download`, the command only verifies local files.
 The matching release is:
-https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.3
+https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.4
 
 | Component | Actual resolved version | Use |
 | --- | --- | --- |
@@ -107,3 +107,5 @@ DLL，也不需要用户为这次文档修订重复测试游戏。Source.zip 不
 
 在 Nexus 主文件旁提供本修订 Source.zip 的免费下载，或明确链接上述同一
 GitHub 发布页。保留与二进制对应的源码获取方式；不要只链接会变化的 main。
+
+CommonLib/OpenVR source scope and omitted non-build SDK examples/test data: dependency-sources/VENDORED-SOURCE-SCOPE.md. Source.zip carries a per-file VENDORED-SOURCE-SHA256.json.

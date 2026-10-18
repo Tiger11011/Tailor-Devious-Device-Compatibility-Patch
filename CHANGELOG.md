@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.4-sources.4 — 2026-10-18
+
+- Final notice/source packaging revision: all 29 reviewed component/resource credits and notices retained.
+- Restrict vendored CommonLib/OpenVR sources to actual build/implementation/header/license files; omit unrelated SDK/Unity/SDL examples, test address databases and debug binaries. Add a per-file source hash inventory.
+- Accepted DLL, helper PEX, functional inputs and FOMOD behavior remain byte-identical.
+
 ## 0.6.4-sources.3 — 2026-10-18
 
 - Complete the resource audit at 29 components; retain ProggyClean's Tristan Grimmer copyright and MIT license after confirming its existing compressed payload in the accepted DLL.

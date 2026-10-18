@@ -1,12 +1,12 @@
 # Source access / 对应源码
 
-Functional version **0.6.4**, package revision **0.6.4-sources.3**.
+Functional version **0.6.4**, package revision **0.6.4-sources.4**.
 The tested DLL and independent helper PEX have not changed or been recompiled.
 
-Download **Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.3-Source.zip**
+Download **Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.4-Source.zip**
 free of charge alongside the FOMOD from this exact release:
 
-https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.3
+https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.4
 
 It includes patch/helper/generator source, build files, CommonLibSSE-NG,
 OpenVR, MinHook, eight verified upstream dependency source archives and their
@@ -23,3 +23,5 @@ Source.zip 不要安装到 MO2；普通玩家只需 FOMOD。上传 Nexus 时，�
 提供此 Source.zip 或明确链接上方发布页。不要用 GitHub 自动生成的源码包
 替代这份完整附件。源码包不包含 Tailor 本体、他人汉化、DD/Mu/RaceMenu 实现
 或玩家数据。
+
+CommonLib/OpenVR source scope and omitted non-build SDK examples/test data: dependency-sources/VENDORED-SOURCE-SCOPE.md. Source.zip carries a per-file VENDORED-SOURCE-SHA256.json.
