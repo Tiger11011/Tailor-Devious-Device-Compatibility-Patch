@@ -1,62 +1,52 @@
-[b]Tailor Devious Device Compatibility Patch — 0.6.4[/b]
+[b]Description[/b]
+This compatibility patch fixes equipment-changing issues between Devious Devices (DD) and Tailor - An Outfit and Wig Manager, allowing supported DD restraint gear to be tried on and changed in Tailor. For full details and supported versions, please refer to the [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]GitHub repository[/url].
 
-[b]Source/notice package 0.6.4-permissions.1[/b]
-The tested 0.6.4 DLL, helper and functionality are unchanged. This package completes dependency source delivery and adds the zlib notice. Source.zip includes 8 verified upstream source archives and recorded build configurations.
-[b]Matching source:[/b] Source.zip is provided with this binary in Optional Files or from [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-permissions.1]this exact GitHub release[/url], without charge. It includes the corresponding build inputs and dependency source.
+[b]Installation instructions[/b]
+Install the FOMOD with MO2 and choose 中文 or English. Install Tailor and any translation separately.
+For a first installation, use the included Tools/build_cosmetics.py to generate equipment data for your own MO2 profile. Install the generated ZIP as a separate mod and enable TailorDDCosmetics.esp. Follow the [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/README.md]README instructions[/url]. Keep existing matching Generated Data when updating the patch.
 
+[b]Order (bottom has higher priority)[/b]
+Tailor
+Tailor translation (optional, obtained separately)
+Tailor Devious Device Compatibility Patch
+Tailor Devious Device Compatibility Patch - Generated Data
 
-Try supported DD clothing freely in Tailor. After Set and a normal exit, keep genuine DD sounds, animations and other effects while choosing whether clothing locks remain active.
+[b]How to use[/b]
+Open Tailor in game (Shift + Z by default) → Settings → DD Settings.
+Choose the mode, confirm the outfit using Tailor's Set workflow, then exit normally. Adding or previewing an item alone does not confirm an outfit.
 
-[b]How it works[/b]
-• Open Tailor → Settings → DD Settings.
-• Off (default): genuine DD effects remain; supported patch-managed clothing can be changed through Tailor and the normal inventory.
-• On: normal DD clothing restrictions remain after confirmation and exit.
-• While fitting, supported devices use removable appearance copies. Adding or previewing a piece alone is not the same as confirming an outfit with Set.
-• This is not a global unlock tool. Quest devices, block-generic devices, unsupported scripts and independently locked existing devices are not forcibly unlocked.
+[b]Main features[/b]
+• Off (default): after confirming and exiting Tailor, supported patch-managed DD clothing can be changed through Tailor and the normal inventory, while genuine DD sounds, animations and other effects remain.
+• On: normal DD clothing restrictions remain after confirming and exiting Tailor.
+• While fitting, supported devices use removable appearance copies. This is not a global unlock tool: quest devices, devices that block generic removal, unsupported custom scripts and independently locked existing devices are not forcibly unlocked.
+• Tailor itself shares NPC outfit assignments across saves. This patch retains that behavior; it does not mean DD lock state is necessarily identical in every save. The patch's free-wear permissions are stored in its own SKSE co-save data, so retain each save's matching co-save.
 
-[b]Install separately[/b]
-• [url=https://www.nexusmods.com/skyrimspecialedition/mods/173691]Tailor 3.0.1[/url] and its requirements.
-• Matching SKSE64, Address Library, DD framework/equipment dependencies and [url=https://www.nexusmods.com/skyrimspecialedition/mods/13048]PapyrusUtil[/url].
-• The exact reviewed DD NG v0.4.3 rc2 DLL. Check the README SHA-256 before installing. This release does not support every DD NG build.
-• MO2 and Python 3.10+ to generate equipment data for your own profile.
-• Optional: reviewed [url=https://www.nexusmods.com/skyrimspecialedition/mods/150931]Mu Dynamic NPC Replacer 2.1.4[/url] and its RaceMenu requirement for Mu appearance recovery.
-• Optional: [url=https://www.nexusmods.com/skyrimspecialedition/mods/184318]supported Tailor CHS translation[/url], obtained separately. English users do not need a translation.
+[b]Requirements[/b]
+• PapyrusUtil SE, matching your game/SKSE.
+• Tailor 3.0.1: an exact supported English or CHS build.
+• Devious Devices, its equipment dependencies, and the exact reviewed Devious Devices NG v0.4.3 rc2 DLL.
+• Skyrim SE/AE with matching SKSE64, Address Library and the Microsoft Visual C++ x64 runtime required by the native plugins.
+• MO2 and Python 3.10+ for equipment-data generation; Python is only needed for generation.
+• Optional: the reviewed Mu Dynamic NPC Replacer 2.1.4 and its RaceMenu requirement for Mu appearance recovery. Tailor's supported Chinese translation is obtained separately if needed.
+Check the README's DLL hashes; version names alone are not enough. Local testing used Skyrim 1.6.1170. Other game runtimes and VR have not been validated.
 
-[b]Important compatibility limit[/b]
-This is a narrow compatibility release for the exact Tailor English/CHS and DD NG DLL hashes listed in the included README. The reported working game setup is Skyrim 1.6.1170. Other game runtimes/VR and a complete device/player/NPC matrix have not been validated. Unknown native builds are rejected; do not bypass the checks.
+[b]AI usage[/b]
+I used generative AI for vibe coding. No art assets were generated using AI.
 
-[b]Installation[/b]
-1. Install the FOMOD in MO2; choose 中文 or English. Only this add-on's language changes; Tailor and its translation are not included.
-2. Enable one patch installation. Disable old separate English/Chinese bridge test mods to avoid duplicate DLLs and their temporary diagnostic tools.
-3. Generate and install your own Generated Data using the included Tools/build_cosmetics.py; enable TailorDDCosmetics.esp. Detailed commands are in both READMEs.
-4. Keep existing matching schema-2 Generated Data when updating. Reuse its output folder/manifest if regeneration is needed; do not renumber existing forms.
-5. Open Tailor, choose the switch mode, confirm the outfit with Set, then exit normally.
+[b]Issue reports[/b]
+Logs are normally in Documents\My Games\Skyrim Special Edition\SKSE\. Use your actual Documents location if it has been moved or redirected to OneDrive.
+[b]Reproduce the issue, then copy TailorDDBridge.log before restarting the game: each game launch overwrites this log.[/b] Also attach Tailor.log from the same folder if available.
+Include patch/game/SKSE/Tailor/DD/DD NG versions, patch language and any Tailor translation, player or NPC (and NPC name), switch state, equipment names/source mods, exact reproduction steps, and expected versus actual behavior. For appearance issues, include Mu/RaceMenu versions and relevant logs if generated. Review logs for personal information before posting publicly.
 
-[b]Reporting issues and logs[/b]
-Logs are normally in your Windows Documents folder: [code]Documents\My Games\Skyrim Special Edition\SKSE\[/code]
-If Documents has been moved or redirected to OneDrive, use its actual location. The patch log is still named TailorDDBridge.log despite the mod's new name.
-[b]Reproduce the issue, then copy TailorDDBridge.log before starting the game again. Each game launch overwrites the patch's previous log.[/b] Attach the complete log, plus Tailor.log from the same folder if available.
-Please provide:
-• Patch, Skyrim, SKSE, Tailor, DD and DD NG versions; patch language and any Tailor translation used.
-• Player or NPC; the NPC's name if applicable.
-• DD Settings Off/On and exact reproduction steps, including preview, Set confirmation and exit.
-• Equipment names and their source mods; expected behavior and actual result.
-• For appearance issues: whether Mu/RaceMenu is used, their versions and relevant logs if generated.
-Review logs for personal information, such as Windows usernames in paths, before posting publicly.
+[b]Shout-outs and license[/b]
+Credit to exiledviper (continued maintenance/refactoring) and meh321 (original version and idea) for [url=https://www.nexusmods.com/skyrimspecialedition/mods/13048]PapyrusUtil SE[/url]. Our independent helper calls its StorageUtil functions. PapyrusUtil is a separately installed runtime requirement; its DLL and implementation scripts are not included.
 
-[b]0.6.4[/b]
-Retains real DD effects in free-wear mode, improves asynchronous equip/removal handling, and fixes Mu preset paths plus missed appearance recovery after delayed DD removal or initially hidden heads. Local testing confirmed DD switching and Mu appearance recovery when changing fully covering headgear to face-visible equipment. Tailor's original cross-save shared NPC assignments remain unchanged.
+Included: independent patch DLL and helper PEX, bilingual FOMOD, generator tools, bilingual instructions and license notices. Excluded: Tailor runtime/assets/fonts, third-party translations, DD/Mu/RaceMenu implementations or assets, personal presets/generated equipment data, saves, logs, and temporary startup diagnostic tools.
 
-[b]Not included[/b]
-No Tailor.dll/assets/fonts, third-party translation, DD/Mu/RaceMenu implementation or assets, personal generated ESP, presets, saves, logs or temporary startup diagnostics. The only PEX in the installer is our independent TailorDDFreeWear helper.
+Credit to ColdSun / heathbrownkeyworks for Tailor and its API, the DD/DD NG developers, Acro for Mu, expired6978 for RaceMenu, and Llinnn for the separately distributed Tailor CHS translation. Their mods must be obtained independently. This is an unofficial compatibility add-on.
 
-[b]Source and credits[/b]
-Thanks to exiledviper (continued maintenance/refactoring) and meh321 (original version and idea) for [url=https://www.nexusmods.com/skyrimspecialedition/mods/13048]PapyrusUtil SE[/url]. Our helper calls its StorageUtil functions; install PapyrusUtil separately. Its DLL and implementation scripts are not included.
-[url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]GitHub source, changelog and downloads[/url]. Full corresponding Source.zip is available for developers; do not install it in MO2.
-Thanks to ColdSun / heathbrownkeyworks (Tailor), DD/DD NG developers, Acro (Mu), expired6978 (RaceMenu), and Llinnn (the separately distributed Tailor translation). Unofficial add-on; GPL-3.0-or-later, dependency notices included.
+The matching [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-permissions.2]Source.zip[/url] and [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]GitHub repository[/url] contain corresponding source and build instructions. Do not install Source.zip in MO2. The patch is GPL-3.0-or-later; see LICENSE and THIRD_PARTY_NOTICES.txt.
 
-[b]Full credits and notices[/b]
-SKSE team (Ian Patterson, Stephen Abel, Paul Connelly, Brendan Borthwick); Address Library (meh321); DD team (Kimy, Colycon, Zarantha, Min, Zadil and contributors); DD NG (ponzipyramid and IHateMyKite/DeviousDevicesNG contributors). All linked libraries and embedded-code authors are documented in [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/CREDITS.md]CREDITS.md[/url], included in the installer. [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/PREREQUISITE-NOTICES.md]Permission record[/url]: maintainer identifies the project as a pure Tailor/DD compatibility bug fix and relies on DD's bug-fix exception; separate author approval is not claimed. No third-party runtime implementations/assets are bundled.
+Source delivery: see SOURCE-ACCESS.md and dependency-sources/README.md in the complete Source.zip for the eight resolved dependencies, source SHA-256 values, recorded build recipes/configurations and configured-header copies. This packaging revision does not rebuild or alter the tested DLL/PEX.
 
-[b]Tailor author permission[/b]
-ColdSun has granted permission to publish this compatibility patch, as confirmed by the maintainer on 2026-10-18. See [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/AUTHOR-PERMISSIONS.md]AUTHOR-PERMISSIONS.md[/url]. The original correspondence is not included; this does not grant redistribution rights to Tailor or other authors' files.
+Full attribution and permission record: CREDITS.md, PREREQUISITE-NOTICES.md, RESOURCE-AUDIT.json (included in the installer/source). Includes the SKSE team, meh321/Address Library, DD/NG authors, PapyrusUtil authors, optional integrations, linked libraries and embedded code. Permission to publish this compatibility patch has been granted by Tailor author ColdSun; see [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/AUTHOR-PERMISSIONS.md]AUTHOR-PERMISSIONS.md[/url].
