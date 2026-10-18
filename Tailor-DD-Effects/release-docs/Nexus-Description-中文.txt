@@ -1,8 +1,8 @@
 [b]Tailor Devious Device Compatibility Patch — 0.6.4[/b]
 
-[b]源码与说明修订 0.6.4-sources.1[/b]
+[b]源码与说明修订 0.6.4-sources.2[/b]
 实测成功的 0.6.4 DLL、辅助脚本和功能不变，补全 8 项实际版本依赖源码、构建配置及 zlib 许可附件。
-[b]对应源码：[/b]与主文件一起在 Optional Files 提供 Source.zip，或从[url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.1]完全对应的 GitHub 发布页[/url]免费下载，包含构建文件和依赖源码。
+[b]对应源码：[/b]与主文件一起在 Optional Files 提供 Source.zip，或从[url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.2]完全对应的 GitHub 发布页[/url]免费下载，包含构建文件和依赖源码。
 
 
 在 Tailor 内自由试穿受支持的 DD 服装。通过 Set 确认并正常退出后，保留真实 DD 音效、动画等效果，由开关决定是否保留穿脱限制。
@@ -39,5 +39,9 @@
 Tailor.dll/资源/字体、他人汉化、DD/Mu/RaceMenu 实现或资源、个人生成 ESP、预设、存档、日志和临时启动诊断。安装包唯一 PEX 是补丁自有的 TailorDDFreeWear 辅助脚本。
 
 [b]源码与致谢[/b]
+感谢 [url=https://www.nexusmods.com/skyrimspecialedition/mods/13048]PapyrusUtil SE[/url] 的 exiledviper（持续维护与重构）及 meh321（原始版本与构想）。辅助脚本调用其 StorageUtil；请单独安装 PapyrusUtil，本包不含其 DLL 和实现脚本。
 [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]GitHub 源码、更新记录和下载[/url]。完整 Source.zip 供开发者使用，不要作为 MO2 模组安装。
 感谢 ColdSun / heathbrownkeyworks（Tailor）、DD/DD NG 开发者、Acro（Mu）、expired6978（RaceMenu）和独立发布 Tailor 汉化的 Llinnn。非官方扩展，GPL-3.0-or-later，包含依赖许可说明。
+
+[b]完整鸣谢与许可说明[/b]
+SKSE 团队（Ian Patterson、Stephen Abel、Paul Connelly、Brendan Borthwick）；Address Library 作者 meh321；DD 团队（Kimy、Colycon、Zarantha、Min、Zadil 及贡献者）；DD NG 的 ponzipyramid 与 IHateMyKite/DeviousDevicesNG 贡献者。所有编入库及内嵌代码作者见随包提供的 [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/CREDITS.md]CREDITS.md[/url]。[url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/PREREQUISITE-NOTICES.md]许可依据[/url]：维护者将本项目定位为纯 Tailor/DD 兼容 bug 修复，按 DD 原条款的 bug 修复例外处理，不声称取得作者单独授权。无第三方模组原始运行实现或资产随包分发。

@@ -1,5 +1,5 @@
 {
-  "packageRevision": "0.6.4-sources.1",
+  "packageRevision": "0.6.4-sources.2",
   "functionalVersion": "0.6.4",
   "evidence": "Retained accepted-build linker inputs, package manifests and verified upstream source archive hashes; cached header comparison. This does not assert a bit-identical rebuild.",
   "recipeRepository": "https://github.com/xmake-io/xmake-repo",
@@ -171,5 +171,18 @@
     "OpenVR": "60eb187801956ad277f1cae6680e3a410ee0873b",
     "MinHook": "1.3.4"
   },
-  "runtimeBinariesRecompiled": false
+  "runtimeBinariesRecompiled": false,
+  "externalRuntimePrerequisites": [
+    {
+      "name": "PapyrusUtil SE - Modders Scripting Utility Functions",
+      "url": "https://www.nexusmods.com/skyrimspecialedition/mods/13048",
+      "credits": {
+        "exiledviper": "continued maintenance and refactoring",
+        "meh321": "original version and idea"
+      },
+      "use": "StorageUtil.GetIntValue, SetIntValue, UnsetIntValue",
+      "implementationBundled": false,
+      "compileOnlyDeclarationsBundled": true
+    }
+  ]
 }

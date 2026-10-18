@@ -1,8 +1,8 @@
 [b]Tailor Devious Device Compatibility Patch — 0.6.4[/b]
 
-[b]Source/notice package 0.6.4-sources.1[/b]
+[b]Source/notice package 0.6.4-sources.2[/b]
 The tested 0.6.4 DLL, helper and functionality are unchanged. This package completes dependency source delivery and adds the zlib notice. Source.zip includes 8 verified upstream source archives and recorded build configurations.
-[b]Matching source:[/b] Source.zip is provided with this binary in Optional Files or from [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.1]this exact GitHub release[/url], without charge. It includes the corresponding build inputs and dependency source.
+[b]Matching source:[/b] Source.zip is provided with this binary in Optional Files or from [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.2]this exact GitHub release[/url], without charge. It includes the corresponding build inputs and dependency source.
 
 
 Try supported DD clothing freely in Tailor. After Set and a normal exit, keep genuine DD sounds, animations and other effects while choosing whether clothing locks remain active.
@@ -39,5 +39,9 @@ Retains real DD effects in free-wear mode, improves asynchronous equip/removal h
 No Tailor.dll/assets/fonts, third-party translation, DD/Mu/RaceMenu implementation or assets, personal generated ESP, presets, saves, logs or temporary startup diagnostics. The only PEX in the installer is our independent TailorDDFreeWear helper.
 
 [b]Source and credits[/b]
+Thanks to exiledviper (continued maintenance/refactoring) and meh321 (original version and idea) for [url=https://www.nexusmods.com/skyrimspecialedition/mods/13048]PapyrusUtil SE[/url]. Our helper calls its StorageUtil functions; install PapyrusUtil separately. Its DLL and implementation scripts are not included.
 [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]GitHub source, changelog and downloads[/url]. Full corresponding Source.zip is available for developers; do not install it in MO2.
 Thanks to ColdSun / heathbrownkeyworks (Tailor), DD/DD NG developers, Acro (Mu), expired6978 (RaceMenu), and Llinnn (the separately distributed Tailor translation). Unofficial add-on; GPL-3.0-or-later, dependency notices included.
+
+[b]Full credits and notices[/b]
+SKSE team (Ian Patterson, Stephen Abel, Paul Connelly, Brendan Borthwick); Address Library (meh321); DD team (Kimy, Colycon, Zarantha, Min, Zadil and contributors); DD NG (ponzipyramid and IHateMyKite/DeviousDevicesNG contributors). All linked libraries and embedded-code authors are documented in [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/CREDITS.md]CREDITS.md[/url], included in the installer. [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/PREREQUISITE-NOTICES.md]Permission record[/url]: maintainer identifies the project as a pure Tailor/DD compatibility bug fix and relies on DD's bug-fix exception; separate author approval is not claimed. No third-party runtime implementations/assets are bundled.

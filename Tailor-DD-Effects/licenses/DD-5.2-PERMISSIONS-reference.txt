@@ -1,0 +1,22 @@
+DD 5.2 shipped README: PERMISSIONS section, verbatim. This does not grant permission from us or claim it overrides another applicable license.
+Source: Devious Devices 5.2 / Docs/Devious Devices/Devious Devices Readme.txt
+SHA-256 of complete local README: b094d4e7531b6cd25e9e8c88428a091f02dae57dcdce672b8b80af709cb95ff2
+
+PERMISSIONS
+
+Anyone that wishes to use this mod as a dependency for their own work is quite welcome to. Proper credit is appreciated. 
+
+- You can NOT bundle/re-distribute any parts of this mod with your own (e.g. include patched versions of DD's files in your mod) as future updates to DD might break your and other mods if you do.
+- You can NOT post this mod or any of its parts (including any derived works) without explicit permission.
+- You can NOT post or share any patches against this mod without my express permission, unless their sole purpose is fixing bugs.
+- You can NOT incorporate any parts of this mod in any for-profit project (Donations/Patreons are fine as long as they are strictly voluntary)
+- You can NOT incorporate any parts of this mod in a project that's going to be uploaded to Bethesda.Net and/or made available for consoles in any other way.
+- You can NOT use any code or assets from this mod in projects competing with it, without permission.
+- You can NOT use any parts of this mod in a closed source project. No exceptions, ever. No need to ask for permission either. It won't be given.
+- You can NOT publish a full or partial fork of this mod (as in using it as a base for a project offering similar functionality) without permission. That includes porting it to other platforms/games.
+- You CAN otherwise use code for your own projects as long as you include all source code with your distribution and allow others to use your own code in a similar fashion. And give proper credit where it's due. All above rules still apply! For art assets, please contact their respective creator directly.
+
+In plain English: Do with my code what you want, as long as you credit me, and your own project is also open source and available free of charge. But don't use my own code to make mods competing with mine, don't change my mod's behavior against my will, and don't steal my stuff by uploading it somewhere else.
+
+For all art assets used by this mod, all conditions set by their original creators apply instead. Please contact the respective author for further information on permissions etc.
+

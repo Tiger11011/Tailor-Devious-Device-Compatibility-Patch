@@ -2,9 +2,9 @@
 
 # Tailor Devious Device Compatibility Patch 0.6.4
 
-**Source/notice package revision: 0.6.4-sources.1, 2026-10-18.** Runtime behavior, DLL, helper PEX and functional source remain the tested 0.6.4. This revision completes dependency source delivery, records actual resolved build versions/configurations, and adds the zlib notice. Earlier ColdSun attribution and upstream notices are retained. See COPYRIGHT.md and licenses/LICENSE-SOURCES.json in the installer.
+**Source/notice package revision: 0.6.4-sources.2, 2026-10-18.** Runtime behavior, DLL, helper PEX and functional source remain the tested 0.6.4. This revision completes dependency source delivery, records actual resolved build versions/configurations, and adds the zlib notice. Earlier ColdSun attribution and upstream notices are retained. See COPYRIGHT.md and licenses/LICENSE-SOURCES.json in the installer.
 
-**Corresponding source for this binary:** download Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.1-Source.zip from [the exact matching release](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.1), available without charge alongside the FOMOD. On Nexus, offer that matching Source.zip in Optional Files or clearly link this exact source download next to the main binary file. The source includes build files and pinned dependency source.
+**Corresponding source for this binary:** download Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.2-Source.zip from [the exact matching release](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.2), available without charge alongside the FOMOD. On Nexus, offer that matching Source.zip in Optional Files or clearly link this exact source download next to the main binary file. The source includes build files and pinned dependency source.
 
 
 Try supported Devious Devices clothing freely in Tailor. After confirming an outfit, keep genuine DD sounds, animations and other effects, and choose whether normal clothing locks remain active. This is an independent add-on: it does not replace Tailor.dll or include anyone else's translation.
@@ -33,7 +33,7 @@ These are deliberately narrow native compatibility checks. Unsupported builds ar
 ## Installation in MO2
 
 1. Close Skyrim. Install the prerequisites and your equipment mods. Install Tailor's translation separately if desired, following its own conflict instructions.
-2. Install **Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.1-FOMOD.zip** as its own mod. Choose **中文** or **English**. The left image asks “你用什么语言？” and “What language do you use?”. This choice changes only the add-on language; it does not install a Tailor translation.
+2. Install **Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.2-FOMOD.zip** as its own mod. Choose **中文** or **English**. The left image asks “你用什么语言？” and “What language do you use?”. This choice changes only the add-on language; it does not install a Tailor translation.
 3. Disable older separate bridge language mods and any older experiment replacing Tailor.dll. Enable just one current patch installation. When upgrading the private test setup, disable the old Chinese/English bridge mods so their temporary startup diagnostics are not loaded alongside this release. **Do not disable or regenerate existing matching Generated Data merely to update the DLL.**
 4. For a new installation, select your intended MO2 profile, enable its clothing mods/plugins and close MO2 so its lists are saved. Run the supplied generator from Windows, outside MO2's virtual filesystem, with your actual paths:
 
@@ -85,6 +85,8 @@ If reporting an issue, include game/SKSE/Tailor/DD NG versions, player or NPC, s
 
 ## Contents, source and credits
 
+Credit to exiledviper (continued maintenance/refactoring) and meh321 (original version and idea) for [PapyrusUtil SE](https://www.nexusmods.com/skyrimspecialedition/mods/13048). Our independent helper calls its StorageUtil functions. PapyrusUtil is a separately installed runtime requirement; its DLL and implementation scripts are not included.
+
 Included: independent patch DLL and helper PEX, bilingual FOMOD, generator tools, bilingual instructions and license notices. Excluded: Tailor runtime/assets/fonts, third-party translations, DD/Mu/RaceMenu implementations or assets, personal presets/generated equipment data, saves, logs, and temporary startup diagnostic tools.
 
 Credit to ColdSun / heathbrownkeyworks for Tailor and its API, the DD/DD NG developers, Acro for Mu, expired6978 for RaceMenu, and Llinnn for the separately distributed Tailor CHS translation. Their mods must be obtained independently. This is an unofficial compatibility add-on.
@@ -92,3 +94,5 @@ Credit to ColdSun / heathbrownkeyworks for Tailor and its API, the DD/DD NG deve
 The **Source.zip** and [GitHub repository](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch) contain corresponding source and build instructions. Do not install Source.zip in MO2. The patch is GPL-3.0-or-later; see LICENSE and THIRD_PARTY_NOTICES.txt.
 
 源码交付 / Source delivery: see SOURCE-ACCESS.md and dependency-sources/README.md in the complete Source.zip for the actual 8 resolved dependencies, source SHA-256 values, recorded recipes/configurations and configured-header copies. This packaging revision does not rebuild or alter the tested DLL/PEX.
+
+完整作者与许可清单 / Full attribution and permission record: **CREDITS.md**, **PREREQUISITE-NOTICES.md**, **RESOURCE-AUDIT.json** (included in the installer/source). Includes SKSE team, meh321/Address Library, DD/NG authors, PapyrusUtil authors, optional integrations, linked libraries and embedded code; credits do not imply endorsement.

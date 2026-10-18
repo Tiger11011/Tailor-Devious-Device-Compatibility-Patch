@@ -1,0 +1,46 @@
+{
+  "checkedOn": "2026-10-18",
+  "scope": "Additional notices for actual linked/embedded components and external prerequisites; unchanged runtime. Permission issues remain separately recorded.",
+  "files": [
+    {
+      "file": "CommonLibSSE-NG-legacy-MIT.txt",
+      "sha256": "253d41f9a66509071e71deeafaad01d9cd5e1d0e235f38d988f33d4f54cb0fe2",
+      "source": "CommonLibSSE-NG 8b032fa992750d654d6d38a33731714d8b86be1f/licenses/LICENSE-MIT (historical attribution, not whole-project license)"
+    },
+    {
+      "file": "Dear-ImGui-embedded-STB.txt",
+      "sha256": "b1d355b0fe89d6bbc162bead86ddda2efa1335df50c68dcaaca31ca0eec98806",
+      "source": "imgui-v1.92.6.tar.gz: three imstb_*.h embedded license blocks"
+    },
+    {
+      "file": "nlohmann-json-third-party.md",
+      "sha256": "d4b7ed0261c2c840e9ccc7d483b3b659bfddc8be797f3007da080f0c4a78d960",
+      "source": "nlohmann_json-v3.12.0.tar.gz/docs/mkdocs/docs/home/license.md (verbatim)"
+    },
+    {
+      "file": "nlohmann-json-embedded-MIT.txt",
+      "sha256": "858a8968dc5fd0a30dcfb5186259598327bf32135471090970eb8d08bb6804b3",
+      "source": "same source archive: license.md embedded attributions + LICENSE.MIT permission text"
+    },
+    {
+      "file": "FreeType-third-party-notices.txt",
+      "sha256": "c98b91e015f7e559a4c5e82bad592d7aaa036bc130794ad91cce7f3b20066ca8",
+      "source": "freetype-2.14.1.tar.gz: original license summary, BDF/PCF notices, HarfBuzz-derived source notices"
+    },
+    {
+      "file": "DDNG-Apache-2.0-reference.txt",
+      "sha256": "ca008a47df49c4aa8bdd93d450590ecc62ed8a4aceaf6ff1c69a042a9d871f53",
+      "source": "IHateMyKite/DeviousDevicesNG f521932f2c479dd0389c0ad3ee830cc5e86fa5bb/LICENSE; reference license for NG plugin, not a blanket license for DD 5.2 assets/scripts"
+    },
+    {
+      "file": "DD-5.2-PERMISSIONS-reference.txt",
+      "sha256": "ad8b66bd08346040000f214c61baf9c96cc55684c531375ad385834c02953ea5",
+      "source": "Installed DD 5.2 README, PERMISSIONS section; retained as a restrictive upstream reference, not our license grant"
+    },
+    {
+      "file": "Hedley-CC0-1.0.txt",
+      "source": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt",
+      "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    }
+  ]
+}

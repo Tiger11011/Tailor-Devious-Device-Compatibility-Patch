@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.4-sources.2 — 2026-10-18
+
+- Correct the omitted PapyrusUtil SE credits: exiledviper (maintenance/refactoring), meh321 (original version/idea).
+- Explain the helper's StorageUtil use and separately installed prerequisite; PapyrusUtil implementation is not redistributed.
+- Documentation/credit correction only; tested runtime, functional source, settings and language choices remain unchanged.
+- Extend the review to 28 direct/runtime/library/resource/reference components; add full CREDITS, prerequisite permission evidence and machine-readable resource audit.
+- Retain CommonLib legacy MIT, ImGui/STB, JSON embedded MIT/CC0, FreeType contributed-code notices and DD/NG license references. Record reliance on DD's bug-fix exception without claiming separate author approval.
+
 ## 0.6.4-sources.1 — 2026-10-18
 
 - Source/notice packaging revision only; tested DLL, helper PEX, C++/Papyrus/generator sources, settings and FOMOD language choices are unchanged.

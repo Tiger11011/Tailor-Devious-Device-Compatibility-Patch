@@ -1,18 +1,62 @@
-Tailor Devious Device Compatibility Patch 0.6.4 is distributed under GPL-3.0-or-later.
-The companion Source archive contains the bridge and data-generator source.
-Tailor-derived interface declarations and upstream comments: Copyright (c) 2026 ColdSun.
-Source: https://github.com/heathbrownkeyworks/Tailor ; latest licensing checked at 3.0.1 commit a6088e22b06f6e97ab617d2f79420d6a99228f52 (2026-10-07).
-Tailor implementation: GPL-3.0-or-later with its upstream exceptions. Its separately distributable public API header is additionally available under MIT; this does not relicense all of Tailor as MIT.
-See COPYRIGHT.md and the verbatim Tailor-GPL-3.0.txt, Tailor-LICENSING.md, Tailor-EXCEPTIONS.md, TailorAPI-MIT.txt, Tailor-THIRD_PARTY_NOTICES.md and LICENSE-SOURCES.json under licenses/ in the installer or Tailor-DD-Effects/licenses/ in source.
-CommonLibSSE-NG: GPL-3.0-or-later with the included Modding and Linking Exceptions.
-Dear ImGui 1.92.6: MIT. FreeType: FTL. MinHook 1.3.4: BSD-2-Clause.
-nlohmann/json 3.12.0 and spdlog 1.16.0: MIT.
-DirectXMath and DirectXTK: MIT. rapidcsv: BSD-3-Clause. OpenVR: Valve BSD license.
-Full notices and licenses are in licenses/.
-Tailor, its translations and all DD frameworks/assets must be obtained separately.
-Only our independent TailorDDFreeWear helper PEX is included. No Tailor.dll, third-party translation, game font, original DD/Mu/RaceMenu scripts or assets, personal generated plugin, or startup diagnostics are distributed here.
-Package 0.6.4-sources.1 (2026-10-18) updates dependency source delivery, notices and packaging only. The tested runtime binaries and functional sources remain unchanged.
+Tailor Devious Device Compatibility Patch 0.6.4 — package 0.6.4-sources.2
+The patch is GPL-3.0-or-later. Third-party components retain their own terms.
 
-Actual resolved FreeType is 2.14.1 with zlib 1.3.2 (zlib license); see licenses/zlib-LICENSE.txt.
-Corresponding source: see SOURCE-ACCESS.md and dependency-sources/DEPENDENCIES.json in the matching Source.zip.
-The complete source archive includes the eight exact upstream dependency source archives, recorded xmake recipes, patches and configured-header overrides. Each component retains its own license.
+Complete author attribution and use/redistribution boundaries: CREDITS.md.
+Runtime/mod permission evidence and bug-fix publication basis: PREREQUISITE-NOTICES.md.
+Audited local call/include/resource evidence: RESOURCE-AUDIT.json.
+Exact matching source access: SOURCE-ACCESS.md.
+
+Tailor-derived declarations/comments: Copyright (c) 2026 ColdSun.
+Tailor GPL, LICENSING, EXCEPTIONS, API MIT and THIRD_PARTY_NOTICES are copied
+verbatim at a6088e22b06f6e97ab617d2f79420d6a99228f52. API MIT is not a
+blanket relicense of Tailor. See COPYRIGHT.md and licenses/LICENSE-SOURCES.json.
+
+EXTERNAL MOD CREDITS (implementations installed separately)
+Tailor: ColdSun / heathbrownkeyworks.
+Devious Devices: Kimy, Colycon and the DD team; Zarantha (SE), Min and Zadil
+(founders) and the authors listed by the original DD README.
+Devious Devices NG: ponzipyramid and IHateMyKite/DeviousDevicesNG contributors.
+PapyrusUtil SE: exiledviper (maintenance/refactoring), meh321 (original version/idea).
+SKSE: Ian Patterson, Stephen Abel, Paul Connelly, Brendan Borthwick and contributors.
+Address Library: meh321.
+Optional Mu/MDNR: Acro / Acro748. Optional RaceMenu: Expired / expired6978,
+with PurpleLunchbox credited by its project. Optional Tailor CHS: Llinnn.
+Bethesda Game Studios / Bethesda Softworks: Skyrim and Creation Kit.
+The helper calls StorageUtil, zadlibs/zadNativeFunctions, and optionally CharGen.
+Minimal compile-only declarations are not replacement implementations.
+
+COMPILED / EMBEDDED COMPONENTS (full per-component texts in licenses/)
+CommonLibSSE-NG: Ryan-rsm-McKenzie, CharmedBaryon, alandtse and contributors;
+GPL-3.0-or-later + included exceptions. Historical Ryan MIT attribution retained.
+Dear ImGui 1.92.6: Omar Cornut and contributors; MIT.
+ImGui embedded STB: Sean Barrett and contributors; original license alternatives retained.
+FreeType 2.14.1: David Turner, Robert Wilhelm, Werner Lemberg and contributors;
+FTL selected, with original BDF/PCF/HarfBuzz-derived component notices retained.
+Portions of this software are copyright (c) 1996-2025 The FreeType Project.
+All rights reserved.
+zlib 1.3.2: Jean-loup Gailly, Mark Adler and contributors; zlib license.
+MinHook 1.3.4: Tsuda Kageyu; HDE32/HDE64: Vyacheslav Patkov; BSD-2-Clause.
+nlohmann/json 3.12.0: Niels Lohmann and contributors; MIT.
+Embedded decoder/Grisu2: Bjoern Hoehrmann / Florian Loitsch, MIT;
+Hedley: Evan Nemerson, CC0-1.0. Full additional notices retained.
+spdlog 1.16.0: Gabi Melman and contributors; MIT; std::format configuration.
+DirectXTK feb2024 / DirectXMath feb2024: Microsoft Corporation; MIT.
+rapidcsv 8.92: Kristofer Berggren; BSD-3-Clause.
+OpenVR: Valve Corporation and contributors; retained Valve BSD license.
+
+Installer PNG is fixed text generated using Microsoft YaHei / Segoe UI;
+no font files are redistributed. In-game font objects are supplied by Tailor.
+MO2: Tannin, LePresidente and the Mod Organizer team; Python: PSF/contributors.
+xmake: Ruki Wang/contributors. Retained xmake-repo recipes are Apache-2.0.
+Champollion (Orvid/contributors) and Ghidra (NSA/contributors) are development
+analysis references/tools; no implementation or executable is redistributed.
+See CREDITS.md for Windows/.NET/toolchain and personal generated-data boundaries.
+
+DD 5.2 custom patch-publication terms are retained as a reference. The maintainer
+confirms sole Tailor/DD compatibility bug-fix purpose and relies on its bug-fix
+exception; no separate individual DD author approval is claimed.
+The Apache license of NG's native plugin does not relicense all DD assets/scripts.
+No Tailor.dll, third-party translation, DD/Mu/RaceMenu/PapyrusUtil implementation,
+game/mod assets, personal presets/generated data or startup diagnostics are bundled.
+This revision changes documentation/notices only; tested DLL/PEX and functional
+source, default Off and language choices remain unchanged.

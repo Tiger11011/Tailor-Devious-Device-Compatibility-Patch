@@ -37,3 +37,7 @@ The included `TailorDDFreeWear.pex` is this patch's helper. Original Tailor, DD,
 **2026-10-18 — package 0.6.4-licenses.1.** Added attribution, verbatim upstream license files and source-distribution directions.
 
 **2026-10-18 — package 0.6.4-sources.1.** Adds eight exact dependency source archives, retained build recipes/configurations, configured-header copies and the zlib notice. See SOURCE-ACCESS.md and dependency-sources/README.md. The tested 0.6.4 DLL, helper PEX, functional C++/Papyrus sources, default switch state and language choices are unchanged. Earlier tags and releases remain intact.
+
+**2026-10-18 — package 0.6.4-sources.2.** Corrects missing PapyrusUtil SE credits (exiledviper and meh321) in the notices and bilingual documentation. No runtime binary, functional source, FOMOD choice or default was changed.
+
+The same notice revision includes CREDITS.md, PREREQUISITE-NOTICES.md and RESOURCE-AUDIT.json covering the 28 reviewed runtime/library/resource/reference components and their individual attribution/permission boundaries. Embedded and historical code notices remain their original authors' terms. The maintainer confirms compatibility bug-fix purpose and relies on DD's shipped bug-fix exception; no additional individual author approval is asserted.

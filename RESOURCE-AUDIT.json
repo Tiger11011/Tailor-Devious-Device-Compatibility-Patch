@@ -1,0 +1,341 @@
+{
+  "checkedOn": "2026-10-18",
+  "revision": "0.6.4-sources.2",
+  "scope": "All direct patch/helper/generator calls/includes, retained source references, accepted link/package manifests, FOMOD resources and bundled sources/notices. Not an attribution claim for every unrelated mod in a user profile.",
+  "components": [
+    {
+      "name": "Tailor",
+      "category": "required runtime + retained interface declarations",
+      "credit": "ColdSun / heathbrownkeyworks",
+      "evidence": {
+        "Tailor-DD-Effects/src/EquipmentBridge.cpp": [
+          "RequestTailorInterface",
+          "IsTailorOpen"
+        ],
+        "Tailor-DD-Effects/src/main.cpp": [
+          "Tailor.dll"
+        ]
+      },
+      "licenseOrPermission": "GPL-3.0-or-later + upstream exceptions; public header separately MIT. Original DLL is not bundled.",
+      "originalImplementationBundled": false
+    },
+    {
+      "name": "Devious Devices",
+      "category": "required runtime",
+      "credit": "DD team: Kimy, Colycon; Zarantha (SE); founders Min, Zadil and contributors",
+      "evidence": {
+        "Tailor-DD-Effects/Papyrus/TailorDDFreeWear.psc": [
+          "libs.LockDevice",
+          "libs.UnlockDevice",
+          "zadQuest",
+          "zad_RemovalToken"
+        ]
+      },
+      "licenseOrPermission": "Custom DD 5.2 permissions. Maintainer confirms sole compatibility bug-fix purpose and relies on the shipped bug-fix exception; no separate author approval verified.",
+      "originalImplementationBundled": false
+    },
+    {
+      "name": "Devious Devices NG",
+      "category": "required runtime",
+      "credit": "ponzipyramid and IHateMyKite/DeviousDevicesNG contributors",
+      "evidence": {
+        "Tailor-DD-Effects/src/FreeWear.cpp": [
+          "DeviousDevices.dll"
+        ],
+        "Tailor-DD-Effects/Papyrus/TailorDDFreeWear.psc": [
+          "zadNativeFunctions.GetInventoryObjectPropertyObject"
+        ]
+      },
+      "licenseOrPermission": "Reviewed native-plugin source Apache-2.0; not a blanket license for all DD scripts/assets. Runtime hooks and short validation metadata only.",
+      "originalImplementationBundled": false
+    },
+    {
+      "name": "PapyrusUtil SE",
+      "category": "required runtime",
+      "credit": "exiledviper; meh321",
+      "evidence": {
+        "Tailor-DD-Effects/Papyrus/TailorDDFreeWear.psc": [
+          "StorageUtil.GetIntValue",
+          "StorageUtil.SetIntValue",
+          "StorageUtil.UnsetIntValue"
+        ]
+      },
+      "licenseOrPermission": "Separately installed API prerequisite; no original implementation redistributed; redistribution grant not inferred.",
+      "originalImplementationBundled": false
+    },
+    {
+      "name": "SKSE64",
+      "category": "required runtime",
+      "credit": "Ian Patterson, Stephen Abel, Paul Connelly, Brendan Borthwick and contributors",
+      "evidence": {
+        "Tailor-DD-Effects/src/main.cpp": [
+          "SKSE::GetPapyrusInterface"
+        ],
+        "Tailor-DD-Effects/src/MuAppearance.cpp": [
+          "SKSE::GetNiNodeUpdateEventSource"
+        ],
+        "Tailor-DD-Effects/src/FreeWear.cpp": [
+          "SKSE::"
+        ]
+      },
+      "licenseOrPermission": "Runtime obtained separately; CommonLib-compiled interfaces under CommonLib licensing.",
+      "originalImplementationBundled": false
+    },
+    {
+      "name": "Address Library",
+      "category": "required runtime",
+      "credit": "meh321",
+      "evidence": {
+        "Tailor-DD-Effects/src/PCH.h": [
+          "REL/Relocation.h"
+        ]
+      },
+      "licenseOrPermission": "CommonLib uses the user-installed runtime address database; no database .bin redistributed.",
+      "originalImplementationBundled": false
+    },
+    {
+      "name": "Mu Dynamic NPC Replacer",
+      "category": "optional runtime",
+      "credit": "Acro / Acro748",
+      "evidence": {
+        "Tailor-DD-Effects/src/MuAppearance.cpp": [
+          "MuDynamicNPCReplacer.dll",
+          "PresetPrefix"
+        ]
+      },
+      "licenseOrPermission": "Separate author terms; no original DLL, implementation, presets or assets bundled.",
+      "originalImplementationBundled": false
+    },
+    {
+      "name": "RaceMenu",
+      "category": "optional Mu runtime integration",
+      "credit": "Expired / expired6978; PurpleLunchbox",
+      "evidence": {
+        "Tailor-DD-Effects/Papyrus/TailorDDFreeWear.psc": [
+          "CharGen.LoadCharacterEx"
+        ]
+      },
+      "licenseOrPermission": "Original project page prohibits redistribution of files. Only independent minimal compile-only signature included.",
+      "originalImplementationBundled": false
+    },
+    {
+      "name": "Tailor CHS",
+      "category": "optional translation interoperability",
+      "credit": "Llinnn",
+      "evidence": {
+        "Tailor-DD-Effects/src/NativeProfiles.h": [
+          "Tailor 3.0.1 local CHS"
+        ]
+      },
+      "licenseOrPermission": "Translation downloaded separately; no translator UI text or DLL copied; hash/short validation signatures retained.",
+      "originalImplementationBundled": false
+    },
+    {
+      "name": "Skyrim / Creation Kit",
+      "category": "required game + development compiler",
+      "credit": "Bethesda Game Studios / Bethesda Softworks",
+      "evidence": {
+        "Tailor-DD-Effects/src/PCH.h": [
+          "RE/Skyrim.h"
+        ],
+        "Tailor-DD-Effects/Papyrus/compile-only/Actor.psc": [
+          "Scriptname Actor"
+        ]
+      },
+      "licenseOrPermission": "Game/compiler terms; no original game assets or implementations bundled.",
+      "originalImplementationBundled": false
+    },
+    {
+      "name": "MO2",
+      "category": "profile input + installer host",
+      "credit": "Tannin, LePresidente and Mod Organizer contributors",
+      "evidence": {
+        "Tailor-DD-SafeFitting/tools/build_cosmetics.py": [
+          "ModOrganizer.ini",
+          "modlist.txt",
+          "plugins.txt"
+        ]
+      },
+      "licenseOrPermission": "No MO2 code/binaries redistributed. File-format interoperability.",
+      "originalImplementationBundled": false
+    },
+    {
+      "name": "Champollion",
+      "category": "development format reference",
+      "credit": "Orvid and contributors",
+      "evidence": {
+        "Tailor-DD-SafeFitting/tools/pex_metadata.py": [
+          "Orvid/Champollion Pex/FileReader.cpp"
+        ]
+      },
+      "licenseOrPermission": "LGPL-3.0 tool used as a format reference; no implementation copied/linked/distributed.",
+      "originalImplementationBundled": false
+    },
+    {
+      "name": "Microsoft Windows fonts",
+      "category": "installer fixed-phrase image",
+      "credit": "Microsoft YaHei / Segoe UI and respective rights holders",
+      "evidence": {
+        "Tailor-DD-Effects/release-docs/Make-LanguagePrompt.ps1": [
+          "Microsoft YaHei",
+          "Segoe UI",
+          "DrawString"
+        ]
+      },
+      "licenseOrPermission": "Fixed phrase PNG rendering per Microsoft font FAQ; no font file or glyph atlas distributed.",
+      "originalImplementationBundled": false
+    },
+    {
+      "name": "imgui",
+      "category": "linked/header library",
+      "version": "v1.92.6",
+      "evidence": {
+        "manifest": "dependency-sources/imgui-build-manifest.lua",
+        "sourceSha256": "5b17c01f69545bde732b14936d89ce0f508adb83e8b56fa82448371845172bc3"
+      },
+      "licenseOrPermission": "See CREDITS.md and retained upstream/embedded notices.",
+      "originalImplementationBundled": true,
+      "sourceArchiveBundled": true
+    },
+    {
+      "name": "freetype",
+      "category": "linked/header library",
+      "version": "2.14.1",
+      "evidence": {
+        "manifest": "dependency-sources/freetype-build-manifest.lua",
+        "sourceSha256": "174d9e53402e1bf9ec7277e22ec199ba3e55a6be2c0740cb18c0ee9850fc8c34"
+      },
+      "licenseOrPermission": "See CREDITS.md and retained upstream/embedded notices.",
+      "originalImplementationBundled": true,
+      "sourceArchiveBundled": true
+    },
+    {
+      "name": "zlib",
+      "category": "linked/header library",
+      "version": "v1.3.2",
+      "evidence": {
+        "manifest": "dependency-sources/zlib-build-manifest.lua",
+        "sourceSha256": "b99a0b86c0ba9360ec7e78c4f1e43b1cbdf1e6936c8fa0f6835c0cd694a495a1"
+      },
+      "licenseOrPermission": "See CREDITS.md and retained upstream/embedded notices.",
+      "originalImplementationBundled": true,
+      "sourceArchiveBundled": true
+    },
+    {
+      "name": "spdlog",
+      "category": "linked/header library",
+      "version": "v1.16.0",
+      "evidence": {
+        "manifest": "dependency-sources/spdlog-build-manifest.lua",
+        "sourceSha256": "3d25808d2fc4db86621a46855800c99ab5734999b61c4cbf9470edf631555397"
+      },
+      "licenseOrPermission": "See CREDITS.md and retained upstream/embedded notices.",
+      "originalImplementationBundled": true,
+      "sourceArchiveBundled": true
+    },
+    {
+      "name": "nlohmann_json",
+      "category": "linked/header library",
+      "version": "v3.12.0",
+      "evidence": {
+        "manifest": "dependency-sources/nlohmann_json-build-manifest.lua",
+        "sourceSha256": "4b92eb0c06d10683f7447ce9406cb97cd4b453be18d7279320f7b2f025c10187"
+      },
+      "licenseOrPermission": "See CREDITS.md and retained upstream/embedded notices.",
+      "originalImplementationBundled": true,
+      "sourceArchiveBundled": true
+    },
+    {
+      "name": "directxtk",
+      "category": "linked/header library",
+      "version": "24.2.0",
+      "evidence": {
+        "manifest": "dependency-sources/directxtk-build-manifest.lua",
+        "sourceSha256": "edb643b2444ff24925339cfb1bc9f76c671d5404a5549d32ecaa0d61bbab28c9"
+      },
+      "licenseOrPermission": "See CREDITS.md and retained upstream/embedded notices.",
+      "originalImplementationBundled": true,
+      "sourceArchiveBundled": true
+    },
+    {
+      "name": "directxmath",
+      "category": "linked/header library",
+      "version": "2024.02",
+      "evidence": {
+        "manifest": "dependency-sources/directxmath-build-manifest.lua",
+        "sourceSha256": "214d71420107249dfb4bbc37a573f288b0951cc9ffe323dbf662101f3df4d766"
+      },
+      "licenseOrPermission": "See CREDITS.md and retained upstream/embedded notices.",
+      "originalImplementationBundled": true,
+      "sourceArchiveBundled": true
+    },
+    {
+      "name": "rapidcsv",
+      "category": "linked/header library",
+      "version": "v8.92",
+      "evidence": {
+        "manifest": "dependency-sources/rapidcsv-build-manifest.lua",
+        "sourceSha256": "e7d8026b2cfdcecd6a8bbf3539a5df15300f64036bbbc7c0ad7a96b80d3ee50e"
+      },
+      "licenseOrPermission": "See CREDITS.md and retained upstream/embedded notices.",
+      "originalImplementationBundled": true,
+      "sourceArchiveBundled": true
+    },
+    {
+      "name": "CommonLibSSE-NG",
+      "category": "compiled library, embedded code or retained build recipe",
+      "credit": "Ryan-rsm-McKenzie, CharmedBaryon, alandtse and contributors",
+      "licenseOrPermission": "GPL-3.0-or-later + exceptions; historical MIT attribution retained",
+      "details": "CREDITS.md; source archives/submodules and per-file license notices"
+    },
+    {
+      "name": "MinHook/HDE",
+      "category": "compiled library, embedded code or retained build recipe",
+      "credit": "Tsuda Kageyu; Vyacheslav Patkov",
+      "licenseOrPermission": "BSD-2-Clause",
+      "details": "CREDITS.md; source archives/submodules and per-file license notices"
+    },
+    {
+      "name": "OpenVR",
+      "category": "compiled library, embedded code or retained build recipe",
+      "credit": "Valve Corporation",
+      "licenseOrPermission": "Valve BSD",
+      "details": "CREDITS.md; source archives/submodules and per-file license notices"
+    },
+    {
+      "name": "ImGui embedded STB",
+      "category": "compiled library, embedded code or retained build recipe",
+      "credit": "Sean Barrett and contributors",
+      "licenseOrPermission": "MIT/public-domain alternatives",
+      "details": "CREDITS.md; source archives/submodules and per-file license notices"
+    },
+    {
+      "name": "JSON embedded code",
+      "category": "compiled library, embedded code or retained build recipe",
+      "credit": "Bjoern Hoehrmann, Florian Loitsch, Evan Nemerson",
+      "licenseOrPermission": "MIT + CC0-1.0",
+      "details": "CREDITS.md; source archives/submodules and per-file license notices"
+    },
+    {
+      "name": "FreeType contributed code",
+      "category": "compiled library, embedded code or retained build recipe",
+      "credit": "FreeType, BDF/PCF and HarfBuzz contributors including Behdad Esfahbod",
+      "licenseOrPermission": "FTL + original component notices",
+      "details": "CREDITS.md; source archives/submodules and per-file license notices"
+    },
+    {
+      "name": "xmake-repo recipes",
+      "category": "compiled library, embedded code or retained build recipe",
+      "credit": "Ruki Wang and xmake-repo contributors",
+      "licenseOrPermission": "Apache-2.0 source recipes only",
+      "details": "CREDITS.md; source archives/submodules and per-file license notices"
+    }
+  ],
+  "indirectRequirements": "DD/Mu/Tailor own prerequisite chains remain governed by their installed release lists. No indirect mod code/assets are repackaged here.",
+  "bugFixPurposeConfirmedByMaintainer": true,
+  "separateDDAuthorPublicationApprovalVerified": false,
+  "runtimeDlldigest": "561c55693a066cac0678a39fe44524449aecf83fe19476454cfb42ea7e32e78a",
+  "helperPexDigest": "82162769dba8821dd75429a39ebd438a8dc5f3a80ef1370a2c83849158e0a311",
+  "recompiled": false,
+  "additionalNoticeManifest": "licenses/RESOURCE-NOTICE-SOURCES.json"
+}

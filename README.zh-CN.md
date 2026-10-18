@@ -2,9 +2,9 @@
 
 # Tailor Devious Device Compatibility Patch 0.6.4
 
-**源码与说明修订：0.6.4-sources.1，2026-10-18。** 功能、DLL、辅助 PEX 和功能源码保持实测成功的 0.6.4 不变，本次补全实际版本依赖源码、构建配置及 zlib 许可；保留此前补充的 ColdSun 版权署名和上游许可附件。安装包内 COPYRIGHT.md、licenses/LICENSE-SOURCES.json 记录来源和校验值。
+**源码与说明修订：0.6.4-sources.2，2026-10-18。** 功能、DLL、辅助 PEX 和功能源码保持实测成功的 0.6.4 不变，本次补全实际版本依赖源码、构建配置及 zlib 许可；保留此前补充的 ColdSun 版权署名和上游许可附件。安装包内 COPYRIGHT.md、licenses/LICENSE-SOURCES.json 记录来源和校验值。
 
-**本二进制对应源码：**在[完全对应的发布页](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.1)免费下载 Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.1-Source.zip，与 FOMOD 同页提供。上传 Nexus 时，将这份源码放到 Optional Files，或在主文件下载说明旁明确链接该对应源码。源码包含构建文件及固定版本依赖源码。
+**本二进制对应源码：**在[完全对应的发布页](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.2)免费下载 Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.2-Source.zip，与 FOMOD 同页提供。上传 Nexus 时，将这份源码放到 Optional Files，或在主文件下载说明旁明确链接该对应源码。源码包含构建文件及固定版本依赖源码。
 
 
 在 Tailor 中自由试穿受支持的 DD 装备。确认退出后保留真实 DD 的音效、动画等效果，由开关决定是否保留正常穿脱限制。独立补丁，不替换 Tailor.dll，不包含任何人的 Tailor 汉化。
@@ -33,7 +33,7 @@
 ## MO2 安装
 
 1. 关闭游戏，安装全部前置和服装。需要汉化时自行安装，并遵循汉化本身的覆盖顺序。
-2. 安装 **Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.1-FOMOD.zip**，右侧选择“中文”或“English”。左侧图片显示“你用什么语言？”和“What language do you use?”。这里只选择补丁新增文字的语言，不会安装 Tailor 汉化。
+2. 安装 **Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.2-FOMOD.zip**，右侧选择“中文”或“English”。左侧图片显示“你用什么语言？”和“What language do you use?”。这里只选择补丁新增文字的语言，不会安装 Tailor 汉化。
 3. 禁用旧的独立 Chinese/English 补丁，以及曾替换 Tailor.dll 的旧实验版本，只启用一个新版补丁。从本地测试版升级时，禁用旧语言模组也可避免其临时启动诊断工具与新版一起载入。**仅更新 DLL 时，保留现有匹配的 Generated Data，不要为了更新而删除或重新编号。**
 4. 首次安装需要生成装备数据：在 MO2 选好要游玩的配置，启用服装及插件，再关闭 MO2 以保存列表。通过 Windows 终端运行补丁自带工具，替换为自己的路径；不要通过 MO2 虚拟文件系统运行：
 
@@ -85,6 +85,8 @@ Tailor Devious Device Compatibility Patch - Generated Data
 
 ## 内容与致谢
 
+感谢 [PapyrusUtil SE](https://www.nexusmods.com/skyrimspecialedition/mods/13048) 的 exiledviper（持续维护与重构）及 meh321（原始版本与构想）。补丁自有辅助脚本调用其 StorageUtil 函数；PapyrusUtil 是需单独安装的运行时前置，不随包分发其 DLL 或实现脚本。
+
 包含独立 DLL、自有辅助 PEX、双语 FOMOD、生成工具、双语说明及许可证。不包含 Tailor 本体/字体、他人汉化、DD/Mu/RaceMenu 实现及资源、个人预设/生成装备数据、存档、日志或临时崩溃诊断工具。
 
 感谢 ColdSun / heathbrownkeyworks 的 Tailor 和 API、DD/DD NG 开发者、Mu 作者 Acro、RaceMenu 作者 expired6978，以及独立发布 Tailor 汉化的 Llinnn。相关作品均需自行下载。本补丁为非官方兼容扩展。
@@ -92,3 +94,5 @@ Tailor Devious Device Compatibility Patch - Generated Data
 对应源码及构建说明见 **Source.zip** 和 [GitHub](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch)。Source.zip 不是 MO2 安装包。补丁使用 GPL-3.0-or-later，详见 LICENSE 与 THIRD_PARTY_NOTICES.txt。
 
 源码交付 / Source delivery: see SOURCE-ACCESS.md and dependency-sources/README.md in the complete Source.zip for the actual 8 resolved dependencies, source SHA-256 values, recorded recipes/configurations and configured-header copies. This packaging revision does not rebuild or alter the tested DLL/PEX.
+
+完整作者与许可清单 / Full attribution and permission record: **CREDITS.md**, **PREREQUISITE-NOTICES.md**, **RESOURCE-AUDIT.json** (included in the installer/source). Includes SKSE team, meh321/Address Library, DD/NG authors, PapyrusUtil authors, optional integrations, linked libraries and embedded code; credits do not imply endorsement.
