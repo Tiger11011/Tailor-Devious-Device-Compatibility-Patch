@@ -33,10 +33,28 @@ Check the README's DLL hashes; version names alone are not enough. Local testing
 [b]AI usage[/b]
 I used generative AI for vibe coding. No art assets were generated using AI.
 
-[b]Issue reports[/b]
-Logs are normally in Documents\My Games\Skyrim Special Edition\SKSE\. Use your actual Documents location if it has been moved or redirected to OneDrive.
-[b]Reproduce the issue, then copy TailorDDBridge.log before restarting the game: each game launch overwrites this log.[/b] Also attach Tailor.log from the same folder if available.
-Include patch/game/SKSE/Tailor/DD/DD NG versions, patch language and any Tailor translation, player or NPC (and NPC name), switch state, equipment names/source mods, exact reproduction steps, and expected versus actual behavior. For appearance issues, include Mu/RaceMenu versions and relevant logs if generated. Review logs for personal information before posting publicly.
+[b]Feedback and bug report[/b]
+
+Please report either on Nexus or the [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]GitHub repository[/url].
+
+Include [b]TailorDDBridge.log[/b] and [b]Tailor.log[/b], normally located in Documents\My Games\Skyrim Special Edition\SKSE\. If your Documents folder has been moved or redirected to OneDrive, use its actual location. The patch log is still named TailorDDBridge.log despite the mod's new name.
+
+If the bug concerns character appearance (e.g. skin colour or face sculpt), rather than only equipment, please also include the following logs for the mods you use:
+
+• [b]RaceMenu:[/b] Documents\My Games\Skyrim Special Edition\SKSE\skee64.log.
+• [b]Mu Dynamic NPC Replacer:[/b] <Skyrim game folder>\Data\SKSE\Plugins\MuDynamicNPCReplacer.log. With MO2, the physical file may be in the Mu mod's SKSE\Plugins\ folder or in Overwrite\SKSE\Plugins\ (or a configured output mod).
+
+[b]Copy the logs immediately after reproducing the issue, before restarting the game. Each game launch overwrites TailorDDBridge.log.[/b] Attach complete log files, rather than only their last lines.
+
+Please provide:
+
+• Patch, Skyrim, SKSE, Tailor, DD and DD NG versions; patch language and any Tailor translation used.
+• Whether the affected character is the player or an NPC, and the NPC's name if applicable.
+• Whether DD Settings was Off or On, and the exact steps to reproduce, including previewing, confirming with Set and exiting Tailor.
+• Equipment names and their source mods; expected behavior and what actually happened.
+• For appearance issues, whether Mu/RaceMenu is used and their versions.
+
+Review logs for personal information, such as Windows usernames in file paths, before posting publicly.
 
 [b]Shout-outs and license[/b]
 Credit to exiledviper (continued maintenance/refactoring) and meh321 (original version and idea) for [url=https://www.nexusmods.com/skyrimspecialedition/mods/13048]PapyrusUtil SE[/url]. Our independent helper calls its StorageUtil functions. PapyrusUtil is a separately installed runtime requirement; its DLL and implementation scripts are not included.

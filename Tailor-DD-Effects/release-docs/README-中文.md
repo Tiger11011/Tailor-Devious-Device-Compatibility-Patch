@@ -81,17 +81,18 @@ Tailor Devious Device Compatibility Patch - Generated Data
 
 本地测试者已反馈 DD 换装及“全包头 DD → 露脸 DD”后的 Mu NPC 外观恢复成功，离线接口、任务顺序和预设路径检查通过。这不代表所有玩家/NPC、设备、语言、游戏版本和模组组合均已测试。
 
-## 问题反馈与日志
+**反馈与错误报告**
 
-日志通常位于 Windows 的“文档”文件夹下：
+请在 Nexus 或 [GitHub 仓库](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch)反馈问题。
 
-```text
-文档\My Games\Skyrim Special Edition\SKSE\
-```
+请附 **TailorDDBridge.log** 和 **Tailor.log**，默认位于 `文档\My Games\Skyrim Special Edition\SKSE\`。如果“文档”已迁移或重定向到 OneDrive，请使用实际位置。虽然模组已改名，补丁日志仍叫 TailorDDBridge.log。
 
-如果“文档”已迁移或重定向到 OneDrive，请使用实际位置。虽然模组已改名，补丁日志仍叫 **TailorDDBridge.log**。
+如果问题涉及角色外观（例如肤色、脸部雕刻），而不只是装备，请根据实际使用的模组另附以下日志：
 
-**复现问题后，请在再次启动游戏前复制 TailorDDBridge.log。每次启动游戏都会覆盖补丁上一次的日志。** 请附完整日志文件，不要只截取末尾几行；如有同目录的 **Tailor.log**，也请一并提供。
+- **RaceMenu：**`文档\My Games\Skyrim Special Edition\SKSE\skee64.log`。
+- **Mu Dynamic NPC Replacer：**`<Skyrim 游戏目录>\Data\SKSE\Plugins\MuDynamicNPCReplacer.log`。使用 MO2 时，实际文件可能位于 Mu 模组目录的 `SKSE\Plugins\` 下，也可能位于 `Overwrite\SKSE\Plugins\` 下（或指定的输出模组中）。
+
+**复现问题后，请立即复制日志，再重启游戏。每次启动游戏都会覆盖 TailorDDBridge.log。** 请附完整日志文件，不要只截取末尾几行。
 
 反馈时请提供：
 
@@ -99,7 +100,7 @@ Tailor Devious Device Compatibility Patch - Generated Data
 - 问题发生在玩家还是 NPC；如果是 NPC，请提供其名称。
 - DD 设置开关是关闭还是开启，以及完整复现步骤，包括预览、通过 Set 确认和退出 Tailor 的过程。
 - 装备名称及所属模组、预期表现和实际出现的问题。
-- 外观问题请注明是否使用 Mu/RaceMenu、各自版本，并附已生成的相关 Mu/RaceMenu 日志。
+- 外观问题请注明是否使用 Mu/RaceMenu，以及各自版本。
 
 公开上传前，请检查日志中的个人信息，例如文件路径里的 Windows 用户名。
 

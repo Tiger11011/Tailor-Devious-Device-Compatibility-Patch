@@ -33,10 +33,28 @@ Tailor Devious Device Compatibility Patch - Generated Data
 [b]AI 使用相关[/b]
 我用了生成式 AI 进行氛围编程，但没有美术资源是 AI 生成的。
 
-[b]问题反馈[/b]
-日志通常位于“文档\My Games\Skyrim Special Edition\SKSE\”。如果“文档”已迁移或重定向到 OneDrive，请使用实际位置。
-[b]复现后，请在重启游戏前复制 TailorDDBridge.log；每次启动游戏都会覆盖该日志。[/b] 如有同目录的 Tailor.log，也请一并提供。
-请附补丁/游戏/SKSE/Tailor/DD/DD NG 版本、补丁语言及是否使用 Tailor 汉化、玩家或 NPC（及 NPC 名称）、开关状态、装备名称及所属模组、完整复现步骤、预期表现和实际问题。外观问题另附 Mu/RaceMenu 版本及已生成的相关日志。公开前请检查日志中的个人信息。
+[b]反馈与错误报告[/b]
+
+请在 Nexus 或 [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]GitHub 仓库[/url]反馈问题。
+
+请附 [b]TailorDDBridge.log[/b] 和 [b]Tailor.log[/b]，默认位于 文档\My Games\Skyrim Special Edition\SKSE\。如果“文档”已迁移或重定向到 OneDrive，请使用实际位置。虽然模组已改名，补丁日志仍叫 TailorDDBridge.log。
+
+如果问题涉及角色外观（例如肤色、脸部雕刻），而不只是装备，请根据实际使用的模组另附以下日志：
+
+• [b]RaceMenu：[/b]文档\My Games\Skyrim Special Edition\SKSE\skee64.log。
+• [b]Mu Dynamic NPC Replacer：[/b]<Skyrim 游戏目录>\Data\SKSE\Plugins\MuDynamicNPCReplacer.log。使用 MO2 时，实际文件可能位于 Mu 模组目录的 SKSE\Plugins\ 下，也可能位于 Overwrite\SKSE\Plugins\ 下（或指定的输出模组中）。
+
+[b]复现问题后，请立即复制日志，再重启游戏。每次启动游戏都会覆盖 TailorDDBridge.log。[/b] 请附完整日志文件，不要只截取末尾几行。
+
+反馈时请提供：
+
+• 补丁、Skyrim、SKSE、Tailor、DD 和 DD NG 的版本，以及补丁语言、是否使用 Tailor 汉化。
+• 问题发生在玩家还是 NPC；如果是 NPC，请提供其名称。
+• DD 设置开关是关闭还是开启，以及完整复现步骤，包括预览、通过 Set 确认和退出 Tailor 的过程。
+• 装备名称及所属模组、预期表现和实际出现的问题。
+• 外观问题请注明是否使用 Mu/RaceMenu，以及各自版本。
+
+公开上传前，请检查日志中的个人信息，例如文件路径里的 Windows 用户名。
 
 [b]声明与许可[/b]
 感谢 [url=https://www.nexusmods.com/skyrimspecialedition/mods/13048]PapyrusUtil SE[/url] 的 exiledviper（持续维护与重构）及 meh321（原始版本与构想）。补丁自有辅助脚本调用其 StorageUtil 函数；PapyrusUtil 是需单独安装的运行时前置，不随包分发其 DLL 或实现脚本。

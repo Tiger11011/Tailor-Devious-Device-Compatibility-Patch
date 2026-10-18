@@ -81,27 +81,28 @@ Use a backup save for updates. Uninstalling the DLL does not remove real DD devi
 
 The local tester reported successful DD clothing switching and successful recovery of the Mu NPC appearance when changing from fully covering DD headgear to face-visible equipment. Offline native interface, operation-policy and preset-path checks passed. This is **not** a full player/NPC, device, language, runtime or mod-list compatibility matrix.
 
-## Reporting issues and logs
+**Feedback and bug report**
 
-Logs are normally in your Windows **Documents** folder:
+Please report either on Nexus or the [GitHub repository](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch).
 
-```text
-Documents\My Games\Skyrim Special Edition\SKSE\
-```
+Include **TailorDDBridge.log** and **Tailor.log**, normally located in `Documents\My Games\Skyrim Special Edition\SKSE\`. If your Documents folder has been moved or redirected to OneDrive, use its actual location. The patch log is still named TailorDDBridge.log despite the mod's new name.
 
-Use your actual Documents location if it has been moved or redirected to OneDrive. The patch log is still named **TailorDDBridge.log**, despite the mod's new name.
+If the bug concerns character appearance (e.g. skin colour or face sculpt), rather than only equipment, please also include the following logs for the mods you use:
 
-**Reproduce the issue, then copy TailorDDBridge.log before starting the game again. Each game launch overwrites the patch's previous log.** Attach the complete log file, rather than only its last lines. Also include **Tailor.log** from the same folder if available.
+- **RaceMenu:** `Documents\My Games\Skyrim Special Edition\SKSE\skee64.log`.
+- **Mu Dynamic NPC Replacer:** `<Skyrim game folder>\Data\SKSE\Plugins\MuDynamicNPCReplacer.log`. With MO2, the physical file may be in the Mu mod's `SKSE\Plugins\` folder or in `Overwrite\SKSE\Plugins\` (or a configured output mod).
+
+**Copy the logs immediately after reproducing the issue, before restarting the game. Each game launch overwrites TailorDDBridge.log.** Attach complete log files, rather than only their last lines.
 
 Please provide:
 
 - Patch, Skyrim, SKSE, Tailor, DD and DD NG versions; patch language and any Tailor translation used.
 - Whether the affected character is the player or an NPC, and the NPC's name if applicable.
 - Whether DD Settings was Off or On, and the exact steps to reproduce, including previewing, confirming with Set and exiting Tailor.
-- Equipment names and the mods they come from; expected behavior and what actually happened.
-- For appearance issues, whether Mu/RaceMenu is used, their versions, and any relevant Mu/RaceMenu logs that were generated.
+- Equipment names and their source mods; expected behavior and what actually happened.
+- For appearance issues, whether Mu/RaceMenu is used and their versions.
 
-Review logs for personal information, such as Windows usernames in file paths, before posting them publicly.
+Review logs for personal information, such as Windows usernames in file paths, before posting publicly.
 
 ## Contents, source and credits
 
