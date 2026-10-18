@@ -1,4 +1,4 @@
-Tailor Devious Device Compatibility Patch 0.4 is distributed under GPL-3.0-or-later.
+Tailor Devious Device Compatibility Patch 0.6.4 is distributed under GPL-3.0-or-later.
 The companion Source archive contains the bridge and data-generator source.
 The versioned C++ interface declaration derives from heathbrownkeyworks/Tailor (GPL-3.0); this is a declaration for inter-plugin calls, not Tailor's implementation or runtime assets.
 CommonLibSSE-NG: GPL-3.0-or-later with the included Modding and Linking Exceptions.
@@ -7,4 +7,4 @@ nlohmann/json 3.12.0 and spdlog 1.16.0: MIT.
 DirectXMath and DirectXTK: MIT. rapidcsv: BSD-3-Clause. OpenVR: Valve BSD license.
 Full notices and licenses are in licenses/.
 Tailor, its translations and all DD frameworks/assets must be obtained separately.
-No Tailor.dll, third-party translation, game font, DD script/mesh/texture, or personal generated plugin is distributed here.
+Only our independent TailorDDFreeWear helper PEX is included. No Tailor.dll, third-party translation, game font, original DD/Mu/RaceMenu scripts or assets, personal generated plugin, or startup diagnostics are distributed here.

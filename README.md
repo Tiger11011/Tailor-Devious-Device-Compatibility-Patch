@@ -1,90 +1,87 @@
-[中文说明](README.zh-CN.md) | [English](README.md) | [Downloads / 下载](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases) | [Build](BUILD.md)
+[中文说明](README.zh-CN.md) | [English](README.md) | [Downloads](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases)
 
-# Tailor Devious Device Compatibility Patch 0.4 — Experimental
+# Tailor Devious Device Compatibility Patch 0.6.4
 
-An independent SKSE plugin for trying on supported Devious Devices equipment in Tailor. Open Tailor, open **Settings**, then **DD Settings**. Supported devices use removable cosmetic copies while fitting. Ordinary clothing follows Tailor's normal workflow. This download includes the latest button-label centering adjustment.
+Try supported Devious Devices clothing freely in Tailor. After confirming an outfit, keep genuine DD sounds, animations and other effects, and choose whether normal clothing locks remain active. This is an independent add-on: it does not replace Tailor.dll or include anyone else's translation.
 
-## Requirements — install separately
+## Requirements
 
-1. **Tailor 3.0.1**, including its own requirements: https://www.nexusmods.com/skyrimspecialedition/mods/173691
-2. **SKSE64** matching your Skyrim executable: https://skse.silverlock.org/
-3. **Address Library for SKSE Plugins**, matching your game version: https://www.nexusmods.com/skyrimspecialedition/mods/32444
-4. Your DD equipment mods, their Devious Devices framework/scripts and all their normal requirements. Those mods must already be correctly installed and enabled in the MO2 profile you generate from.
-5. **Mod Organizer 2** and **Python 3.10 or later** for the supplied data generator. Python is needed during generation, not while playing. The generator uses the Python standard library; no pip packages, SSEEdit or .NET are needed for it.
-6. The **Microsoft Visual C++ x64 runtime** required by native SKSE plugins must be installed.
+Install these separately, together with their own requirements:
 
-This experimental build accepts only these exact Tailor.dll SHA-256 hashes:
+- [Tailor 3.0.1](https://www.nexusmods.com/skyrimspecialedition/mods/173691), one of the exact supported builds below.
+- Skyrim SE/AE, matching [SKSE64](https://skse.silverlock.org/), [Address Library](https://www.nexusmods.com/skyrimspecialedition/mods/32444), and the Microsoft Visual C++ x64 runtime required by native SKSE plugins. The reported working setup uses Skyrim 1.6.1170; other executables and VR are not validated.
+- Devious Devices and all requirements for your DD equipment, with **DD NG v0.4.3 rc2, the exact DLL below**. The [DD NG project page](https://www.loverslab.com/files/file/29779-devious-devices-ng/) is a project reference, not a guarantee that its current download matches this reviewed build. Obtain the matching build from the author's distribution. A similarly named version is not sufficient.
+- [PapyrusUtil](https://www.nexusmods.com/skyrimspecialedition/mods/13048) matching your game/SKSE. Its StorageUtil functions are required by the independent helper.
+- Mod Organizer 2 and Python 3.10+ to generate equipment data for your own enabled profile. Python is only needed for generation; no pip packages are required.
+- **Optional Mu integration:** [Mu Dynamic NPC Replacer 2.1.4](https://www.nexusmods.com/skyrimspecialedition/mods/150931), exact reviewed DLL below, and RaceMenu as required by Mu. Mu is not required for ordinary use. The appearance adapter is disabled for unreviewed Mu DLLs.
+- **Optional Tailor Chinese translation:** [supported CHS translation](https://www.nexusmods.com/skyrimspecialedition/mods/184318), downloaded separately. Chinese add-on labels use Tailor's Chinese font coverage. English users do not need a translation.
 
-| Tailor build | SHA-256 |
+| Supported binary | SHA-256 |
 | --- | --- |
-| English 3.0.1 | `261f415773d550e16809cbdfa39863451ea3eeba247e30b996afabe1e1d47850` |
-| Supported separately obtained CHS 3.0.1 | `83dc9c56627d163e00eb9e5f1cceb1af3edb84deaa286ec828c95fb2a0d0df4d` |
+| Tailor 3.0.1 English, Tailor.dll | `261f415773d550e16809cbdfa39863451ea3eeba247e30b996afabe1e1d47850` |
+| Tailor 3.0.1 supported CHS, Tailor.dll | `83dc9c56627d163e00eb9e5f1cceb1af3edb84deaa286ec828c95fb2a0d0df4d` |
+| DD NG v0.4.3 rc2, DeviousDevices.dll | `f68147a58cdffa4c4bd9c69844c073a8a274abe30357a76402e6e5b78ffc69b4` |
+| Optional Mu 2.1.4, MuDynamicNPCReplacer.dll | `009113664ae10e406914bc6fa8a394290aaa03cfd68367dce154e84543c7da0a` |
 
-A matching version label alone is insufficient. Other Tailor builds/translations and Skyrim VR are not supported by this release. SE/AE users must satisfy Tailor's own runtime requirements; this package is not a claim that every Skyrim executable has been tested. Unknown Tailor DLLs are rejected rather than hooked.
+These are deliberately narrow native compatibility checks. Unsupported builds are rejected; do not bypass the checks to try a different binary.
 
-## Choose the language in FOMOD
+## Installation in MO2
 
-- **English**: this bridge's new labels and explanations are in English.
-- **中文**: only this bridge's new labels and explanations are in Chinese. Obtain and install the supported Tailor CHS translation separately for its Chinese font coverage: https://www.nexusmods.com/skyrimspecialedition/mods/184318
-
-Download the single FOMOD archive. Its left panel asks "你用什么语言？" and "What language do you use?"; choose **中文** or **English** on the right. The shared DLL and tools are installed once; the choice changes only this bridge's JSON language. The package does not translate Tailor or contain the third-party translation.
-
-If you already have matching Generated Data from this build, keep it enabled: changing the installer format or UI language does not require regeneration. The installer defaults real-DD activation to Off; back up your bridge JSON if preserving that preference matters.
-
-## MO2 installation
-
-1. Close Skyrim. Install Tailor and its requirements. If desired, install the supported Tailor translation so it wins Tailor's own file conflicts. Disable older bridge experiments that replace Tailor.dll, and disable the withdrawn 0.5 save-isolation experiment.
-2. Install **Tailor-Devious-Device-Compatibility-Patch-0.4-FOMOD.zip** as its own MO2 mod. Choose **中文** or **English** in the installer, then enable the installed mod. Disable previously separate English/Chinese bridge mods; keep only this installation active. It contains `SKSE/Plugins/TailorDDBridge.dll` and does not overwrite `Tailor.dll`.
-3. Select the MO2 profile you will play and enable the DD/outfit mods and plugins you want scanned. Close MO2 to ensure its profile files are saved. In MO2, **Open in Explorer** on the bridge mod folder first if you need its path; use Windows Terminal in that folder for the next command. Run the generator from Windows, not through MO2's virtual filesystem.
-4. Generate your own equipment data (replace the example paths):
+1. Close Skyrim. Install the prerequisites and your equipment mods. Install Tailor's translation separately if desired, following its own conflict instructions.
+2. Install **Tailor-Devious-Device-Compatibility-Patch-0.6.4-FOMOD.zip** as its own mod. Choose **中文** or **English**. The left image asks “你用什么语言？” and “What language do you use?”. This choice changes only the add-on language; it does not install a Tailor translation.
+3. Disable older separate bridge language mods and any older experiment replacing Tailor.dll. Enable just one current patch installation. When upgrading the private test setup, disable the old Chinese/English bridge mods so their temporary startup diagnostics are not loaded alongside this release. **Do not disable or regenerate existing matching Generated Data merely to update the DLL.**
+4. For a new installation, select your intended MO2 profile, enable its clothing mods/plugins and close MO2 so its lists are saved. Run the supplied generator from Windows, outside MO2's virtual filesystem, with your actual paths:
 
    ```powershell
    py -3 Tools/build_cosmetics.py --mo2 "D:/YourMO2" --profile "Default" --output "D:/TailorDDGenerated" --zip
    ```
 
-   If `py` is unavailable, use `python` or the full path to your Python 3.10+ executable. The quoted MO2 path must contain `ModOrganizer.ini`; `--profile` is the actual MO2 profile name. If omitted, the currently selected profile is used. Put the output in a dedicated folder **outside** the game Data folder and MO2 mods/overwrite folders. Custom MO2 layouts can use `--game-data`, `--mods-dir`, `--profiles-dir`, and `--overwrite-dir`; see `--help`.
+5. Install the generated ZIP as a separate mod, enable it, and enable **TailorDDCosmetics.esp**. The output folder contains the generated ESP, matching JSON manifest and report; keep them together. Check the report for included and excluded devices.
+6. Start through MO2/SKSE. Open Tailor with your configured hotkey (commonly Shift+Z), then **Settings → DD Settings**. The default is **Off**.
 
-5. Reopen MO2. Install the generated `D:/TailorDDGenerated.zip` as a second mod, for example **Tailor Devious Device Compatibility Patch - Generated Data**. Enable it and `TailorDDCosmetics.esp`. Place the ESP **after all its listed masters**. Keep generated data below other copies of its ESP/manifest in MO2's left pane so this matching pair wins. The bridge language mod and generated-data mod normally have no overlapping runtime files.
-6. Launch Skyrim using SKSE through MO2. Open Tailor with its configured hotkey (default **Shift+Z**) or power, then **Settings → DD Settings**. If the bridge reports unavailable, read `TailorDDBridge.log` under the game's usual SKSE logs directory.
-
-**Do not upload or use someone else's generated ESP/manifest as universal data.** Its masters and mappings depend on that player's enabled mods. The FOMOD download intentionally contains no ESP. Never generate a fresh mapping for an existing playthrough: keep the output folder and manifest so FormIDs remain stable.
-
-### Typical enabled mods
+Recommended left-pane order:
 
 ```text
-Tailor (original)
-Tailor CHS translation (optional; installed separately)
-Tailor Devious Device Compatibility Patch (choose language in FOMOD)
+Tailor
+Tailor translation (optional, obtained separately)
+Tailor Devious Device Compatibility Patch 0.6.4
 Tailor Devious Device Compatibility Patch - Generated Data
 ```
 
-The original/translation conflict order remains as required by those mods. This bridge does not replace either DLL. Only the generated ESP needs an entry in the right-pane plugin list; the bridge itself is an SKSE DLL.
+The patch installs its own `TailorDDBridge.dll` and `TailorDDFreeWear.pex`. Neither should be overwritten by an older patch. It does not overwrite Tailor.dll, Mu, DD scripts or translation files. The generated ESP is the patch-related entry needed in the right-pane plugin list.
 
-## Using DD Settings
+## What the switch does
 
-- While fitting: supported devices use removable cosmetic copies.
-- **Activate real DD on confirmed exit — Off (default):** keep cosmetic copies after confirming with **Set** and closing normally.
-- **On:** after **Set** and a normal exit, attempt to equip the real DD items for the confirmed outfit currently worn. DD's own restrictions, conflicts, prompts and asynchronous scripts determine whether equipping/locking succeeds.
-- Turning the switch Off before exit cancels pending activation. If you turn it On after pressing Set, confirm the outfit again. An outfit assigned to an inactive situation is not immediately forced onto the actor.
-- Adding pieces to an outfit or previewing it is not a substitute for confirming a wardrobe assignment with Set.
-- Already locked real devices are not automatically unlocked. This is not an emergency unlock tool. The switch handles fitting/equipping; it does not manage muffling, animations or other DD effects. Cosmetic copies do not reproduce all original scripted effects.
+- **While fitting:** supported devices use removable appearance copies. Confirm the intended assignment with Tailor's **Set** workflow and close normally; adding or previewing a piece alone does not confirm an outfit.
+- **Off — default:** after confirmation and normal exit, genuine DD items retain their original effects. The patch grants the managed actor/device pair permission to change or remove that clothing through Tailor and the normal inventory.
+- **On:** after confirmation and normal exit, genuine DD equipment uses normal DD clothing restrictions. DD's original conflicts, scripts and locking rules still apply.
+- To change how an already assigned outfit is handled, change the switch and confirm that outfit again. Turning Off is not a global unlock command for all existing devices.
+- This patch only changes clothing restrictions for supported, patch-managed generic devices. It does not disable muffling, sound, animations or other DD effects. It does not forcibly unlock quest devices, block-generic devices, unsupported custom scripts, or items locked independently by other gameplay.
 
-**Tailor's normal shared NPC assignments remain unchanged.** NPC outfit choices can carry across saves as designed by Tailor. This release does not add save-by-save NPC assignment isolation, clear legacy assignments or migrate old assignments.
+## Generated Data and existing saves
 
-## Compatibility and updates
+The generator recognizes verified winning loose-script DD inheritance and validated inventory/render-device links. It does not classify clothing by names such as “catsuit”. Third-party devices can qualify; a mod merely calling some DD functions is not automatically supported. BSA-only/unknown ancestry and excluded scripted devices require separate review.
 
-Detection uses the winning loose PEX script inheritance and validated DD inventory/render-device links, not garment names. Third-party garments using that verified protocol can be included. Standalone scripts that merely call DD, BSA-only script ancestry, scripted rendered devices and other excluded/unknown devices are not blanket-supported. Review the local generation report; do not assume every DD-labelled garment is covered.
+Generate data again when the enabled source plugins, script winners or profile change. Reuse the **same output folder and manifest** to preserve assigned FormIDs, then update the generated MO2 mod. Keep different outputs for different mod setups. Do not distribute your personal generated ESP or manifest to other users.
 
-Regenerate data when enabled source plugins, script winners or the active mod profile change. Use the **same output folder**, then replace the generated MO2 mod with the new matching ESP/manifest. Existing IDs are preserved and removed IDs retired. Runtime hash checks reject modified inputs; do not bypass them. Keep separate generated outputs for different mod setups.
+Existing matching schema-2 Generated Data can be retained when updating from 0.4 or private 0.6.x builds. Cosmetic copies already assigned by 0.4 do not gain genuine DD effects automatically: open Tailor, set the switch, confirm that outfit again and exit normally. Other NPC assignments do not need to be cleared.
 
-Back up your bridge JSON before reinstalling if you want to preserve switch preferences; package defaults set real-DD activation Off. Reinstall the FOMOD to change language, keeping only one bridge installation enabled.
+Tailor's original shared NPC outfit assignments across saves are preserved. This release does not isolate assignments by save or clear old assignments. The patch's free-wear permissions use its SKSE co-save; keep each save and co-save together. This does not change Tailor's own assignment storage.
 
-Use a backup/test save first. Existing saves may reference the generated ESP. For removal, return to a save from before using the bridge/generated data; disabling the DLL alone does not remove genuine DD equipment or undo DD locks. No save-cleaning or forced-unlock feature is included.
+Use a backup save for updates. Uninstalling the DLL does not remove real DD devices or undo their locks. Prefer returning to a save from before installing the patch/generated plugin when removing it. No save-cleaning or forced-unlock utility is included.
 
-## Status, contents and credits
+## Changes and validation
 
-Experimental release. Local NPC fitting tests have been reported working, including free switching of supported DD copies; this is not a complete player/NPC, language and runtime compatibility matrix. The button centering change compiles but still needs in-game visual confirmation. Report the game/SKSE/Tailor versions, DD mod, player or NPC, switch state, exact Set/exit steps and relevant Tailor/bridge logs when reporting a problem.
+0.6.4 preserves genuine DD effects in free-wear mode, fixes incomplete-equip/removal handling, corrects the Mu/RaceMenu preset-path extension, and checks appearance again after asynchronous DD removal. A face initially hidden by headgear can be restored when visible again; tint/shader changes are now observed as well as model-node changes.
 
-Included: our independent DLL, default configuration, the two Python generation tools, bilingual instructions and license notices. Excluded: Tailor.dll, Tailor ESP/assets/fonts, third-party translation files, DD scripts/assets, personal generated data, personal configurations, saves and logs.
+The local tester reported successful DD clothing switching and successful recovery of the Mu NPC appearance when changing from fully covering DD headgear to face-visible equipment. Offline native interface, operation-policy and preset-path checks passed. This is **not** a full player/NPC, device, language, runtime or mod-list compatibility matrix.
 
-Credit: ColdSun / heathbrownkeyworks for Tailor and its API; Llinnn for the separately distributed CHS translation (not redistributed here). The companion **Source** archive provides corresponding bridge/generator source and build inputs. It is for developers, not an MO2 install. See `LICENSE` and `THIRD_PARTY_NOTICES.txt` for GPL and dependency notices. This is an unofficial compatibility add-on.
+If reporting an issue, include game/SKSE/Tailor/DD NG versions, player or NPC, switch state, the exact confirm/exit sequence, equipment names and `Documents/My Games/Skyrim Special Edition/SKSE/TailorDDBridge.log`. For Mu appearance issues, also include the relevant RaceMenu/Mu logs. Review logs for personal data before posting.
+
+## Contents, source and credits
+
+Included: independent patch DLL and helper PEX, bilingual FOMOD, generator tools, bilingual instructions and license notices. Excluded: Tailor runtime/assets/fonts, third-party translations, DD/Mu/RaceMenu implementations or assets, personal presets/generated equipment data, saves, logs, and temporary startup diagnostic tools.
+
+Credit to ColdSun / heathbrownkeyworks for Tailor and its API, the DD/DD NG developers, Acro for Mu, expired6978 for RaceMenu, and Llinnn for the separately distributed Tailor CHS translation. Their mods must be obtained independently. This is an unofficial compatibility add-on.
+
+The **Source.zip** and [GitHub repository](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch) contain corresponding source and build instructions. Do not install Source.zip in MO2. The patch is GPL-3.0-or-later; see LICENSE and THIRD_PARTY_NOTICES.txt.

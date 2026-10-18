@@ -1,0 +1,38 @@
+[b]Tailor Devious Device Compatibility Patch — 0.6.4[/b]
+
+在 Tailor 内自由试穿受支持的 DD 服装。通过 Set 确认并正常退出后，保留真实 DD 音效、动画等效果，由开关决定是否保留穿脱限制。
+
+[b]使用方法[/b]
+• Tailor → 设置 → DD 设置。
+• 关闭（默认）：保留真实 DD 效果；补丁管理的受支持衣服可在 Tailor 和普通物品栏更换。
+• 开启：确认退出后保留 DD 正常穿脱限制。
+• 试衣期间使用可穿脱外观副本。添加“+”或预览不等于 Set 确认套装。
+• 不是全局解锁工具，不强制解除任务设备、阻止通用卸装的设备、未知脚本或其他玩法独立锁上的设备。
+
+[b]前置：均需自行安装[/b]
+• [url=https://www.nexusmods.com/skyrimspecialedition/mods/173691]Tailor 3.0.1[/url] 及其前置。
+• 匹配游戏的 SKSE64、Address Library、DD 框架/服装依赖及 [url=https://www.nexusmods.com/skyrimspecialedition/mods/13048]PapyrusUtil[/url]。
+• 已核查的 DD NG v0.4.3 rc2 DLL，必须与 README 的 SHA-256 一致，并非兼容所有 DD NG。
+• MO2、Python 3.10+，用于生成玩家自己配置的装备数据。
+• 可选：[url=https://www.nexusmods.com/skyrimspecialedition/mods/150931]Mu Dynamic NPC Replacer 2.1.4[/url] 已核查构建及其 RaceMenu 前置，用于 Mu 外观适配。
+• 可选：[url=https://www.nexusmods.com/skyrimspecialedition/mods/184318]受支持 Tailor 汉化[/url]，请自行下载。补丁中文使用其中文字库，英文玩家无需汉化。
+
+[b]兼容范围[/b]
+只支持双语 README 表格中已核查的 Tailor 英文/汉化和 DD NG DLL。本次实测游戏为 1.6.1170；未声称所有游戏版本、VR、设备或玩家/NPC 组合都经过测试。未知原生构建会拒绝启用，请勿绕过检查。
+
+[b]安装[/b]
+1. MO2 安装 FOMOD，选择“中文”或“English”；这里只改变补丁新增文字，不包含 Tailor 或他人汉化。
+2. 只启用一个新版补丁，禁用旧的独立中英文测试补丁，避免重复 DLL 和旧临时诊断工具。
+3. 使用包内 Tools/build_cosmetics.py 生成并安装自己的 Generated Data，启用 TailorDDCosmetics.esp。具体命令见双语说明。
+4. 升级时保留现有匹配的 schema-2 Generated Data。需要重新生成时沿用原输出目录和 manifest，不要重新编号。
+5. 游戏中选择开关模式，Set 确认套装，再正常退出。
+
+[b]0.6.4 更新[/b]
+自由穿脱时保留真实 DD 特性，改善异步穿脱处理，修正 Mu 预设路径、卸装后的外观漏检查和初始隐藏头部的恢复。本地已反馈换装及“全包头 DD → 露脸 DD”后的 Mu 外观恢复成功。保留 Tailor 原有跨存档共享 NPC 套装行为。
+
+[b]不包含[/b]
+Tailor.dll/资源/字体、他人汉化、DD/Mu/RaceMenu 实现或资源、个人生成 ESP、预设、存档、日志和临时启动诊断。安装包唯一 PEX 是补丁自有的 TailorDDFreeWear 辅助脚本。
+
+[b]源码与致谢[/b]
+[url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]GitHub 源码、更新记录和下载[/url]。完整 Source.zip 供开发者使用，不要作为 MO2 模组安装。
+感谢 ColdSun / heathbrownkeyworks（Tailor）、DD/DD NG 开发者、Acro（Mu）、expired6978（RaceMenu）和独立发布 Tailor 汉化的 Llinnn。非官方扩展，GPL-3.0-or-later，包含依赖许可说明。

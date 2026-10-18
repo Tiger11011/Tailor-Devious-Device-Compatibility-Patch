@@ -1,0 +1,38 @@
+[b]Tailor Devious Device Compatibility Patch — 0.6.4[/b]
+
+Try supported DD clothing freely in Tailor. After Set and a normal exit, keep genuine DD sounds, animations and other effects while choosing whether clothing locks remain active.
+
+[b]How it works[/b]
+• Open Tailor → Settings → DD Settings.
+• Off (default): genuine DD effects remain; supported patch-managed clothing can be changed through Tailor and the normal inventory.
+• On: normal DD clothing restrictions remain after confirmation and exit.
+• While fitting, supported devices use removable appearance copies. Adding or previewing a piece alone is not the same as confirming an outfit with Set.
+• This is not a global unlock tool. Quest devices, block-generic devices, unsupported scripts and independently locked existing devices are not forcibly unlocked.
+
+[b]Install separately[/b]
+• [url=https://www.nexusmods.com/skyrimspecialedition/mods/173691]Tailor 3.0.1[/url] and its requirements.
+• Matching SKSE64, Address Library, DD framework/equipment dependencies and [url=https://www.nexusmods.com/skyrimspecialedition/mods/13048]PapyrusUtil[/url].
+• The exact reviewed DD NG v0.4.3 rc2 DLL. Check the README SHA-256 before installing. This release does not support every DD NG build.
+• MO2 and Python 3.10+ to generate equipment data for your own profile.
+• Optional: reviewed [url=https://www.nexusmods.com/skyrimspecialedition/mods/150931]Mu Dynamic NPC Replacer 2.1.4[/url] and its RaceMenu requirement for Mu appearance recovery.
+• Optional: [url=https://www.nexusmods.com/skyrimspecialedition/mods/184318]supported Tailor CHS translation[/url], obtained separately. English users do not need a translation.
+
+[b]Important compatibility limit[/b]
+This is a narrow compatibility release for the exact Tailor English/CHS and DD NG DLL hashes listed in the included README. The reported working game setup is Skyrim 1.6.1170. Other game runtimes/VR and a complete device/player/NPC matrix have not been validated. Unknown native builds are rejected; do not bypass the checks.
+
+[b]Installation[/b]
+1. Install the FOMOD in MO2; choose 中文 or English. Only this add-on's language changes; Tailor and its translation are not included.
+2. Enable one patch installation. Disable old separate English/Chinese bridge test mods to avoid duplicate DLLs and their temporary diagnostic tools.
+3. Generate and install your own Generated Data using the included Tools/build_cosmetics.py; enable TailorDDCosmetics.esp. Detailed commands are in both READMEs.
+4. Keep existing matching schema-2 Generated Data when updating. Reuse its output folder/manifest if regeneration is needed; do not renumber existing forms.
+5. Open Tailor, choose the switch mode, confirm the outfit with Set, then exit normally.
+
+[b]0.6.4[/b]
+Retains real DD effects in free-wear mode, improves asynchronous equip/removal handling, and fixes Mu preset paths plus missed appearance recovery after delayed DD removal or initially hidden heads. Local testing confirmed DD switching and Mu appearance recovery when changing fully covering headgear to face-visible equipment. Tailor's original cross-save shared NPC assignments remain unchanged.
+
+[b]Not included[/b]
+No Tailor.dll/assets/fonts, third-party translation, DD/Mu/RaceMenu implementation or assets, personal generated ESP, presets, saves, logs or temporary startup diagnostics. The only PEX in the installer is our independent TailorDDFreeWear helper.
+
+[b]Source and credits[/b]
+[url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]GitHub source, changelog and downloads[/url]. Full corresponding Source.zip is available for developers; do not install it in MO2.
+Thanks to ColdSun / heathbrownkeyworks (Tailor), DD/DD NG developers, Acro (Mu), expired6978 (RaceMenu), and Llinnn (the separately distributed Tailor translation). Unofficial add-on; GPL-3.0-or-later, dependency notices included.

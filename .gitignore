@@ -12,3 +12,7 @@
 *.log
 **/deployment/
 **/evidence/
+**/releases/
+*.lib
+*.pch
+*.ipch

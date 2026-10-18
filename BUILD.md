@@ -1,29 +1,52 @@
-# Building from GitHub
+# Building 0.6.4
 
-The source preserves its three sibling directories so that the existing xmake and packaging paths remain valid. `Tailor-DD-Compat` here contains only the CommonLib dependency, not Tailor's implementation.
-
-Clone with submodules:
+The current implementation is **Tailor-DD-Effects/**. Tailor-DD-Bridge retains older 0.4 source and the shared MinHook dependency. Tailor-DD-Compat here contains only CommonLibSSE-NG, not Tailor's implementation or reverse-engineering inputs.
 
 ```powershell
 git clone --recurse-submodules https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch.git
 cd Tailor-Devious-Device-Compatibility-Patch
+xmake -P Tailor-DD-Effects f -m release -y
+xmake -P Tailor-DD-Effects -j 8 -y TailorDDBridge
 ```
 
-CommonLibSSE-NG is pinned to `8b032fa992750d654d6d38a33731714d8b86be1f`, including its own OpenVR submodule. After downloading GitHub's automatic source ZIP instead of cloning, initialize Git dependencies separately or use the complete companion Source.zip from Releases.
+Use Visual Studio 2022 C++ x64 tools and xmake 3.1.1 or compatible xmake >=3.0.1. The build uses C++23, CommonLibSSE-NG `8b032fa992750d654d6d38a33731714d8b86be1f`, MinHook 1.3.4, ImGui 1.92.6 and JSON 3.12.0. CommonLib pins its other dependencies; OpenVR is `60eb187801956ad277f1cae6680e3a410ee0873b`. Keep the sibling directories. Complete Source.zip includes dependency source; GitHub's automatic source archive omits submodules.
 
-Use Visual Studio 2022 with C++ x64 tools and xmake 3.1.1. From this repository root:
+## Independent Papyrus helper
+
+Compile **only** Tailor-DD-Effects/Papyrus/TailorDDFreeWear.psc using Skyrim's PapyrusCompiler:
 
 ```powershell
-xmake -P Tailor-DD-Bridge f -m release -y
-xmake -P Tailor-DD-Bridge -j 8 -y
+New-Item -ItemType Directory -Force Tailor-DD-Effects/Papyrus/output
+& "PATH/TO/PapyrusCompiler.exe" "Tailor-DD-Effects/Papyrus/TailorDDFreeWear.psc" -f="Tailor-DD-Effects/Papyrus/compile-only/TESV_Papyrus_Flags.flg" -i="Tailor-DD-Effects/Papyrus;Tailor-DD-Effects/Papyrus/compile-only" -o="Tailor-DD-Effects/Papyrus/output"
 ```
 
-xmake obtains the pinned dependencies defined by the project's and CommonLib's xmake files. See BUILD.txt for version and license details. The standalone Source.zip includes dependency source and can also be built with its included instructions.
+The compile-only files are minimal declarations, not DD/RaceMenu/PapyrusUtil implementations. **Never install PEX files compiled from these declarations.** Distribute only TailorDDFreeWear.pex. This release reuses the tested 0.6.2–0.6.4 helper; its source did not change during the face-restoration revisions. PEX header metadata may vary between compiler environments.
 
-To test the generator without game files:
+## Checks
 
 ```powershell
 python Tailor-DD-SafeFitting/tests/test_portable_generator.py
 ```
 
-FOMOD maintenance files are in `Tailor-DD-Bridge/release-docs/`. The packaging script is `Tailor-DD-Bridge/tests/build_upload_packages.py`. Its pinned expected DLL hash must be deliberately updated when publishing a changed binary. Run it with `--dll` to specify your built DLL. Do not include your own generated ESP, game data or logs in public uploads.
+From a Visual Studio x64 Native Tools terminal:
+
+```powershell
+cl /nologo /std:c++latest /EHsc /MD /I Tailor-DD-Effects/src Tailor-DD-Effects/tests/mu_preset_path_test.cpp /Fe:mu_preset_path_test.exe
+./mu_preset_path_test.exe
+cl /nologo /std:c++latest /EHsc /MD Tailor-DD-Effects/tests/mu_abi_test.cpp /Fe:mu_abi_test.exe
+./mu_abi_test.exe
+cl /nologo /std:c++latest /EHsc /MD /I Tailor-DD-Effects/src Tailor-DD-Effects/tests/operation_policy_test.cpp /Fe:operation_policy_test.exe
+./operation_policy_test.exe
+```
+
+The native DD hook test needs a separately obtained exact supported DeviousDevices.dll, not distributed here. Offline tests do not execute the game.
+
+## Packaging
+
+```powershell
+python Tailor-DD-Effects/tests/package_release.py --dll PATH/TO/TailorDDBridge.dll --pex PATH/TO/TailorDDFreeWear.pex
+```
+
+The script accepts the deliberately pinned tested DLL and helper hashes; review new binaries before changing the pins. Recompilation need not produce byte-identical output. Packaging checks both FOMOD language mappings and excluded files, then creates corresponding source and checksums. It never packages personal equipment data, presets, game files, logs, credentials, backups or startup diagnostics.
+
+FOMOD maintenance inputs are in Tailor-DD-Effects/release-docs. See runtime instructions for exact supported prerequisite builds.

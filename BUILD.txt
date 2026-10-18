@@ -1,18 +1,7 @@
-Corresponding source for Tailor Devious Device Compatibility Patch 0.4 (button-centering build).
-Developer archive: do not install into MO2. No original Tailor implementation, translated implementation, fonts or game assets are included.
-Use Visual Studio 2022 C++ x64 tools and xmake 3.1.1; allow xmake to obtain the pinned dependencies.
-Keep the three sibling directories when extracting.
-From Tailor-DD-Bridge:
-  xmake f -m release -y
-  xmake -j 8 -y
-CommonLibSSE-NG snapshot: 8b032fa992750d654d6d38a33731714d8b86be1f (included).
-MinHook 1.3.4 source is included. ImGui 1.92.6 and JSON 3.12.0 are pinned in xmake.lua; other library dependency versions are pinned in CommonLib's xmake.lua.
-Original Tailor binaries are external prerequisites, not included. The prologue test requires the two separately obtained exact supported DLLs.
-The generator test is synthetic and requires no game or third-party mod assets:
-  python Tailor-DD-SafeFitting/tests/test_portable_generator.py
-The experiment that isolated NPC assignments by save was reverted and is not in this source.
-FOMOD maintenance inputs are in Tailor-DD-Bridge/release-docs/.
-Edit ModuleConfig.xml for the language choices. The language configurations and shared-file whitelist are in tests/build_upload_packages.py.
-The source prompt image and its PowerShell generator are included; they are original installer artwork, not Tailor assets.
-Repackage with: python tests/build_upload_packages.py --dll path/to/TailorDDBridge.dll
-The expected binary hash near the top of that script must be updated deliberately for a new build.
+Tailor Devious Device Compatibility Patch 0.6.4 corresponding source.
+Current implementation: Tailor-DD-Effects. Instructions: BUILD.md.
+Developer archive; do not install into MO2.
+Complete Source.zip includes CommonLibSSE-NG and OpenVR source.
+No Tailor, DD, Mu, RaceMenu or translation implementations/assets are included.
+Papyrus/compile-only contains declarations: never install their PEX files.
+The private startup diagnostic build target is excluded; functional C++ and helper source are unchanged.
