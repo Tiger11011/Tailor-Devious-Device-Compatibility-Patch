@@ -83,7 +83,27 @@ Tailor Devious Device Compatibility Patch - Generated Data
 
 本地测试者已反馈 DD 换装及“全包头 DD → 露脸 DD”后的 Mu NPC 外观恢复成功，离线接口、任务顺序和预设路径检查通过。这不代表所有玩家/NPC、设备、语言、游戏版本和模组组合均已测试。
 
-报告问题时附游戏/SKSE/Tailor/DD NG 版本、玩家或 NPC、开关状态、具体确认退出步骤、装备名称及 `Documents/My Games/Skyrim Special Edition/SKSE/TailorDDBridge.log`。Mu 外观问题同时附相关 RaceMenu/Mu 日志，公开前检查个人信息。
+## 问题反馈与日志
+
+日志通常位于 Windows 的“文档”文件夹下：
+
+```text
+文档\My Games\Skyrim Special Edition\SKSE\
+```
+
+如果“文档”已迁移或重定向到 OneDrive，请使用实际位置。虽然模组已改名，补丁日志仍叫 **TailorDDBridge.log**。
+
+**复现问题后，请在再次启动游戏前复制 TailorDDBridge.log。每次启动游戏都会覆盖补丁上一次的日志。** 请附完整日志文件，不要只截取末尾几行；如有同目录的 **Tailor.log**，也请一并提供。
+
+反馈时请提供：
+
+- 补丁、Skyrim、SKSE、Tailor、DD 和 DD NG 的版本，以及补丁语言、是否使用 Tailor 汉化。
+- 问题发生在玩家还是 NPC；如果是 NPC，请提供其名称。
+- DD 设置开关是关闭还是开启，以及完整复现步骤，包括预览、通过 Set 确认和退出 Tailor 的过程。
+- 装备名称及所属模组、预期表现和实际出现的问题。
+- 外观问题请注明是否使用 Mu/RaceMenu、各自版本，并附已生成的相关 Mu/RaceMenu 日志。
+
+公开上传前，请检查日志中的个人信息，例如文件路径里的 Windows 用户名。
 
 ## 内容与致谢
 

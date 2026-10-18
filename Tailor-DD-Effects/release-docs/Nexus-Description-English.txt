@@ -32,6 +32,18 @@ This is a narrow compatibility release for the exact Tailor English/CHS and DD N
 4. Keep existing matching schema-2 Generated Data when updating. Reuse its output folder/manifest if regeneration is needed; do not renumber existing forms.
 5. Open Tailor, choose the switch mode, confirm the outfit with Set, then exit normally.
 
+[b]Reporting issues and logs[/b]
+Logs are normally in your Windows Documents folder: [code]Documents\My Games\Skyrim Special Edition\SKSE\[/code]
+If Documents has been moved or redirected to OneDrive, use its actual location. The patch log is still named TailorDDBridge.log despite the mod's new name.
+[b]Reproduce the issue, then copy TailorDDBridge.log before starting the game again. Each game launch overwrites the patch's previous log.[/b] Attach the complete log, plus Tailor.log from the same folder if available.
+Please provide:
+• Patch, Skyrim, SKSE, Tailor, DD and DD NG versions; patch language and any Tailor translation used.
+• Player or NPC; the NPC's name if applicable.
+• DD Settings Off/On and exact reproduction steps, including preview, Set confirmation and exit.
+• Equipment names and their source mods; expected behavior and actual result.
+• For appearance issues: whether Mu/RaceMenu is used, their versions and relevant logs if generated.
+Review logs for personal information, such as Windows usernames in paths, before posting publicly.
+
 [b]0.6.4[/b]
 Retains real DD effects in free-wear mode, improves asynchronous equip/removal handling, and fixes Mu preset paths plus missed appearance recovery after delayed DD removal or initially hidden heads. Local testing confirmed DD switching and Mu appearance recovery when changing fully covering headgear to face-visible equipment. Tailor's original cross-save shared NPC assignments remain unchanged.
 
