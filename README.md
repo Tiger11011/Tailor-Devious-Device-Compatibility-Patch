@@ -2,6 +2,11 @@
 
 # Tailor Devious Device Compatibility Patch 0.6.4
 
+**License-only package revision: 0.6.4-licenses.1, 2026-10-18.** Runtime behavior, DLL, helper PEX and functional source remain the tested 0.6.4. This revision adds ColdSun's copyright attribution and verbatim upstream notices. See COPYRIGHT.md and licenses/LICENSE-SOURCES.json in the installer.
+
+**Corresponding source for this binary:** download Tailor-Devious-Device-Compatibility-Patch-0.6.4-licenses.1-Source.zip from [the exact matching release](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-licenses.1), available without charge alongside the FOMOD. On Nexus, offer that matching Source.zip in Optional Files or clearly link this exact source download next to the main binary file. The source includes build files and pinned dependency source.
+
+
 Try supported Devious Devices clothing freely in Tailor. After confirming an outfit, keep genuine DD sounds, animations and other effects, and choose whether normal clothing locks remain active. This is an independent add-on: it does not replace Tailor.dll or include anyone else's translation.
 
 ## Requirements
@@ -28,7 +33,7 @@ These are deliberately narrow native compatibility checks. Unsupported builds ar
 ## Installation in MO2
 
 1. Close Skyrim. Install the prerequisites and your equipment mods. Install Tailor's translation separately if desired, following its own conflict instructions.
-2. Install **Tailor-Devious-Device-Compatibility-Patch-0.6.4-FOMOD.zip** as its own mod. Choose **中文** or **English**. The left image asks “你用什么语言？” and “What language do you use?”. This choice changes only the add-on language; it does not install a Tailor translation.
+2. Install **Tailor-Devious-Device-Compatibility-Patch-0.6.4-licenses.1-FOMOD.zip** as its own mod. Choose **中文** or **English**. The left image asks “你用什么语言？” and “What language do you use?”. This choice changes only the add-on language; it does not install a Tailor translation.
 3. Disable older separate bridge language mods and any older experiment replacing Tailor.dll. Enable just one current patch installation. When upgrading the private test setup, disable the old Chinese/English bridge mods so their temporary startup diagnostics are not loaded alongside this release. **Do not disable or regenerate existing matching Generated Data merely to update the DLL.**
 4. For a new installation, select your intended MO2 profile, enable its clothing mods/plugins and close MO2 so its lists are saved. Run the supplied generator from Windows, outside MO2's virtual filesystem, with your actual paths:
 

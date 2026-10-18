@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.4-licenses.1 — 2026-10-18
+
+- License-only packaging revision; runtime remains the tested 0.6.4.
+- Add ColdSun's copyright attribution and verbatim Tailor GPL, licensing, exception, API MIT and third-party notices from upstream commit a6088e2, with source URLs and hashes.
+- Include COPYRIGHT.md in both FOMOD language installations and clarify corresponding-source download directions.
+- Keep the accepted DLL, helper PEX, functional source, language choices and default Off byte-for-byte unchanged. Preserve the original v0.6.4 release/tag.
+
 ## 0.6.4
 
 - Off retains genuine DD effects after confirmed exit while permitting supported managed clothing changes in Tailor and the normal inventory. On preserves normal DD restrictions.

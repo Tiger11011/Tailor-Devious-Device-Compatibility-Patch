@@ -1,6 +1,9 @@
 Tailor Devious Device Compatibility Patch 0.6.4 is distributed under GPL-3.0-or-later.
 The companion Source archive contains the bridge and data-generator source.
-The versioned C++ interface declaration derives from heathbrownkeyworks/Tailor (GPL-3.0); this is a declaration for inter-plugin calls, not Tailor's implementation or runtime assets.
+Tailor-derived interface declarations and upstream comments: Copyright (c) 2026 ColdSun.
+Source: https://github.com/heathbrownkeyworks/Tailor ; latest licensing checked at 3.0.1 commit a6088e22b06f6e97ab617d2f79420d6a99228f52 (2026-10-07).
+Tailor implementation: GPL-3.0-or-later with its upstream exceptions. Its separately distributable public API header is additionally available under MIT; this does not relicense all of Tailor as MIT.
+See COPYRIGHT.md and the verbatim Tailor-GPL-3.0.txt, Tailor-LICENSING.md, Tailor-EXCEPTIONS.md, TailorAPI-MIT.txt, Tailor-THIRD_PARTY_NOTICES.md and LICENSE-SOURCES.json under licenses/ in the installer or Tailor-DD-Effects/licenses/ in source.
 CommonLibSSE-NG: GPL-3.0-or-later with the included Modding and Linking Exceptions.
 Dear ImGui 1.92.6: MIT. FreeType: FTL. MinHook 1.3.4: BSD-2-Clause.
 nlohmann/json 3.12.0 and spdlog 1.16.0: MIT.
@@ -8,3 +11,4 @@ DirectXMath and DirectXTK: MIT. rapidcsv: BSD-3-Clause. OpenVR: Valve BSD licens
 Full notices and licenses are in licenses/.
 Tailor, its translations and all DD frameworks/assets must be obtained separately.
 Only our independent TailorDDFreeWear helper PEX is included. No Tailor.dll, third-party translation, game font, original DD/Mu/RaceMenu scripts or assets, personal generated plugin, or startup diagnostics are distributed here.
+Package 0.6.4-licenses.1 (2026-10-18) updates notices and packaging only. The tested runtime binaries and functional sources remain unchanged.

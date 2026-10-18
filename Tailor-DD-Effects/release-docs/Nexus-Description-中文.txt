@@ -1,5 +1,10 @@
 [b]Tailor Devious Device Compatibility Patch — 0.6.4[/b]
 
+[b]仅许可文件修订 0.6.4-licenses.1[/b]
+实测成功的 0.6.4 DLL、辅助脚本和功能不变，仅补全版权与许可附件。
+[b]对应源码：[/b]与主文件一起在 Optional Files 提供 Source.zip，或从[url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-licenses.1]完全对应的 GitHub 发布页[/url]免费下载，包含构建文件和依赖源码。
+
+
 在 Tailor 内自由试穿受支持的 DD 服装。通过 Set 确认并正常退出后，保留真实 DD 音效、动画等效果，由开关决定是否保留穿脱限制。
 
 [b]使用方法[/b]

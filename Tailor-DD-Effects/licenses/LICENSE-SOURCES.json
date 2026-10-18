@@ -1,0 +1,43 @@
+{
+  "upstream": "https://github.com/heathbrownkeyworks/Tailor",
+  "revision": "a6088e22b06f6e97ab617d2f79420d6a99228f52",
+  "commitDateUTC": "2026-10-07T22:17:06Z",
+  "retrievedUTC": "2026-10-18T18:07:11.579027+00:00",
+  "files": [
+    {
+      "file": "Tailor-GPL-3.0.txt",
+      "upstreamPath": "LICENSE",
+      "commit": "a6088e22b06f6e97ab617d2f79420d6a99228f52",
+      "url": "https://raw.githubusercontent.com/heathbrownkeyworks/Tailor/a6088e22b06f6e97ab617d2f79420d6a99228f52/LICENSE",
+      "sha256": "3972dc9744f6499f0f9b2dbf76696f2ae7ad8af9b23dde66d6af86c9dfb36986"
+    },
+    {
+      "file": "Tailor-LICENSING.md",
+      "upstreamPath": "LICENSING.md",
+      "commit": "a6088e22b06f6e97ab617d2f79420d6a99228f52",
+      "url": "https://raw.githubusercontent.com/heathbrownkeyworks/Tailor/a6088e22b06f6e97ab617d2f79420d6a99228f52/LICENSING.md",
+      "sha256": "8f73148c99fa6f04187e93457504643ec85127cb88038e5d17c2af658c435609"
+    },
+    {
+      "file": "Tailor-EXCEPTIONS.md",
+      "upstreamPath": "EXCEPTIONS.md",
+      "commit": "a6088e22b06f6e97ab617d2f79420d6a99228f52",
+      "url": "https://raw.githubusercontent.com/heathbrownkeyworks/Tailor/a6088e22b06f6e97ab617d2f79420d6a99228f52/EXCEPTIONS.md",
+      "sha256": "e9a85d09f0e0989fab0fbfd2f9be228e3a19d798ddb659d180ca887e33145bf4"
+    },
+    {
+      "file": "TailorAPI-MIT.txt",
+      "upstreamPath": "licenses/TailorAPI-MIT.txt",
+      "commit": "a6088e22b06f6e97ab617d2f79420d6a99228f52",
+      "url": "https://raw.githubusercontent.com/heathbrownkeyworks/Tailor/a6088e22b06f6e97ab617d2f79420d6a99228f52/licenses/TailorAPI-MIT.txt",
+      "sha256": "844801e879a336078e477e8485e480728390b9f5340b468d273c51cf8d3e8940"
+    },
+    {
+      "file": "Tailor-THIRD_PARTY_NOTICES.md",
+      "upstreamPath": "THIRD_PARTY_NOTICES.md",
+      "commit": "a6088e22b06f6e97ab617d2f79420d6a99228f52",
+      "url": "https://raw.githubusercontent.com/heathbrownkeyworks/Tailor/a6088e22b06f6e97ab617d2f79420d6a99228f52/THIRD_PARTY_NOTICES.md",
+      "sha256": "24d7b51f946ea2a177c4a5c5135d7cf60ac0aa5648ba2d00d7cef6999cef5e5f"
+    }
+  ]
+}
