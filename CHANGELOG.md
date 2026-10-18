@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.4-sources.3 — 2026-10-18
+
+- Complete the resource audit at 29 components; retain ProggyClean's Tristan Grimmer copyright and MIT license after confirming its existing compressed payload in the accepted DLL.
+- Includes the complete prerequisite/embedded-code notices prepared in sources.2. Runtime and functional source remain byte-identical.
+
 ## 0.6.4-sources.2 — 2026-10-18
 
 - Correct the omitted PapyrusUtil SE credits: exiledviper (maintenance/refactoring), meh321 (original version/idea).

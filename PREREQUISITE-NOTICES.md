@@ -97,3 +97,5 @@ DD 5.2 自带条款的纯 bug 修复例外处理。该记录不是“已经取�
 书面授权”的声明，也不能代替作者对例外范围的解释。保留原条款；后续若扩展
 用途应重新审查。DD NG 插件的 Apache 许可不能代替全部 DD 资产/脚本的授权。
 向 DD/Tailor 作者确认仍有助于减少范围解释和 Nexus 平台权限争议。
+
+ImGui also retains its MIT-licensed ProggyClean default-font payload inside the accepted DLL. This is separate from the fixed-text Windows-font PNG and from Tailor's runtime fonts. Tristan Grimmer's copyright and full license are retained as ProggyClean-MIT.txt. No font payload or tested binary was changed.

@@ -1,4 +1,4 @@
-Tailor Devious Device Compatibility Patch 0.6.4 — package 0.6.4-sources.2
+Tailor Devious Device Compatibility Patch 0.6.4 — package 0.6.4-sources.3
 The patch is GPL-3.0-or-later. Third-party components retain their own terms.
 
 Complete author attribution and use/redistribution boundaries: CREDITS.md.
@@ -60,3 +60,6 @@ No Tailor.dll, third-party translation, DD/Mu/RaceMenu/PapyrusUtil implementatio
 game/mod assets, personal presets/generated data or startup diagnostics are bundled.
 This revision changes documentation/notices only; tested DLL/PEX and functional
 source, default Off and language choices remain unchanged.
+
+ImGui embedded ProggyClean font: Copyright (c) 2004, 2005 Tristan Grimmer; MIT.
+Full notice: licenses/ProggyClean-MIT.txt. Embedded payload already present in tested DLL; no font or binary changed.

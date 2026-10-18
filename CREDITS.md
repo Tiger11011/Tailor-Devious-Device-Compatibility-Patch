@@ -32,6 +32,7 @@ an arbitrary current/nightly build matches the supported rc2 DLL.
 | CommonLibSSE-NG, commit `8b032fa992750d654d6d38a33731714d8b86be1f` | **Ryan-rsm-McKenzie**, **CharmedBaryon**, **alandtse** and CommonLib contributors | GPL-3.0-or-later with retained exceptions; `CommonLibSSE-NG-GPL.txt`, `CommonLibSSE-NG-EXCEPTIONS.md`; historical Ryan MIT attribution retained separately in `CommonLibSSE-NG-legacy-MIT.txt`, not a relicense of the current whole library. |
 | Dear ImGui 1.92.6 | **Omar Cornut** and contributors | MIT: `Dear-ImGui-MIT.txt`. |
 | ImGui embedded STB code | **Sean Barrett** and contributors | Original MIT/public-domain alternatives preserved in `Dear-ImGui-embedded-STB.txt`; original sources remain in the pinned archive. |
+| ProggyClean embedded default font | **Tristan Grimmer** | MIT / Copyright (c) 2004, 2005; `ProggyClean-MIT.txt`. The complete 9583-byte compressed font payload is present in the accepted DLL through ImGui. |
 | FreeType 2.14.1 | **David Turner, Robert Wilhelm, Werner Lemberg** and contributors | FreeType License selected; `FreeType-FTL.txt`, plus `FreeType-third-party-notices.txt` for BDF/PCF and HarfBuzz-derived portions. Portions of this software are copyright © 1996–2025 The FreeType Project. All rights reserved. |
 | zlib 1.3.2 | **Jean-loup Gailly, Mark Adler** and contributors | zlib license: `zlib-LICENSE.txt`. |
 | MinHook 1.3.4 and HDE | **Tsuda Kageyu**; HDE **Vyacheslav Patkov** | BSD-2-Clause; `MinHook-BSD.txt` retains both HDE32 and HDE64 notices. |

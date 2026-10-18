@@ -1,6 +1,6 @@
 {
   "checkedOn": "2026-10-18",
-  "revision": "0.6.4-sources.2",
+  "revision": "0.6.4-sources.3",
   "scope": "All direct patch/helper/generator calls/includes, retained source references, accepted link/package manifests, FOMOD resources and bundled sources/notices. Not an attribution claim for every unrelated mod in a user profile.",
   "components": [
     {
@@ -329,6 +329,20 @@
       "credit": "Ruki Wang and xmake-repo contributors",
       "licenseOrPermission": "Apache-2.0 source recipes only",
       "details": "CREDITS.md; source archives/submodules and per-file license notices"
+    },
+    {
+      "name": "ProggyClean embedded default font",
+      "category": "font payload embedded in linked ImGui",
+      "credit": "Tristan Grimmer",
+      "licenseOrPermission": "MIT; Copyright (c) 2004, 2005 Tristan Grimmer; full upstream license retained",
+      "evidence": {
+        "source": "imgui-v1.92.6.tar.gz/imgui_draw.cpp",
+        "compressedPayloadBytes": 9583,
+        "compressedPayloadSha256": "2bb5a3ede77c1188bdc68ca6a7cd12d4fdb32bd7293ef16e2cac288fc3813853",
+        "completePayloadFoundInAcceptedDll": true,
+        "acceptedDllOffset": 1178672
+      },
+      "originalImplementationBundled": true
     }
   ],
   "indirectRequirements": "DD/Mu/Tailor own prerequisite chains remain governed by their installed release lists. No indirect mod code/assets are repackaged here.",

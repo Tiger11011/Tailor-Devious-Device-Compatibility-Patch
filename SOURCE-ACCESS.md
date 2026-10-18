@@ -1,12 +1,12 @@
 # Source access / 对应源码
 
-Functional version **0.6.4**, package revision **0.6.4-sources.2**.
+Functional version **0.6.4**, package revision **0.6.4-sources.3**.
 The tested DLL and independent helper PEX have not changed or been recompiled.
 
-Download **Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.2-Source.zip**
+Download **Tailor-Devious-Device-Compatibility-Patch-0.6.4-sources.3-Source.zip**
 free of charge alongside the FOMOD from this exact release:
 
-https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.2
+https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.3
 
 It includes patch/helper/generator source, build files, CommonLibSSE-NG,
 OpenVR, MinHook, eight verified upstream dependency source archives and their

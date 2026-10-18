@@ -3,7 +3,7 @@ from pathlib import Path, PurePosixPath
 import argparse,hashlib,json,subprocess,sys,zipfile,xml.etree.ElementTree as ET
 
 project=Path(__file__).resolve().parents[1]; repo=project.parent
-version='0.6.4'; package_revision='0.6.4-sources.2'
+version='0.6.4'; package_revision='0.6.4-sources.3'
 prefix=f'Tailor-Devious-Device-Compatibility-Patch-{package_revision}'
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--dll',type=Path,required=True)
@@ -39,7 +39,7 @@ resource_notices=json.loads(base['licenses/RESOURCE-NOTICE-SOURCES.json'])
 for row in resource_notices['files']:
  assert sha(base['licenses/'+row['file']])==row['sha256']
 resource_audit=json.loads(base['RESOURCE-AUDIT.json'])
-assert len(resource_audit['components'])==28 and resource_audit['bugFixPurposeConfirmedByMaintainer'] is True
+assert len(resource_audit['components'])==29 and resource_audit['bugFixPurposeConfirmedByMaintainer'] is True
 for name in ['README-English.md','README-中文.md']:base[name]=(docs/name).read_bytes()
 for name in ['build_cosmetics.py','pex_metadata.py']:base['Tools/'+name]=(repo/'Tailor-DD-SafeFitting/tools'/name).read_bytes()
 files={'Common/'+n:b for n,b in base.items()}

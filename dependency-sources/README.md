@@ -1,4 +1,4 @@
-# Corresponding dependency source — 0.6.4-sources.2
+# Corresponding dependency source — 0.6.4-sources.3
 
 This is a source/notice packaging revision. No C++, Papyrus, generator, game
 configuration or tested binary was changed or recompiled.
@@ -11,7 +11,7 @@ Git clones intentionally do not store these archives in Git history. From a
 clone, run `python dependency-sources/fetch_sources.py --download` to retrieve
 the same archives. Without `--download`, the command only verifies local files.
 The matching release is:
-https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.2
+https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-sources.3
 
 | Component | Actual resolved version | Use |
 | --- | --- | --- |

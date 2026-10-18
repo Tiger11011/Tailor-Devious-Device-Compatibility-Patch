@@ -41,6 +41,11 @@
       "file": "Hedley-CC0-1.0.txt",
       "source": "https://creativecommons.org/publicdomain/zero/1.0/legalcode.txt",
       "sha256": "a2010f343487d3f7618affe54f789f5487602331c0a8d03f49e9a7c547cf0499"
+    },
+    {
+      "file": "ProggyClean-MIT.txt",
+      "sha256": "e1d0eba9f051708a7c58b8024a42787b5b5f09b08641ab9d438d1629d1acae87",
+      "source": "https://raw.githubusercontent.com/bluescan/proggyfonts/master/LICENSE plus pinned imgui_draw.cpp copyright"
     }
   ]
 }
