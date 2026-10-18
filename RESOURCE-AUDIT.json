@@ -1,6 +1,6 @@
 {
   "checkedOn": "2026-10-18",
-  "revision": "0.6.4-permissions.2",
+  "revision": "0.6.4-permissions.3",
   "scope": "All direct patch/helper/generator calls/includes, retained source references, accepted link/package manifests, FOMOD resources and bundled sources/notices. Not an attribution claim for every unrelated mod in a user profile.",
   "components": [
     {

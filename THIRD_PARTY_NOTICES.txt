@@ -1,4 +1,4 @@
-Tailor Devious Device Compatibility Patch 0.6.4 — package 0.6.4-permissions.2
+Tailor Devious Device Compatibility Patch 0.6.4 — package 0.6.4-permissions.3
 The patch is GPL-3.0-or-later. Third-party components retain their own terms.
 
 Complete author attribution and use/redistribution boundaries: CREDITS.md.

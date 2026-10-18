@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.6.4-permissions.3 — 2026-10-18
+
+- Synchronize the maintainer's final English/Chinese publication copy into README and Nexus description files, preserving wording and restoring formatting/links.
+- Retain detailed installation, generation, compatibility and diagnostic documentation in INSTALLATION-English.md / INSTALLATION.zh-CN.md, linked from README and included in the installer.
+- Refresh source/FOMOD documentation only; permission screenshot remains source-only. Runtime and functional inputs are unchanged.
+
 ## 0.6.4-permissions.2 — 2026-10-18
 
 - Refresh bilingual README, permission documentation and log/reporting instructions.

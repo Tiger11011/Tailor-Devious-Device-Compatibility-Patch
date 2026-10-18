@@ -1,70 +1,66 @@
 [b]简介[/b]
-这是一个兼容性补丁模组，用于修复 Devious Devices（DD）与 Tailor - An Outfit and Wig Manager 之间的换装问题，让受支持的 DD 拘束装备可以在 Tailor 试衣间里试穿和更换。详细信息及受支持版本请以 [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]GitHub 仓库[/url]为准。
+
+这是一个兼容性补丁模组，用于修复“Devious Device”（DD）与“Tailor - 服装与假发管理器”之间的bug。让DD的装备能在Tailor试衣间里使用，详细信息请以此处为准 [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]Github发布页[/url]
+
 
 [b]安装说明[/b]
-用 MO2 安装 FOMOD，选择“中文”或“English”。Tailor 和汉化需自行安装。
-首次安装还需使用包内 Tools/build_cosmetics.py，为自己的 MO2 配置生成装备数据；将生成的 ZIP 作为独立模组安装，并启用 TailorDDCosmetics.esp。具体步骤见[url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/README.zh-CN.md]中文 README[/url]。更新补丁时保留现有匹配的 Generated Data。
 
-[b]顺序（下面覆盖上面）[/b]
+扔进mod管理器里就行
+
+
+[b]顺序 （下面覆盖上面）[/b]
+
 Tailor
-Tailor 汉化（可选，需用户自行获取）
+Tailor translation（可选，需用户自行获取）
 Tailor Devious Device Compatibility Patch
 Tailor Devious Device Compatibility Patch - Generated Data
 
+
 [b]怎么用[/b]
-游戏内打开 Tailor（默认 Shift + Z）→ 设置 → DD 设置。
-选择模式，通过 Tailor 的 Set 流程确认套装，再正常退出。仅添加或预览装备不等于确认套装。
+
+游戏内打开Tailor (默认 Shift + Z ) → 设置 → DD 设置
+
 
 [b]主要功能[/b]
-• 关闭（默认）：确认并退出 Tailor 后，补丁管理的受支持 DD 衣服可以在 Tailor 和普通物品栏自由穿脱，保留真实 DD 的音效、动画等原有效果。
-• 开启：确认并退出 Tailor 后保留 DD 正常穿脱限制。
-• 试衣期间，受支持设备使用可自由穿脱的外观副本。本补丁不是全局解锁工具，不强制解除任务设备、阻止通用卸装的设备、未知自定义脚本或其他玩法独立锁上的既有设备。
-• Tailor 本身会跨存档共享 NPC 套装分配，本补丁保留该行为；这不代表每个存档里的 DD 锁定状态必然相同。补丁的自由穿脱权限另存于 SKSE 配套存档记录，请保留各存档对应的 co-save。
+
+• 关闭（默认）：退出Tailor之后DD衣服没有穿脱限制
+• 开启：退出后保留 DD 正常穿脱限制（注意Tailor本身带有跨存档保留功能，会导致所有存档的该随从都被DD拘束装备限制）
+
 
 [b]前置[/b]
-• 与游戏/SKSE 匹配的 PapyrusUtil SE。
-• Tailor 3.0.1，须为已支持的英文或汉化构建。
-• Devious Devices、服装本身的前置，以及已核查的 Devious Devices NG v0.4.3 rc2 DLL。
-• Skyrim SE/AE、匹配的 SKSE64、Address Library 及原生插件需要的 Microsoft Visual C++ x64 运行库。
-• MO2、Python 3.10 或更高版本；Python 仅在生成装备数据时需要。
-• 可选：已核查的 Mu Dynamic NPC Replacer 2.1.4 及其 RaceMenu 前置，用于 Mu 外观恢复。需要 Tailor 汉化时请自行下载受支持版本。
-请核对 README 中的 DLL 哈希，不能仅凭版本名称判断兼容。实测使用 Skyrim 1.6.1170，其他游戏版本及 VR 未验证。
 
-[b]AI 使用相关[/b]
-我用了生成式 AI 进行氛围编程，但没有美术资源是 AI 生成的。
+PapyrusUtil SE
+Tailor
+Devious Device NG
 
-[b]反馈与错误报告[/b]
 
-请在 Nexus 或 [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]GitHub 仓库[/url]反馈问题。
+[b]反馈和bug报告[/b]
 
-请附 [b]TailorDDBridge.log[/b] 和 [b]Tailor.log[/b]，默认位于 文档\My Games\Skyrim Special Edition\SKSE\。如果“文档”已迁移或重定向到 OneDrive，请使用实际位置。虽然模组已改名，补丁日志仍叫 TailorDDBridge.log。
+请在Nexus或 [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]Github发布页[/url]进行反馈
+请详细说明操作的步骤以及遇到了什么意外情况。最好附上日志log，这样我才能更快地解决bug
+反馈时别忘了附带TailorDDBridge.log和Tailor.log，你可以在这里找到：
+Documents\My Games\Skyrim Special Edition\SKSE\
+如果该问题与角色外观（例如肤色、捏脸）相关，请额外提供以下log：
+Documents\My Games\Skyrim Special Edition\SKSE\skee64.log
+如果你碰到角色外观相关的问题同时使用Mu Dynamic NPC Replacer，请提供：
+MO2\mods\Mu Dynamic NPC Replacer\SKSE\Plugins\MuDynamicNPCReplacer.log
 
-如果问题涉及角色外观（例如肤色、脸部雕刻），而不只是装备，请根据实际使用的模组另附以下日志：
 
-• [b]RaceMenu：[/b]文档\My Games\Skyrim Special Edition\SKSE\skee64.log。
-• [b]Mu Dynamic NPC Replacer：[/b]<Skyrim 游戏目录>\Data\SKSE\Plugins\MuDynamicNPCReplacer.log。使用 MO2 时，实际文件可能位于 Mu 模组目录的 SKSE\Plugins\ 下，也可能位于 Overwrite\SKSE\Plugins\ 下（或指定的输出模组中）。
 
-[b]复现问题后，请立即复制日志，再重启游戏。每次启动游戏都会覆盖 TailorDDBridge.log。[/b] 请附完整日志文件，不要只截取末尾几行。
+[b]AI使用相关[/b]
 
-反馈时请提供：
+我用了生成式AI进行氛围编程，但没有美术资源是AI生成的
 
-• 补丁、Skyrim、SKSE、Tailor、DD 和 DD NG 的版本，以及补丁语言、是否使用 Tailor 汉化。
-• 问题发生在玩家还是 NPC；如果是 NPC，请提供其名称。
-• DD 设置开关是关闭还是开启，以及完整复现步骤，包括预览、通过 Set 确认和退出 Tailor 的过程。
-• 装备名称及所属模组、预期表现和实际出现的问题。
-• 外观问题请注明是否使用 Mu/RaceMenu，以及各自版本。
 
-公开上传前，请检查日志中的个人信息，例如文件路径里的 Windows 用户名。
+[b]声明许可[/b]
 
-[b]声明与许可[/b]
 感谢 [url=https://www.nexusmods.com/skyrimspecialedition/mods/13048]PapyrusUtil SE[/url] 的 exiledviper（持续维护与重构）及 meh321（原始版本与构想）。补丁自有辅助脚本调用其 StorageUtil 函数；PapyrusUtil 是需单独安装的运行时前置，不随包分发其 DLL 或实现脚本。
 
-包含：独立 DLL、自有辅助 PEX、双语 FOMOD、生成工具、双语说明及许可证。不包含：Tailor 本体/资源/字体、他人汉化、DD/Mu/RaceMenu 实现及资源、个人预设/生成装备数据、存档、日志或临时启动诊断工具。
+包含：独立 DLL、自有辅助 PEX、双语 FOMOD、生成工具、双语说明及许可证。不包含：Tailor 本体/字体、他人汉化、DD/Mu/RaceMenu 实现及资源、个人预设/生成装备数据、存档、日志或临时崩溃诊断工具。
 
 感谢 ColdSun / heathbrownkeyworks 的 Tailor 和 API、DD/DD NG 开发者、Mu 作者 Acro、RaceMenu 作者 expired6978，以及独立发布 Tailor 汉化的 Llinnn。相关作品均需自行下载。本补丁为非官方兼容扩展。
 
-对应源码及构建说明见[url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-permissions.2]对应版本的 Source.zip[/url] 和 [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]GitHub[/url]。Source.zip 不是 MO2 安装包。补丁使用 GPL-3.0-or-later，详见 LICENSE 与 THIRD_PARTY_NOTICES.txt。
+对应源码及构建说明见 [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-permissions.3]Source.zip[/url] 和 [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch]GitHub[/url]。Source.zip 不是 MO2 安装包。补丁使用 GPL-3.0-or-later，详见 LICENSE 与 THIRD_PARTY_NOTICES.txt。
+源码交付：请参阅完整 Source.zip 文件中的 SOURCE-ACCESS.md 和 dependency-sources/README.md，其中包含实际已解决的 8 个依赖项、源码的 SHA-256 值、记录的构建配方/配置以及已配置头文件的副本。此打包版本不会重新构建或修改经过测试的 DLL/PEX 文件。
 
-源码交付：请参阅完整 Source.zip 中的 SOURCE-ACCESS.md 和 dependency-sources/README.md，其中包含实际解析使用的 8 项依赖、源码 SHA-256 值、构建配方/配置记录及已配置头文件副本。此打包修订不重新构建或修改经过测试的 DLL/PEX。
-
-完整作者与许可清单：CREDITS.md、PREREQUISITE-NOTICES.md、RESOURCE-AUDIT.json（随安装包/源码提供）。其中包括 SKSE 团队、meh321/Address Library、DD/NG 作者、PapyrusUtil 作者、可选集成、链接库及内嵌代码。已获得 Tailor 作者 ColdSun 发布本兼容补丁的许可，见 [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/AUTHOR-PERMISSIONS.md]AUTHOR-PERMISSIONS.md[/url]。
+完整作者与许可清单：CREDITS.md、PREREQUISITE-NOTICES.md、RESOURCE-AUDIT.json（包含在安装程序/源代码中）。其中包括 SKSE 团队、meh321/Address Library、DD/NG 作者、PapyrusUtil 作者、可选集成、关联库及嵌入式代码。已获得 Tailor 作者 ColdSun 发布本兼容补丁的许可 [url=https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/AUTHOR-PERMISSIONS.md]AUTHOR-PERMISSIONS.md[/url]

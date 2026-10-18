@@ -3,7 +3,7 @@ from pathlib import Path, PurePosixPath
 import argparse,hashlib,json,subprocess,sys,zipfile,xml.etree.ElementTree as ET
 
 project=Path(__file__).resolve().parents[1]; repo=project.parent
-version='0.6.4'; package_revision='0.6.4-permissions.2'
+version='0.6.4'; package_revision='0.6.4-permissions.3'
 prefix=f'Tailor-Devious-Device-Compatibility-Patch-{package_revision}'
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--dll',type=Path,required=True)
@@ -21,6 +21,8 @@ notices=(repo/'THIRD_PARTY_NOTICES.txt').read_bytes()
 base={'SKSE/Plugins/TailorDDBridge.dll':dll,'Scripts/TailorDDFreeWear.pex':pex,
       'LICENSE':(repo/'LICENSE').read_bytes(),'COPYRIGHT.md':(repo/'COPYRIGHT.md').read_bytes(),'THIRD_PARTY_NOTICES.txt':notices}
 base['SOURCE-ACCESS.md']=(repo/'SOURCE-ACCESS.md').read_bytes()
+for name in ['INSTALLATION-English.md','INSTALLATION.zh-CN.md']:
+ base[name]=(repo/name).read_bytes()
 for name in ['CREDITS.md','PREREQUISITE-NOTICES.md','RESOURCE-AUDIT.json','AUTHOR-PERMISSIONS.md']:
  base[name]=(repo/name).read_bytes()
 for p in (old/'licenses').iterdir():
@@ -135,11 +137,11 @@ assert source['PERMISSIONS.png'] == (repo/'PERMISSIONS.png').read_bytes()
 for name in ['README.md','README.zh-CN.md','AUTHOR-PERMISSIONS.md']:
  assert source[name] == (repo/name).read_bytes()
 sourcezip=out/(prefix+'-Source.zip');writezip(sourcezip,source)
-for name in ['Release-Notes.md','README-English.md','README-中文.md']:
+for name in ['Release-Notes.md','README-English.md','README-中文.md','Nexus-Description-English.txt','Nexus-Description-中文.txt']:
  (out/name).write_bytes((docs/name).read_bytes())
 packages=[{'file':p.name,'bytes':p.stat().st_size,'sha256':sha(p.read_bytes())} for p in [installer,sourcezip]]
 (out/'SHA256SUMS.txt').write_text(''.join(f"{r['sha256']}  {r['file']}\n" for r in packages),encoding='utf8')
 report={'version':version,'packageRevision':package_revision,'sourceAndNoticeOnlyRevision':True,'dependencySourceArchivesVerified':8,'upstreamLicenseRevision':license_sources['revision'],'upstreamLicenseHashesVerified':True,'dllSha256':sha(dll),'helperSha256':sha(pex),'packages':packages,'installerFileCount':len(files),'sourceFileCount':len(source),'bothLanguageInstallMappingsVerified':True,'languageDifferences':differences,'defaultsOff':True,'originalTailorOrTranslationIncluded':False,'personalGeneratedDataIncluded':False,'startupDiagnosticsIncluded':False,'userConfirmedRuntimeScenario':'Local NPC DD switching and Mu fully-covered-to-visible-head appearance recovery','fullCompatibilityMatrixVerified':False,'MO2InstallerGuiRetested':False}
 (out/'PACKAGE-CHECK.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf8')
-(out/'上传说明.txt').write_text('主文件：'+installer.name+'\n对应开发源码：'+sourcezip.name+'\n安装包修订：'+package_revision+'；游戏内功能版本仍为 0.6.4。\n仅源码/说明/许可修订，DLL 和 PEX 保持原样。不要覆盖或删除旧 GitHub 标签。\nSource.zip 内已附 8 项实际版本依赖源码、配方、配置差异和校验清单，不要安装到 MO2。\nNexus 主文件旁提供本修订的对应 Source.zip（Optional Files），或清楚链接完全对应的 GitHub 发布页。\nNexus 页面说明由维护者自行编写；本次不生成或更新 Nexus 页面说明。\n前置、受支持版本及安装顺序见双语说明。FOMOD 默认关闭，二选一语言，不包含 Tailor 或他人汉化。\n不上传私人 Generated Data、存档、日志、备份和启动诊断工具。本目录尚未自动上传至 Nexus。\n',encoding='utf8')
+(out/'上传说明.txt').write_text('主文件：'+installer.name+'\n对应开发源码：'+sourcezip.name+'\n安装包修订：'+package_revision+'；游戏内功能版本仍为 0.6.4。\n仅源码/说明/许可修订，DLL 和 PEX 保持原样。不要覆盖或删除旧 GitHub 标签。\nSource.zip 内已附 8 项实际版本依赖源码、配方、配置差异和校验清单，不要安装到 MO2。\nNexus 主文件旁提供本修订的对应 Source.zip（Optional Files），或清楚链接完全对应的 GitHub 发布页。\nNexus 页面说明使用维护者最终定稿，见 Nexus-Description-English.txt / Nexus-Description-中文.txt；详细技术说明另见 INSTALLATION-English.md / INSTALLATION.zh-CN.md。\n前置、受支持版本及安装顺序见双语说明。FOMOD 默认关闭，二选一语言，不包含 Tailor 或他人汉化。\n不上传私人 Generated Data、存档、日志、备份和启动诊断工具。本目录尚未自动上传至 Nexus。\n',encoding='utf8')
 print(json.dumps(report,ensure_ascii=False,indent=2))

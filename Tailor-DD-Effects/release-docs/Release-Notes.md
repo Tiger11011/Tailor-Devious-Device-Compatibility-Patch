@@ -1,18 +1,14 @@
 # Tailor Devious Device Compatibility Patch 0.6.4
 
-**Documentation package revision: 0.6.4-permissions.2 (2026-10-18).**
+**Documentation package revision: 0.6.4-permissions.3 (2026-10-18).**
 
-- Source.zip includes the latest bilingual README, ColdSun permission record and `PERMISSIONS.png` screenshot.
-- The FOMOD includes the updated bilingual README and permission record, but does **not** include the permission screenshot.
-- The documentation explains log locations, issue-reporting details, and that each game launch overwrites `TailorDDBridge.log`.
-- Runtime DLL, helper PEX, functional source, FOMOD language choices and default Off setting are unchanged from the tested 0.6.4. Nothing was recompiled.
-- Existing dependency sources, build configurations and license notices are retained. This is an independent add-on; Tailor itself and third-party translations are not included.
-- The maintainer will write the Nexus page description. This revision does not update or publish a Nexus description.
+This revision synchronizes the maintainer's final English and Chinese publication text into the README, Nexus description files and package documentation. Wording is retained; headings, line breaks and links are formatted for each destination. Detailed installation, equipment-data generation, supported builds and diagnostic information remain available in INSTALLATION-English.md / INSTALLATION.zh-CN.md, linked from the README and included in the FOMOD.
 
-Download **Tailor-Devious-Device-Compatibility-Patch-0.6.4-permissions.2-FOMOD.zip** for MO2. Choose 中文 or English. Retain existing matching Generated Data.
+The permission screenshot is included in Source.zip only, not the FOMOD. Existing dependency sources and license notices are retained. Runtime DLL, helper PEX, functional source, language choices and default Off setting remain unchanged from the tested 0.6.4. Nothing was recompiled.
 
-Download **Tailor-Devious-Device-Compatibility-Patch-0.6.4-permissions.2-Source.zip** for the complete corresponding source, including the eight verified dependency source archives. Do not install Source.zip in MO2. `SHA256SUMS.txt` provides archive checksums; `NO-FUNCTIONAL-CHANGES.json` records the comparison against the earlier package.
+- FOMOD.zip: MO2 installer; choose 中文 or English. Retain existing matching Generated Data.
+- Source.zip: complete corresponding source and eight verified dependency archives; not an MO2 installation.
+- SHA256SUMS.txt: archive checksums.
+- NO-FUNCTIONAL-CHANGES.json: verification against the previous package.
 
-See [AUTHOR-PERMISSIONS.md](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/AUTHOR-PERMISSIONS.md) for the permission exchange and its scope. Earlier release assets and tags remain available without modification.
-
-**中文：**本次仅更新说明与打包：源码包附最新中英文 README、许可记录和许可截图；安装包同步说明但不含许可截图。已补充日志路径、反馈信息和重启覆盖日志的提醒。DLL、PEX、功能源码、语言选项及默认关闭设置均不变。保留原有匹配的 Generated Data。Nexus 页面说明由维护者自行编写，本次不更新或发布该说明。
+**中文：**同步维护者最终定稿的中英文发布文案至 README、Nexus 说明源文件和发布包说明。保留原文措辞，仅整理格式与链接。详细安装、数据生成、兼容范围和诊断说明另存为 INSTALLATION-English.md / INSTALLATION.zh-CN.md，随安装包提供并从 README 链接。许可截图仍只放源码包，安装包不含截图。功能、DLL、PEX、语言选项和默认关闭设置均未改变。本次不操作 Nexus 网站。

@@ -6,4 +6,4 @@ No Tailor, DD, Mu, RaceMenu or translation implementations/assets are included.
 Papyrus/compile-only contains declarations: never install their PEX files.
 The private startup diagnostic build target is excluded; functional C++ and helper source are unchanged.
 
-0.6.4-permissions.2 also bundles eight upstream dependency archives under dependency-sources/archives; see its README.md and DEPENDENCIES.json.
+0.6.4-permissions.3 also bundles eight upstream dependency archives under dependency-sources/archives; see its README.md and DEPENDENCIES.json.
