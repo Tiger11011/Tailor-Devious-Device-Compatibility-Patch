@@ -6,6 +6,7 @@
 #include "FreeWear.h"
 #include "AppearanceTrace.h"
 #include "MuAppearance.h"
+#include "AutoFitting.h"
 #include <unordered_map>
 #include <unordered_set>
 #include <mutex>
@@ -184,7 +185,7 @@ namespace {
         // ApplyCustomOutfit to ApplyPlayerOutfit.
         auto found = lastApplied.find(actor->GetFormID());
         if (found == lastApplied.end() || found->second.id != outfit.id ||
-            std::none_of(outfit.items.begin(), outfit.items.end(), [](const ArmorItem& item) { return item.plugin == "TailorDDCosmetics.esp"; }))
+            std::none_of(outfit.items.begin(), outfit.items.end(), [](const ArmorItem& item) { return item.plugin == "TailorDDCosmetics.esp" || item.plugin == AutoFitting::Plugin; }))
             lastApplied[actor->GetFormID()] = outfit;
     }
     bool Apply(void* self, RE::Actor* actor, const Outfit& outfit, bool automatic) {
@@ -332,7 +333,7 @@ namespace {
             });
         }
     }
-    void ReadPairs() {
+    void ReadLegacyPairs() {
         std::ifstream file("Data/SKSE/Plugins/TailorDDSafeFitting.json");
         nlohmann::json manifest; file >> manifest;
         if (manifest.at("schema") != 2 || manifest.at("targetPlugin") != "TailorDDCosmetics.esp") throw std::runtime_error("unsupported manifest; regenerate data with the 0.4 tool");
@@ -380,6 +381,29 @@ namespace {
             if (auto* ren = data->LookupForm<RE::TESObjectARMO>(row.at("renderId").get<RE::FormID>(), row.at("renderPlugin").get<std::string>())) excluded.insert(ren->GetFormID());
         }
         if (pairs.empty()) throw std::runtime_error("no supported device pairs");
+    }
+    void ReadPairs() {
+        auto* data=RE::TESDataHandler::GetSingleton();
+        if(!data->LookupLoadedModByName(AutoFitting::Plugin)) {
+            // Existing installations can retain their tested generated map.
+            // The new FOMOD always supplies the automatic fitting plugin.
+            ReadLegacyPairs();return;
+        }
+        auto found=AutoFitting::Build();
+        for(const auto& row:found.rows) {
+            auto* source=row.inventory->GetFile(0);auto* cosmetic=row.cosmetic->GetFile(0);
+            if(!source || !cosmetic)throw std::runtime_error("automatic pair identity unavailable");
+            auto index=pairs.size();
+            pairs.push_back({row.inventory,row.rendered,row.cosmetic,
+                {row.inventory->GetLocalFormID(),std::string(source->GetFilename()),row.inventory->GetName()},
+                {row.cosmetic->GetLocalFormID(),std::string(cosmetic->GetFilename()),row.inventory->GetName()}});
+            inventories.emplace(row.inventory->GetFormID(),index);
+            renders.try_emplace(row.rendered->GetFormID(),index);
+            cosmetics.emplace(row.cosmetic->GetFormID(),index);
+            cosmetics.emplace(row.automatic->GetFormID(),index);
+        }
+        for(auto id:found.excluded)excluded.insert(id);
+        if(pairs.empty())throw std::runtime_error("no supported DD pairs discovered automatically; see scan diagnostics");
     }
     void Save(SKSE::SerializationInterface* stream) {
         FreeWear::Save(stream);

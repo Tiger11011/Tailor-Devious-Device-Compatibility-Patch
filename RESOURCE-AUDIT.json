@@ -1,6 +1,6 @@
 {
-  "checkedOn": "2026-10-18",
-  "revision": "0.6.4-permissions.3",
+  "checkedOn": "2026-10-19",
+  "revision": "0.6.6",
   "scope": "All direct patch/helper/generator calls/includes, retained source references, accepted link/package manifests, FOMOD resources and bundled sources/notices. Not an attribution claim for every unrelated mod in a user profile.",
   "components": [
     {
@@ -55,9 +55,7 @@
       "credit": "exiledviper; meh321",
       "evidence": {
         "Tailor-DD-Effects/Papyrus/TailorDDFreeWear.psc": [
-          "StorageUtil.GetIntValue",
-          "StorageUtil.SetIntValue",
-          "StorageUtil.UnsetIntValue"
+          "StorageUtil.GetIntValue"
         ]
       },
       "licenseOrPermission": "Separately installed API prerequisite; no original implementation redistributed; redistribution grant not inferred.",
@@ -364,5 +362,6 @@
     "originalCorrespondenceIncluded": false,
     "originalGrantDate": null,
     "record": "AUTHOR-PERMISSIONS.md"
-  }
+  },
+  "automaticFitting": "Own empty ESP pool and native runtime scanner; no third-party clothing models or user ledger bundled."
 }

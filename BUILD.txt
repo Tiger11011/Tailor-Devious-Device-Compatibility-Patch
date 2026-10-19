@@ -1,9 +1,9 @@
-Tailor Devious Device Compatibility Patch 0.6.4 corresponding source.
+Tailor Devious Device Compatibility Patch 0.6.6 corresponding source.
 Current implementation: Tailor-DD-Effects. Instructions: BUILD.md.
 Developer archive; do not install into MO2.
 Complete Source.zip includes CommonLibSSE-NG and OpenVR source.
 No Tailor, DD, Mu, RaceMenu or translation implementations/assets are included.
 Papyrus/compile-only contains declarations: never install their PEX files.
-The private startup diagnostic build target is excluded; functional C++ and helper source are unchanged.
+The private startup diagnostic build target is excluded; the release retains the exact locally tested 0.6.6 DLL/PEX.
 
-0.6.4-permissions.3 also bundles eight upstream dependency archives under dependency-sources/archives; see its README.md and DEPENDENCIES.json.
+0.6.6 also bundles eight upstream dependency archives under dependency-sources/archives; see its README.md and DEPENDENCIES.json.

@@ -1,14 +1,11 @@
-# Tailor Devious Device Compatibility Patch 0.6.4
+# Tailor Devious Device Compatibility Patch 0.6.6
 
-**Documentation package revision: 0.6.4-permissions.3 (2026-10-18).**
+Automatic equipment setup and the tested DD removal / Mu notification fixes.
 
-This revision synchronizes the maintainer's final English and Chinese publication text into the README, Nexus description files and package documentation. Wording is retained; headings, line breaks and links are formatted for each destination. Detailed installation, equipment-data generation, supported builds and diagnostic information remain available in INSTALLATION-English.md / INSTALLATION.zh-CN.md, linked from the README and included in the FOMOD.
+- Install the FOMOD, choose 中文 or English, and enable **TailorDDAutoFitting.esp**. No Python, external generator or preliminary enter/exit cycle. New supported clothing is detected next launch.
+- Keep existing legacy Generated Data if your saves/outfits use it. Back up **TailorDDBridge.AutomaticSlots.json** with your saves; do not delete it or compact/renumber the plugin.
+- Fix DD removal-token leaks and redundant Mu notifications while retaining DD effects, selected-face recovery and the default-Off switch. Local logs show 11/11 removals and 14/14 equips successful; see VALIDATION-0.6.6.md for scope/limits.
+- Exact tested DLL/PEX retained. Tailor, translations, DD/Mu assets and personal data are not bundled. Permission record and existing licenses retained; permission screenshot is source-only.
+- **FOMOD.zip** is the player installer. **Source.zip** is the complete corresponding source including eight verified dependency archives; do not install Source.zip in MO2. SHA256SUMS.txt verifies both.
 
-The permission screenshot is included in Source.zip only, not the FOMOD. Existing dependency sources and license notices are retained. Runtime DLL, helper PEX, functional source, language choices and default Off setting remain unchanged from the tested 0.6.4. Nothing was recompiled.
-
-- FOMOD.zip: MO2 installer; choose 中文 or English. Retain existing matching Generated Data.
-- Source.zip: complete corresponding source and eight verified dependency archives; not an MO2 installation.
-- SHA256SUMS.txt: archive checksums.
-- NO-FUNCTIONAL-CHANGES.json: verification against the previous package.
-
-**中文：**同步维护者最终定稿的中英文发布文案至 README、Nexus 说明源文件和发布包说明。保留原文措辞，仅整理格式与链接。详细安装、数据生成、兼容范围和诊断说明另存为 INSTALLATION-English.md / INSTALLATION.zh-CN.md，随安装包提供并从 README 链接。许可截图仍只放源码包，安装包不含截图。功能、DLL、PEX、语言选项和默认关闭设置均未改变。本次不操作 Nexus 网站。
+中文版：安装 FOMOD 选语言并启用随包 ESP 即可正常使用，无需生成器或先退出一次游戏；新增受支持服装下次启动自动识别。已有旧 Generated Data 保留，备份自动编号 JSON，不要重新编号 ESP。已通过本轮 DD 穿脱及 Mu 外观测试，发布包保留同一份实测二进制。日志重启前复制；旧存档已有的 DD 标记不会强制清除。

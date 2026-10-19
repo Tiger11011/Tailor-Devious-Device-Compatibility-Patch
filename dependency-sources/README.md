@@ -1,4 +1,4 @@
-# Corresponding dependency source — 0.6.4-permissions.1
+# Corresponding dependency source — 0.6.6
 
 This is a source/notice packaging revision. No C++, Papyrus, generator, game
 configuration or tested binary was changed or recompiled.
@@ -11,7 +11,7 @@ Git clones intentionally do not store these archives in Git history. From a
 clone, run `python dependency-sources/fetch_sources.py --download` to retrieve
 the same archives. Without `--download`, the command only verifies local files.
 The matching release is:
-https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.4-permissions.1
+https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.6
 
 | Component | Actual resolved version | Use |
 | --- | --- | --- |
@@ -64,7 +64,7 @@ normalizing line endings; it therefore has no change for `ftconfig.h`.
 ## Building with the recorded dependencies
 
 See `../BUILD.md` for the DLL and independent Papyrus helper commands. The
-existing functional xmake.lua is deliberately unchanged. Its transitive
+0.6.6 code uses the same recorded dependency versions. Its transitive
 FreeType/zlib resolution is not a complete lockfile, so do not rely on a future
 default package-repository checkout resolving the same versions.
 
@@ -90,7 +90,7 @@ Ninja, pkgconf) and Skyrim's PapyrusCompiler are obtained separately; they
 are not game content or missing library implementations. Source access is
 complete for the enumerated libraries without downloading binary packages.
 This revision verifies source availability, hashes, recorded configurations
-and unchanged runtime files. It does **not** claim a clean-room or bit-identical
+and the exact game-tested 0.6.6 runtime files. It does **not** claim a clean-room or bit-identical
 rebuild; build outputs can differ across toolchains and environments.
 
 ## 中文

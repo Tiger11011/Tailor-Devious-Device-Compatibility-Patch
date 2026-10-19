@@ -19,7 +19,16 @@ struct Face {
     std::array<float,3> color{};
     bool operator==(const Face&)const=default;
 };
-struct State {Face face;bool inFlight=false;};
+// Geometry identities, not texture/material values: Mu/MDNM update those values
+// in response to our event. Tracking their output would feed back into itself.
+std::vector<std::uintptr_t> Geometry(RE::Actor* actor){
+    std::vector<std::uintptr_t> result;
+    if(auto* root=actor?actor->Get3D():nullptr)RE::BSVisit::TraverseScenegraphGeometries(root,[&](RE::BSGeometry* g){
+        result.push_back(reinterpret_cast<std::uintptr_t>(g));return RE::BSVisit::BSVisitControl::kContinue;
+    });
+    std::sort(result.begin(),result.end());return result;
+}
+struct State {Face face;bool inFlight=false;std::vector<std::uintptr_t> notifiedGeometry;std::uint64_t checks=0;};
 std::unordered_map<RE::FormID,State> states;std::recursive_mutex mutex;std::uint64_t generation=0;
 Face Head(RE::Actor* actor){
     Face face;auto* root=actor?actor->GetFaceNodeSkinned():nullptr;if(!root)return face;
@@ -45,9 +54,13 @@ Face Head(RE::Actor* actor){
 }
 void Notify(RE::Actor* actor){
     if(!actor || !applied || !applied(manager,actor))return;
+    auto state=states.find(actor->GetFormID());if(state==states.end())return;
+    auto geometry=Geometry(actor);
+    if(geometry==state->second.notifiedGeometry)return;
     // Mu's verified NiNodeUpdate handler queues face/body skin and hair updates;
     // notifying it does not rebuild the head or trigger a new preset selection.
     if(auto* source=SKSE::GetNiNodeUpdateEventSource()){
+        state->second.notifiedGeometry=std::move(geometry);
         SKSE::NiNodeUpdateEvent event{actor};source->SendEvent(&event);
         logger::info("Mu compatibility: sent appearance update notification for {:08X}",actor->GetFormID());
     }
@@ -64,10 +77,10 @@ private:RE::ActorHandle actor;std::uint64_t stamp;
 void Check(RE::Actor* actor){
     if(!current || !actor || actor->IsPlayerRef() || !actor->Is3DLoaded())return;
     auto it=states.find(actor->GetFormID());if(it==states.end() || it->second.inFlight)return;
-    Notify(actor);const auto now=Head(actor);
+    const auto now=Head(actor);
     // Covering the head can leave no face to capture. When it returns we must
     // restore the selected preset instead of permanently rejecting the actor.
-    if(!now.node || now==it->second.face)return;
+    if(!now.node || now==it->second.face){Notify(actor);return;}
     std::shared_ptr<void> preset;current(manager,&preset,actor->GetActorBase());if(!preset)return;
     const auto* info=reinterpret_cast<const PresetPrefix*>(preset.get());auto stem=ExportedPresetStem(info->path);
     if(!stem){logger::warn("Mu compatibility: unsupported selected export path '{}'; no guessed preset used",info->path);return;}
@@ -115,7 +128,7 @@ void Before(RE::Actor* actor){
     std::shared_ptr<void> preset;current(manager,&preset,actor->GetActorBase());
     if(!preset){logger::info("Mu compatibility: no current saved selection for actor {:08X}; no guessed preset used",actor->GetFormID());return;}
     const auto* info=reinterpret_cast<const PresetPrefix*>(preset.get());
-    states.try_emplace(actor->GetFormID(),State{Head(actor)});
+    states.try_emplace(actor->GetFormID(),State{Head(actor),false,Geometry(actor)});
     logger::info("Mu compatibility: captured selected preset '{}' for {:08X}; runtimeApplied={}",info->path,actor->GetFormID(),applied(manager,actor));
 }
 void After(RE::Actor* actor){
@@ -126,7 +139,7 @@ void After(RE::Actor* actor){
     // If the first observation comes from a completion callback, it is not
     // a known-good pre-change face. Restore the selected preset once visible.
     if(!alreadyTracked)states[actor->GetFormID()].face={};
-    auto handle=actor->GetHandle();auto stamp=generation;
-    std::thread([handle,stamp]{for(auto wait:{300,1200,2500}){std::this_thread::sleep_for(std::chrono::milliseconds(wait));SKSE::GetTaskInterface()->AddTask([handle,stamp]{std::lock_guard lock(mutex);if(stamp!=generation)return;auto ref=handle.get();if(auto* actor=ref.get())Check(actor);});}}).detach();
+    auto handle=actor->GetHandle();auto stamp=generation;auto checks=++states.at(actor->GetFormID()).checks;
+    std::thread([handle,stamp,checks]{for(auto wait:{300,1200,2500}){std::this_thread::sleep_for(std::chrono::milliseconds(wait));SKSE::GetTaskInterface()->AddTask([handle,stamp,checks]{std::lock_guard lock(mutex);if(stamp!=generation)return;auto ref=handle.get();if(auto* actor=ref.get()){auto it=states.find(actor->GetFormID());if(it!=states.end() && it->second.checks==checks)Check(actor);}});}}).detach();
 }
 }

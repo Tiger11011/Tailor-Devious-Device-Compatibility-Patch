@@ -1,7 +1,7 @@
 set_xmakever('3.0.1')
 includes('../Tailor-DD-Compat/lib/commonlibsse-ng')
 set_project('TailorDDBridge')
-set_version('0.6.4')
+set_version('0.6.6')
 set_license('GPL-3.0-or-later')
 set_languages('clatest', 'c++23')
 set_encodings('utf-8')

@@ -185,7 +185,7 @@ SKSEPluginLoad(const SKSE::LoadInterface* skse) {
     auto sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(path->string(), true);
     spdlog::set_default_logger(std::make_shared<spdlog::logger>("TailorDDBridge", sink));
     spdlog::set_level(spdlog::level::info); spdlog::flush_on(spdlog::level::info);
-    logger::info("Tailor DD bridge 0.6.4 DD removal appearance recovery and face tint diagnostics test");
+    logger::info("Tailor DD bridge 0.6.6 automatic fitting data local test; DD token ownership and geometry-gated Mu notifications");
     SKSE::GetPapyrusInterface()->Register(FreeWear::RegisterPapyrus);
     SKSE::GetPapyrusInterface()->Register(MuAppearance::RegisterPapyrus);
     Equipment::RegisterSerialization();

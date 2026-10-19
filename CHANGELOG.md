@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.6.6 — 2026-10-19
+
+- Automatic fitting setup on normal game launch: no Python, manual Generated Data or preliminary restart cycle. Newly installed supported clothing is discovered next launch; persistent identities and legacy Generated Data remain supported.
+- Fix helper-owned DD removal-token leaks in the render-only fallback; block relocking while DD removal remains active.
+- Gate Mu notifications on geometry changes and supersede older check chains, retaining selected-face restoration.
+- Local runtime logs: 11/11 removals and 14/14 equips succeeded, with no token refusals/timeouts; two successful face restores. See VALIDATION-0.6.6.md.
+- Publish the exact tested DLL/PEX with bilingual FOMOD, complete corresponding source and existing permission/license records.
+
 ## 0.6.4-permissions.3 — 2026-10-18
 
 - Synchronize the maintainer's final English/Chinese publication copy into README and Nexus description files, preserving wording and restoring formatting/links.

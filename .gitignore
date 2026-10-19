@@ -16,3 +16,6 @@
 *.lib
 *.pch
 *.ipch
+
+**/Papyrus/output/
+dependency-sources/archives/

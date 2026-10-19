@@ -34,6 +34,14 @@ Bool Function Lock(Actor who, Armor inventoryDevice, Armor renderedDevice, Int r
     If !libs || !who || !inventoryDevice || !renderedDevice || !AuthorizeEquip(who, inventoryDevice, requestId)
         Return False
     EndIf
+    ; A completed native job does not guarantee DD consumed its token. Never
+    ; relock on top of an unfinished/refused DD removal, including render-only
+    ; and currently unworn states.
+    String removalToken = "zad_RemovalToken" + inventoryDevice
+    If StorageUtil.GetIntValue(who, removalToken, 0) != 0
+        Report(who, inventoryDevice, requestId, "DD removal token still active; equip cancelled")
+        Return False
+    EndIf
     ; Recover only our own inventory-only failed equip. Use DD's own removal
     ; API, not deleting the item or forcing rendered armor onto the actor.
     If who.IsEquipped(inventoryDevice) && !who.IsEquipped(renderedDevice)
@@ -111,32 +119,23 @@ Bool Function Unlock(Actor who, Armor inventoryDevice, Armor renderedDevice, Int
         Report(who, inventoryDevice, requestId, "DD equip job still active; removal postponed")
         Return False
     EndIf
-    ; Mark the operation after the token exists, so reentrant native unequip
-    ; calls are allowed only through DD's authorized removal path.
+    ; Native authorization is independent of DD's StorageUtil token. Let DD
+    ; create/consume that token in the branch that actually unequips inventory.
+    ; Precreating it here leaks it when DD takes its render-only cleanup path
+    ; (inventory can become unworn between our check and DD's own check).
     String token = "zad_RemovalToken" + inventoryDevice
     Int previous = StorageUtil.GetIntValue(who, token, 0)
     If previous != 0
         Report(who, inventoryDevice, requestId, "another removal token already exists")
         Return False
     EndIf
-    Bool wasInventoryEquipped = who.IsEquipped(inventoryDevice)
-    StorageUtil.SetIntValue(who, token, 1)
     If !Authorize(who, inventoryDevice, requestId)
-        If previous == 0
-            StorageUtil.UnsetIntValue(who, token)
-        Else
-            StorageUtil.SetIntValue(who, token, previous)
-        EndIf
         Return False
     EndIf
     Report(who, inventoryDevice, requestId, "calling DD UnlockDevice")
     Bool accepted = libs.UnlockDevice(who, inventoryDevice, renderedDevice, None, False, True)
     If !accepted
-        StorageUtil.UnsetIntValue(who, token)
         Return False
-    EndIf
-    If !wasInventoryEquipped && !who.IsEquipped(renderedDevice)
-        StorageUtil.UnsetIntValue(who, token)
     EndIf
     Int attempts = 300
     While attempts > 0 && (who.IsEquipped(inventoryDevice) || who.IsEquipped(renderedDevice) || StorageUtil.GetIntValue(who, token, 0) != 0)
