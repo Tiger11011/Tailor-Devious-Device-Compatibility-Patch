@@ -3,7 +3,7 @@ from pathlib import Path, PurePosixPath
 import argparse,hashlib,json,subprocess,sys,zipfile,runpy,xml.etree.ElementTree as ET
 
 project=Path(__file__).resolve().parents[1]; repo=project.parent
-version='0.6.6'; package_revision='0.6.6-credits.1'
+version='0.6.6'; package_revision='0.6.6-credits.2'
 prefix=f'Tailor-Devious-Device-Compatibility-Patch-{package_revision}'
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--dll',type=Path,required=True)

@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.6-credits.2 — 2026-10-19
+
+- Add a concise GPL-3.0-or-later statement and third-party license boundary to both README languages and Nexus description copies.
+- Refresh matching installer/source documentation and source-access links only; all runtime files, settings, licenses and functional sources remain unchanged.
+
 ## 0.6.6-credits.1 — 2026-10-19
 
 - Explicitly credit CommonLibSSE-NG, MinHook/HDE and Dear ImGui authors in both README languages and Nexus description copies.
