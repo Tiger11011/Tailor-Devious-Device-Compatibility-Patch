@@ -55,13 +55,15 @@ If it's related to character appearance while using Mu Dynamic NPC Replacer, ple
 
 ## Shout outs and License
 
+Bundled code libraries: **CommonLibSSE-NG** — **Ryan-rsm-McKenzie, CharmedBaryon, alandtse and contributors**; **MinHook** — **Tsuda Kageyu**, with HDE by **Vyacheslav Patkov**; **Dear ImGui** — **Omar Cornut and contributors**. Their copyright and license notices are retained in `CREDITS.md`, `THIRD_PARTY_NOTICES.txt` and `licenses/`.\
+
 Credit to exiledviper (continued maintenance/refactoring) and meh321 (original version and idea) for [PapyrusUtil SE](https://www.nexusmods.com/skyrimspecialedition/mods/13048). Our independent helper calls its StorageUtil functions. PapyrusUtil is a separately installed runtime requirement; its DLL and implementation scripts are not included.\
 
 Included: independent patch DLL and helper PEX, bilingual FOMOD, automatic fitting plugin, bilingual instructions and license notices. Excluded: Tailor runtime/assets/fonts, third-party translations, DD/Mu/RaceMenu implementations or assets, personal presets/generated equipment data, saves, logs, and temporary startup diagnostic tools.\
 
 Credit to ColdSun / heathbrownkeyworks for Tailor and its API, the DD/DD NG developers, Acro for Mu, expired6978 for RaceMenu, and Llinnn for the separately distributed Tailor CHS translation. Their mods must be obtained independently. This is an unofficial compatibility add-on.\
 
-The [Source.zip](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.6) and [GitHub repository](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch) contain corresponding source and build instructions. Do not install Source.zip in MO2. The patch is GPL-3.0-or-later; see LICENSE and THIRD_PARTY_NOTICES.txt.\
+The [Source.zip](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.6-credits.1) and [GitHub repository](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch) contain corresponding source and build instructions. Do not install Source.zip in MO2. The patch is GPL-3.0-or-later; see LICENSE and THIRD_PARTY_NOTICES.txt.\
 Source delivery: see SOURCE-ACCESS.md and dependency-sources/README.md in the complete Source.zip for the actual 8 resolved dependencies, source SHA-256 values, recorded recipes/configurations and configured-header copies. The 0.6.6 release packages the same DLL/PEX verified in the local game test; release preparation does not rebuild them.\
 
 Full attribution and permission record: CREDITS.md, PREREQUISITE-NOTICES.md, RESOURCE-AUDIT.json (included in the installer/source). Includes SKSE team, meh321/Address Library, DD/NG authors, PapyrusUtil authors, optional integrations, linked libraries and embedded code. Permission to publish this compatibility patch has been granted by Tailor author ColdSun; see [AUTHOR-PERMISSIONS.md](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/AUTHOR-PERMISSIONS.md).

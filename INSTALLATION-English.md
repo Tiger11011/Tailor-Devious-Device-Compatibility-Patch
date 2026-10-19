@@ -3,7 +3,7 @@
 # Tailor Devious Device Compatibility Patch 0.6.6 — Technical reference / 详细技术说明
 
 
-**Corresponding source for this binary:** download Tailor-Devious-Device-Compatibility-Patch-0.6.6-Source.zip from [the exact matching release](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.6), available without charge alongside the FOMOD. On Nexus, offer that matching Source.zip in Optional Files or clearly link this exact source download next to the main binary file. The source includes build files and pinned dependency source.
+**Corresponding source for this binary:** download Tailor-Devious-Device-Compatibility-Patch-0.6.6-credits.1-Source.zip from [the exact matching release](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.6-credits.1), available without charge alongside the FOMOD. On Nexus, offer that matching Source.zip in Optional Files or clearly link this exact source download next to the main binary file. The source includes build files and pinned dependency source.
 
 
 Try supported Devious Devices clothing freely in Tailor. After confirming an outfit, keep genuine DD sounds, animations and other effects, and choose whether normal clothing locks remain active. This is an independent add-on: it does not replace Tailor.dll or include anyone else's translation.
@@ -33,7 +33,7 @@ These are deliberately narrow native compatibility checks. Unsupported builds ar
 ## Installation in MO2
 
 1. Close Skyrim. Install Tailor, DD/DD NG, PapyrusUtil and their requirements. Install the supported Tailor translation separately if desired.
-2. Install **Tailor-Devious-Device-Compatibility-Patch-0.6.6-FOMOD.zip** as one mod, choose 中文 or English, and enable the bundled **TailorDDAutoFitting.esp** in the plugin list. The language choice affects only this add-on.
+2. Install **Tailor-Devious-Device-Compatibility-Patch-0.6.6-credits.1-FOMOD.zip** as one mod, choose 中文 or English, and enable the bundled **TailorDDAutoFitting.esp** in the plugin list. The language choice affects only this add-on.
 3. Enable only one patch version; disable old independent bridge language mods and temporary startup diagnostics. Keep old matching Generated Data if already used by saves/outfits.
 4. Launch normally through MO2/SKSE. Supported winning inventory/render-device links and loose/BSA script inheritance are scanned at data loading. No Python, external generator or initial enter/exit cycle is required.
 5. Open Tailor → Settings → DD Settings. The default remains Off.

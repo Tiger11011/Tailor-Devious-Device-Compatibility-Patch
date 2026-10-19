@@ -1,4 +1,8 @@
-# Tailor Devious Device Compatibility Patch 0.6.6
+# Tailor Devious Device Compatibility Patch 0.6.6 — credits.1
+
+**Documentation-only revision (2026-10-19).** Adds explicit CommonLibSSE-NG, MinHook/HDE and Dear ImGui author credits to the bilingual README/Nexus copies. All game-tested 0.6.6 runtime files, settings and functional source are unchanged. No rebuild.
+
+**仅鸣谢与说明修订。** 中英文说明明确补充这三个库及作者，功能仍为 0.6.6；DLL、PEX、ESP、设置及功能源码均未改动。
 
 Automatic equipment setup and the tested DD removal / Mu notification fixes.
 

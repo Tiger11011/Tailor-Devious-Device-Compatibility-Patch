@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.6.6-credits.1 — 2026-10-19
+
+- Explicitly credit CommonLibSSE-NG, MinHook/HDE and Dear ImGui authors in both README languages and Nexus description copies.
+- Synchronize installer/source documentation and source-access links. Tested 0.6.6 DLL, PEX, ESP, settings and functional sources remain byte-identical; no recompilation.
+
 ## 0.6.6 — 2026-10-19
 
 - Automatic fitting setup on normal game launch: no Python, manual Generated Data or preliminary restart cycle. Newly installed supported clothing is discovered next launch; persistent identities and legacy Generated Data remain supported.

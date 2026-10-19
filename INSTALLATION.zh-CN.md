@@ -3,7 +3,7 @@
 # Tailor Devious Device Compatibility Patch 0.6.6 — Technical reference / 详细技术说明
 
 
-**本二进制对应源码：**在[完全对应的发布页](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.6)免费下载 Tailor-Devious-Device-Compatibility-Patch-0.6.6-Source.zip，与 FOMOD 同页提供。上传 Nexus 时，将这份源码放到 Optional Files，或在主文件下载说明旁明确链接该对应源码。源码包含构建文件及固定版本依赖源码。
+**本二进制对应源码：**在[完全对应的发布页](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.6-credits.1)免费下载 Tailor-Devious-Device-Compatibility-Patch-0.6.6-credits.1-Source.zip，与 FOMOD 同页提供。上传 Nexus 时，将这份源码放到 Optional Files，或在主文件下载说明旁明确链接该对应源码。源码包含构建文件及固定版本依赖源码。
 
 
 在 Tailor 中自由试穿受支持的 DD 装备。确认退出后保留真实 DD 的音效、动画等效果，由开关决定是否保留正常穿脱限制。独立补丁，不替换 Tailor.dll，不包含任何人的 Tailor 汉化。
@@ -33,7 +33,7 @@
 ## MO2 安装
 
 1. 关闭 Skyrim，安装 Tailor、DD/DD NG、PapyrusUtil 及各自前置。Tailor 汉化由用户另行获取。
-2. 安装 **Tailor-Devious-Device-Compatibility-Patch-0.6.6-FOMOD.zip**，选择中文或 English，并在右侧启用随包的 **TailorDDAutoFitting.esp**。语言选择只影响本补丁。
+2. 安装 **Tailor-Devious-Device-Compatibility-Patch-0.6.6-credits.1-FOMOD.zip**，选择中文或 English，并在右侧启用随包的 **TailorDDAutoFitting.esp**。语言选择只影响本补丁。
 3. 只启用一个补丁版本，禁用旧的独立语言补丁和临时启动诊断工具。已有存档/套装使用旧 Generated Data 的用户保留原数据。
 4. 通过 MO2/SKSE 正常启动。加载时自动识别当前胜出的装备配对和松散/BSA 脚本继承；无需 Python、外部生成器或先进入再退出一次游戏。
 5. 打开 Tailor → 设置 → DD 设置；开关默认关闭。

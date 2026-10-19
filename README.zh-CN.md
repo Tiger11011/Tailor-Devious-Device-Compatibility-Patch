@@ -60,13 +60,15 @@ Devious Device NG\
 
 ## 声明许可
 
+同时感谢随包代码库的作者：**CommonLibSSE-NG** 的 **Ryan-rsm-McKenzie、CharmedBaryon、alandtse 及贡献者**；**MinHook** 的 **Tsuda Kageyu**，以及 HDE 作者 **Vyacheslav Patkov**；**Dear ImGui** 的 **Omar Cornut 及贡献者**。对应版权与许可声明保留在 `CREDITS.md`、`THIRD_PARTY_NOTICES.txt` 和 `licenses/` 中。\
+
 感谢 [PapyrusUtil SE](https://www.nexusmods.com/skyrimspecialedition/mods/13048) 的 exiledviper（持续维护与重构）及 meh321（原始版本与构想）。补丁自有辅助脚本调用其 StorageUtil 函数；PapyrusUtil 是需单独安装的运行时前置，不随包分发其 DLL 或实现脚本。\
 
 包含：独立 DLL、自有辅助 PEX、双语 FOMOD、自动试衣插件、双语说明及许可证。不包含：Tailor 本体/字体、他人汉化、DD/Mu/RaceMenu 实现及资源、个人预设/生成装备数据、存档、日志或临时崩溃诊断工具。\
 
 感谢 ColdSun / heathbrownkeyworks 的 Tailor 和 API、DD/DD NG 开发者、Mu 作者 Acro、RaceMenu 作者 expired6978，以及独立发布 Tailor 汉化的 Llinnn。相关作品均需自行下载。本补丁为非官方兼容扩展。\
 
-对应源码及构建说明见 [Source.zip](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.6) 和 [GitHub](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch)。Source.zip 不是 MO2 安装包。补丁使用 GPL-3.0-or-later，详见 LICENSE 与 THIRD_PARTY_NOTICES.txt。\
+对应源码及构建说明见 [Source.zip](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.6-credits.1) 和 [GitHub](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch)。Source.zip 不是 MO2 安装包。补丁使用 GPL-3.0-or-later，详见 LICENSE 与 THIRD_PARTY_NOTICES.txt。\
 源码交付：请参阅完整 Source.zip 文件中的 SOURCE-ACCESS.md 和 dependency-sources/README.md，其中包含实际已解决的 8 个依赖项、源码的 SHA-256 值、记录的构建配方/配置以及已配置头文件的副本。0.6.6 发布包沿用本轮游戏实测的同一份 DLL/PEX，发布整理不重新编译。\
 
 完整作者与许可清单：CREDITS.md、PREREQUISITE-NOTICES.md、RESOURCE-AUDIT.json（包含在安装程序/源代码中）。其中包括 SKSE 团队、meh321/Address Library、DD/NG 作者、PapyrusUtil 作者、可选集成、关联库及嵌入式代码。已获得 Tailor 作者 ColdSun 发布本兼容补丁的许可 [AUTHOR-PERMISSIONS.md](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/AUTHOR-PERMISSIONS.md)
