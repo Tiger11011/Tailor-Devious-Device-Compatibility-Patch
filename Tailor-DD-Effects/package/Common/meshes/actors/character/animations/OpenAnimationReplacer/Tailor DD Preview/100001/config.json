@@ -1,0 +1,18 @@
+{
+  "name": "Tailor fitting - Elbow tie",
+  "priority": 2110000001,
+  "interruptible": true,
+  "overrideAnimationsFolder": "../DD to OAR/100001",
+  "conditions": [
+    {
+      "condition": "IsChild",
+      "requiredVersion": "1.0.0.0",
+      "negated": true
+    },
+    {
+      "condition": "TailorDDPreviewElbowTie",
+      "requiredPlugin": "TailorDDBridge",
+      "requiredVersion": "0.6.7.0"
+    }
+  ]
+}

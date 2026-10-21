@@ -17,7 +17,6 @@ Install the FOMOD, choose a language, and enable **TailorDDAutoFitting.esp**. St
 Tailor\
 Tailor translation (optional, obtained separately)\
 Tailor Devious Device Compatibility Patch\
-Tailor Devious Device Compatibility Patch - Generated Data (existing users only; keep it if already used by your saves/outfits)\
 
 ## How to use
 
@@ -25,14 +24,19 @@ Open Tailor in game (Shift + Z by default) → Settings → DD Settings\
 
 ## Main features
 
-- Off (default): No DD equipment restrictions apply after exiting Tailor\
+- Off (default): Supported DD clothing managed by the patch can be changed or removed after exiting Tailor; its animations, sounds and other effects remain\
 - On: Normal DD equipment restrictions remain in effect after exiting (Note: Tailor itself includes a cross-save feature, which will cause this follower across all saves to be subject to DD’s equipment restrictions)\
+
+0.6.14 improves DD pose previews while switching between restraint gear, ordinary clothing and Pet gear. It clears stale upper-body pose overrides during fitting and protects the selected Pet preview from automatic idle changes. The 2026-10-21 local test passed the reported switching sequence; see [validation and limits](VALIDATION-0.6.14.md).\
 
 ## Requirements
 
 PapyrusUtil SE\
 Tailor\
 Devious Device NG\
+Open Animation Replacer (locally tested 3.1.6; public Conditions interface V3, numeric API value 2)\
+
+The optional Partial Animation Replacer 0.2.0 adapter supports the reviewed version supplied with DD NG; no separate PAR installation is required by this patch. Exact supported builds are listed in [the installation reference](INSTALLATION-English.md).
 
 ## AI usage
 
@@ -59,13 +63,15 @@ If it's related to character appearance while using Mu Dynamic NPC Replacer, ple
 
 Bundled code libraries: **CommonLibSSE-NG** — **Ryan-rsm-McKenzie, CharmedBaryon, alandtse and contributors**; **MinHook** — **Tsuda Kageyu**, with HDE by **Vyacheslav Patkov**; **Dear ImGui** — **Omar Cornut and contributors**. Their copyright and license notices are retained in `CREDITS.md`, `THIRD_PARTY_NOTICES.txt` and `licenses/`.\
 
+Credit to **ersh (ersh1) and Open Animation Replacer contributors** for the public Conditions API source. Its original `COPYING` and `EXCEPTIONS` texts are retained with the source and installation license notices.\
+
 Credit to exiledviper (continued maintenance/refactoring) and meh321 (original version and idea) for [PapyrusUtil SE](https://www.nexusmods.com/skyrimspecialedition/mods/13048). Our independent helper calls its StorageUtil functions. PapyrusUtil is a separately installed runtime requirement; its DLL and implementation scripts are not included.\
 
-Included: independent patch DLL and helper PEX, bilingual FOMOD, automatic fitting plugin, bilingual instructions and license notices. Excluded: Tailor runtime/assets/fonts, third-party translations, DD/Mu/RaceMenu implementations or assets, personal presets/generated equipment data, saves, logs, and temporary startup diagnostic tools.\
+Included: independent patch DLL and helper PEX, bilingual FOMOD, automatic fitting plugin, fitting-preview OAR condition JSON, bilingual instructions and license notices. The JSON refers to separately installed DD animations; no DD animation or PAR configuration assets are bundled. Excluded: Tailor runtime/assets/fonts, third-party translations, DD/Mu/RaceMenu implementations or assets, personal presets/generated equipment data, saves, logs, and temporary startup diagnostic tools.\
 
 Credit to ColdSun / heathbrownkeyworks for Tailor and its API, the DD/DD NG developers, Acro for Mu, expired6978 for RaceMenu, and Llinnn for the separately distributed Tailor CHS translation. Their mods must be obtained independently. This is an unofficial compatibility add-on.\
 
-The [Source.zip](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.6-credits.2) and [GitHub repository](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch) contain corresponding source and build instructions. Do not install Source.zip in MO2. The patch is GPL-3.0-or-later; see LICENSE and THIRD_PARTY_NOTICES.txt.\
-Source delivery: see SOURCE-ACCESS.md and dependency-sources/README.md in the complete Source.zip for the actual 8 resolved dependencies, source SHA-256 values, recorded recipes/configurations and configured-header copies. The 0.6.6 release packages the same DLL/PEX verified in the local game test; release preparation does not rebuild them.\
+The [Source.zip](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.14) and [GitHub repository](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch) contain corresponding source and build instructions. Do not install Source.zip in MO2. The patch is GPL-3.0-or-later; see LICENSE and THIRD_PARTY_NOTICES.txt.\
+Source delivery: see SOURCE-ACCESS.md and dependency-sources/README.md in the complete Source.zip for the actual 8 resolved dependencies, source SHA-256 values, recorded recipes/configurations and configured-header copies. The 0.6.14 release retains the game-tested DLL and helper PEX; release preparation does not rebuild them. The complete source also includes the public Open Animation Replacer Conditions API and its notices. The permission screenshot is included only in Source.zip and the repository.\
 
 Full attribution and permission record: CREDITS.md, PREREQUISITE-NOTICES.md, RESOURCE-AUDIT.json (included in the installer/source). Includes SKSE team, meh321/Address Library, DD/NG authors, PapyrusUtil authors, optional integrations, linked libraries and embedded code. Permission to publish this compatibility patch has been granted by Tailor author ColdSun; see [AUTHOR-PERMISSIONS.md](https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/blob/main/AUTHOR-PERMISSIONS.md).

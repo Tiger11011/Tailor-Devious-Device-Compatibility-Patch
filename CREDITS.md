@@ -1,11 +1,30 @@
 # Credits and resource provenance / 鸣谢与资源来源
 
-Checked 2026-10-18 for functional version 0.6.4. This record distinguishes
+Updated 2026-10-21 for functional version 0.6.14. This record distinguishes
 separately installed prerequisites from code compiled into the patch and files
 actually distributed. Credit is not a claim of endorsement, permission to
 repackage a prerequisite, or a replacement for its license.
 
 ## External game and mod prerequisites
+
+**Open Animation Replacer (OAR)** — **ersh (ersh1) and contributors**:
+https://github.com/ersh1/OpenAnimationReplacer . The patch uses its public
+Conditions API to expose scoped fitting poses. Five unmodified API support
+sources, GPL COPYING, upstream EXCEPTIONS and a per-file SHA-256/provenance
+record are retained in `Tailor-DD-Effects/src/OAR`; the installer carries their
+notices under `licenses/OpenAnimationReplacer-*`. Our eight JSON files reference
+separately installed DD NG animation folders. No OAR DLL or DD animation asset
+is redistributed. 中文：感谢 ersh 及贡献者；源码包保留 API 原文、许可和来源，
+安装包仅包含自有配置及许可，不分发 OAR DLL 或 DD 动画资源。
+
+Version 0.6.14 includes an optional, exact-binary-guarded compatibility adapter
+for **Partial Animation Replacer (PAR)**, **naitro2010 and contributors**:
+https://github.com/naitro2010/PartialAnimationReplacer . It calls the separately
+installed PAR 0.2.0 condition evaluator before applying a cached bone pose to
+the active fitting NPC. No PAR implementation, header, DLL/PDB or pose JSON is
+included. This is runtime interoperability, not a new redistributed library.
+中文版：0.6.14 包含可选的 PAR 骨骼姿势兼容，感谢 naitro2010 及贡献者；
+仅调用用户已安装的受支持版本，不分发 PAR 实现、头文件、DLL/PDB 或姿势资源。
 
 | Project and creator | Actual use in this project | Distribution / licensing boundary |
 | --- | --- | --- |

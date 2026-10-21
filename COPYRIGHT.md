@@ -46,6 +46,13 @@ The same notice revision includes CREDITS.md, PREREQUISITE-NOTICES.md and RESOUR
 
 2026-10-18: sources.4 limits vendored CommonLib/OpenVR source delivery to build-relevant source and notices; it adds no runtime or functional change.
 
-Tailor author permission / Tailor 作者许可（记录于 2026-10-18）：维护者确认已取得 ColdSun 对发布本兼容补丁的许可。ColdSun has granted permission to publish this compatibility patch, as confirmed by the maintainer. See AUTHOR-PERMISSIONS.md. Original correspondence is not included; other component rights and notices remain unchanged.
+Tailor author permission / Tailor 作者许可（记录于 2026-10-18）：维护者确认已取得 ColdSun 对发布本兼容补丁的许可。ColdSun has granted permission to publish this compatibility patch, as confirmed by the maintainer. See AUTHOR-PERMISSIONS.md. The permission screenshot is in Source.zip and the repository, not the installer; other component rights and notices remain unchanged.
 
 **2026-10-19 — version 0.6.6.** Adds own automatic fitting scanner/empty pool generator, DD token ownership and geometry-gated Mu notification corrections. Existing third-party copyright/license records and Tailor author permission retained. Release packages the exact locally tested DLL/PEX.
+
+**2026-10-21 — version 0.6.14.** Includes unmodified Open Animation Replacer
+public Conditions API support sources by ersh (ersh1) and contributors, under
+the retained original COPYING and EXCEPTIONS; see src/OAR provenance and the
+installer OpenAnimationReplacer notices. The independent PAR adapter calls a
+separately installed runtime and does not redistribute PAR implementation or
+assets. Formal packaging preserves the exact gameplay-tested runtime files.

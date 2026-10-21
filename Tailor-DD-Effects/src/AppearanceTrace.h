@@ -1,2 +1,6 @@
 #pragma once
-namespace AppearanceTrace {void Snapshot(RE::Actor* actor,const char* stage);}
+namespace AppearanceTrace {
+void Clear();
+void Snapshot(RE::Actor* actor,const char* stage);
+void SnapshotEquipment(RE::Actor* actor,const char* stage);
+}

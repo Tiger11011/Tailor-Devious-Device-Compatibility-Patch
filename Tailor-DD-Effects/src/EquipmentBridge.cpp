@@ -7,6 +7,11 @@
 #include "AppearanceTrace.h"
 #include "MuAppearance.h"
 #include "AutoFitting.h"
+#include "PreviewCleanup.h"
+#include "PreviewAnimations.h"
+#include "PreviewRequestOrder.h"
+#include <chrono>
+#include <thread>
 #include <unordered_map>
 #include <unordered_set>
 #include <mutex>
@@ -33,6 +38,11 @@ namespace {
     std::unordered_map<RE::FormID, Mode> actualModes;
     std::recursive_mutex stateMutex;
     std::uint64_t generation = 0;
+    std::unordered_map<RE::FormID,std::uint64_t> poseChecks;
+    std::unordered_map<RE::FormID,std::uint64_t> reconciles;
+    PreviewRequestOrder::Requests previewRequests;
+    struct PreviewRequest {std::uint64_t world;PreviewRequestOrder::Ticket ticket;};
+    RE::FormID previewActor = 0;
     bool ready = false;
     std::uintptr_t tailorBase = 0, tailorEnd = 0;
     TailorAPI::ITailorInterface1* api = nullptr;
@@ -67,6 +77,19 @@ namespace {
     bool IsOpen() {
         return !isTailorOpen || isTailorOpen();
     }
+    PreviewRequest RequestPreview(RE::Actor* actor,bool complete,const char* kind,const std::string& name){
+        std::lock_guard lock(stateMutex);const auto id=actor->GetFormID();
+        auto ticket=complete?previewRequests.Replace(id):previewRequests.Edit(id);
+        logger::info("Preview requested actor={:08X} serial={} replacement={} kind={} outfit='{}'",id,ticket.serial,ticket.replacement,kind,name);
+        return {generation,ticket};
+    }
+    bool CurrentPreview(RE::Actor* actor,PreviewRequest request,bool complete,const char* kind,const std::string& name){
+        std::lock_guard lock(stateMutex);const auto id=actor->GetFormID();
+        const bool current=request.world==generation && IsOpen() &&
+            (complete?previewRequests.Current(id,request.ticket):previewRequests.SameReplacement(id,request.ticket));
+        logger::info("Preview {} actor={:08X} serial={} kind={} outfit='{}'",current?"executing":"discarded stale",id,request.ticket.serial,kind,name);
+        return current;
+    }
     bool Worn(RE::Actor* actor, RE::TESObjectARMO* armor) {
         auto* inventory = actor ? actor->GetInventoryChanges(true) : nullptr;
         if (!inventory || !inventory->entryList) return false;
@@ -75,6 +98,39 @@ namespace {
             for (auto* extra : *entry->extraLists) if (extra && extra->GetWorn()) return true;
         }
         return false;
+    }
+    void RefreshPreviewPose(RE::Actor* actor){
+        std::lock_guard lock(stateMutex);
+        if(!actor || !IsOpen()){PreviewAnimations::ClearAll();return;}
+        if(previewActor && previewActor!=actor->GetFormID())PreviewAnimations::Clear(previewActor);
+        previewActor=actor->GetFormID();
+        std::vector<RE::TESObjectARMO*> sources;
+        auto* inventory=actor->GetInventoryChanges(true);
+        if(inventory && inventory->entryList)for(auto* entry:*inventory->entryList){
+            auto* armor=entry && entry->object?entry->object->As<RE::TESObjectARMO>():nullptr;
+            if(!armor || !Worn(actor,armor))continue;
+            if(auto it=cosmetics.find(armor->GetFormID());it!=cosmetics.end())sources.push_back(pairs[it->second].ren);
+        }
+        PreviewAnimations::Set(actor->GetFormID(),sources);
+    }
+    void SchedulePreviewPose(RE::Actor* actor){
+        std::lock_guard lock(stateMutex);
+        if(!actor)return;
+        if(!IsOpen()){PreviewAnimations::ClearAll();return;}
+        if(!PreviewAnimations::Ready())return;
+        auto handle=actor->GetHandle();const auto id=actor->GetFormID();
+        auto stamp=generation;auto checks=++poseChecks[id];
+        // EquipObject can settle after the caller returns. Read actual worn
+        // copies on the game thread, never the selected-but-rejected UI list.
+        std::thread([handle,id,stamp,checks]{for(auto wait:{0,100,250,650,1000,2000}){
+            if(wait)std::this_thread::sleep_for(std::chrono::milliseconds(wait));
+            {std::lock_guard lock(stateMutex);auto it=poseChecks.find(id);if(stamp!=generation || it==poseChecks.end() || it->second!=checks)return;}
+            SKSE::GetTaskInterface()->AddTask([handle,id,stamp,checks]{
+                std::lock_guard lock(stateMutex);auto it=poseChecks.find(id);
+                if(stamp!=generation || it==poseChecks.end() || it->second!=checks || !IsOpen())return;
+                auto ref=handle.get();if(auto* actor=ref.get()){RefreshPreviewPose(actor);PreviewAnimations::Trace(actor);}
+            });
+        }}).detach();
     }
     bool Protected(RE::TESBoundObject* object) {
         auto* armor = object ? object->As<RE::TESObjectARMO>() : nullptr;
@@ -134,6 +190,9 @@ namespace {
         }
         auto& pair = pairs[*index];
         if (inventoryOrCopy && actualAllowed && !IsOpen()) {
+            bool free=false;
+            {std::lock_guard lock(stateMutex);auto it=actor?actualModes.find(actor->GetFormID()):actualModes.end();free=it!=actualModes.end() && it->second.free;}
+            if(free && !FreeWear::IsGranted(actor,pair.inv))return pair.cos;
             if (Worn(actor, pair.ren)) return nullptr; // DD already owns this device.
             return pair.inv;
         }
@@ -167,16 +226,19 @@ namespace {
     }
     void Add(void* self, RE::Actor* actor, const ArmorItem& item) {
         if (!actor) return;
-        auto handle=actor->GetHandle();auto stamp=generation;
-        FreeWear::AfterUnrestrained(actor,[self,handle,item,stamp]{auto ref=handle.get();auto* a=ref.get();if(a&&stamp==generation&&IsOpen())if(auto mapped=Map(item,a,0))addItem(self,a,*mapped);});
+        auto handle=actor->GetHandle();auto request=RequestPreview(actor,false,"add",item.name);
+        FreeWear::AfterUnrestrained(actor,[self,handle,item,request]{auto ref=handle.get();auto* a=ref.get();if(a&&CurrentPreview(a,request,false,"add",item.name))if(auto mapped=Map(item,a,0)){addItem(self,a,*mapped);SchedulePreviewPose(a);}});
     }
     void RemovePreview(void* self, RE::Actor* actor, const ArmorItem& item) {
+        if(!actor)return;
+        RequestPreview(actor,false,"remove",item.name);
         if (auto mapped = Map(item, actor, 0)) removeItem(self, actor, *mapped);
+        SchedulePreviewPose(actor);
     }
     void Load(void* self, RE::Actor* actor, const std::vector<ArmorItem>& items) {
         if (!actor) return;
-        auto handle=actor->GetHandle();auto stamp=generation;
-        FreeWear::AfterUnrestrained(actor,[self,handle,items,stamp]{auto ref=handle.get();auto* a=ref.get();if(!a||stamp!=generation||!IsOpen())return;auto mapped=MapAll(items,a,0);if(!items.empty()&&mapped.empty())return;loadItems(self,a,mapped);});
+        auto handle=actor->GetHandle();auto request=RequestPreview(actor,true,"load","");
+        FreeWear::AfterUnrestrained(actor,[self,handle,items,request]{auto ref=handle.get();auto* a=ref.get();if(!a||!CurrentPreview(a,request,true,"load",""))return;auto mapped=MapAll(items,a,0);if(!items.empty()&&mapped.empty())return;loadItems(self,a,mapped);SchedulePreviewPose(a);});
     }
     void Remember(RE::Actor* actor, const Outfit& outfit) {
         if (!actor) return;
@@ -188,34 +250,77 @@ namespace {
             std::none_of(outfit.items.begin(), outfit.items.end(), [](const ArmorItem& item) { return item.plugin == "TailorDDCosmetics.esp" || item.plugin == AutoFitting::Plugin; }))
             lastApplied[actor->GetFormID()] = outfit;
     }
+    void Name(const char* text,void* context);
+    bool Apply(void* self,RE::Actor* actor,const Outfit& outfit,bool automatic);
+    void ReconcileOutside(void* self,RE::Actor* actor,const Outfit& outfit){
+        if(!actor || actor->IsPlayerRef() || IsOpen() || AllowReal(outfit.items,actor,outfit.id))return;
+        const bool hasDD=std::any_of(outfit.items.begin(),outfit.items.end(),[](const ArmorItem& item){
+            auto* armor=RE::TESDataHandler::GetSingleton()->LookupForm<RE::TESObjectARMO>(item.id,item.plugin);
+            return armor && (inventories.contains(armor->GetFormID())||cosmetics.contains(armor->GetFormID()));
+        });
+        if(!hasDD)return;
+        auto handle=actor->GetHandle();const auto stamp=generation;const auto id=actor->GetFormID();
+        std::uint64_t serial;{std::lock_guard lock(stateMutex);serial=++reconciles[id];}
+        SKSE::GetTaskInterface()->AddTask([self,handle,outfit,stamp,id,serial]{
+            {std::lock_guard lock(stateMutex);if(stamp!=generation || reconciles[id]!=serial || IsOpen())return;}
+            auto ref=handle.get();auto* actor=ref.get();if(!actor || !actor->Is3DLoaded() || !api)return;
+            std::string active;if(!api->GetOutfit(actor,Name,&active) || active!=outfit.name)return;
+            FreeWear::AfterReleased(actor,[self,handle,outfit,stamp,id,serial]{
+                {std::lock_guard lock(stateMutex);if(stamp!=generation || reconciles[id]!=serial || IsOpen())return;}
+                auto ref=handle.get();auto* actor=ref.get();if(!actor || !actor->Is3DLoaded())return;
+                std::string active;if(!api->GetOutfit(actor,Name,&active)||active!=outfit.name)return;
+                const bool actual=activateOnExit.load();std::vector<RE::TESObjectARMO*> devices,granted;
+                for(const auto& item:outfit.items){
+                    auto* armor=RE::TESDataHandler::GetSingleton()->LookupForm<RE::TESObjectARMO>(item.id,item.plugin);
+                    if(!armor)continue;
+                    if(auto it=inventories.find(armor->GetFormID());it!=inventories.end())devices.push_back(pairs[it->second].inv);
+                    else if(auto it=cosmetics.find(armor->GetFormID());it!=cosmetics.end())devices.push_back(pairs[it->second].inv);
+                }
+                if(!actual)FreeWear::GrantSupported(actor,devices,&granted);
+                {std::lock_guard lock(stateMutex);actualModes[id]={outfit.id,Fingerprint(outfit.items),!actual};}
+                const bool ok=Apply(self,actor,outfit,false);
+                if(!ok){FreeWear::Revoke(actor,granted);std::lock_guard lock(stateMutex);actualModes.erase(id);}
+                else if(actual)FreeWear::Revoke(actor,devices);
+                logger::info("Outside Tailor assignment reconciled actor={:08X} outfit='{}' real={} accepted={}",id,outfit.name,actual,ok);
+            });
+        });
+    }
     bool Apply(void* self, RE::Actor* actor, const Outfit& outfit, bool automatic) {
         Remember(actor, outfit);
         if (actor && actor->IsPlayerRef()) return applyOutfit(self, actor, outfit, automatic);
         if (actor && IsOpen()) {
-            auto handle=actor->GetHandle();auto stamp=generation;
-            FreeWear::AfterUnrestrained(actor,[self,handle,outfit,automatic,stamp]{auto ref=handle.get();auto* a=ref.get();if(!a||stamp!=generation||!IsOpen())return;auto mapped=outfit;mapped.items=MapAll(outfit.items,a,outfit.id);if(!outfit.items.empty()&&mapped.items.empty())return;applyOutfit(self,a,mapped,automatic);});
+            auto handle=actor->GetHandle();auto request=RequestPreview(actor,true,"outfit",outfit.name);
+            FreeWear::AfterUnrestrained(actor,[self,handle,outfit,automatic,request]{auto ref=handle.get();auto* a=ref.get();if(!a||!CurrentPreview(a,request,true,"outfit",outfit.name))return;auto mapped=outfit;mapped.items=MapAll(outfit.items,a,outfit.id);if(!outfit.items.empty()&&mapped.items.empty())return;applyOutfit(self,a,mapped,automatic);SchedulePreviewPose(a);});
             return true;
         }
         auto mapped = outfit; mapped.items = MapAll(outfit.items, actor, outfit.id);
         if (!outfit.items.empty() && mapped.items.empty()) return false;
-        const bool applied=applyOutfit(self,actor,mapped,automatic);
         bool free=false;
         {std::lock_guard lock(stateMutex);auto it=actor?actualModes.find(actor->GetFormID()):actualModes.end();free=it!=actualModes.end() && it->second.free;}
+        std::vector<RE::TESObjectARMO*> visible;
+        if(free && AllowReal(outfit.items,actor,outfit.id))for(const auto& item:mapped.items){
+            auto* armor=RE::TESDataHandler::GetSingleton()->LookupForm<RE::TESObjectARMO>(item.id,item.plugin);
+            if(armor && cosmetics.contains(armor->GetFormID()))visible.push_back(armor);
+        }
+        FreeWear::SetCosmeticVisibility(actor,visible);
+        const bool applied=applyOutfit(self,actor,mapped,automatic);
+        if(!applied)FreeWear::SetCosmeticVisibility(actor,{});
         if(applied && free && AllowReal(outfit.items,actor,outfit.id)){
             std::vector<RE::TESObjectARMO*> devices;
             for(const auto& item:outfit.items){auto* armor=RE::TESDataHandler::GetSingleton()->LookupForm<RE::TESObjectARMO>(item.id,item.plugin);if(armor){if(auto it=cosmetics.find(armor->GetFormID());it!=cosmetics.end())armor=pairs[it->second].inv;devices.push_back(armor);}}
             FreeWear::EquipManaged(actor,devices);
         }
+        if(applied && actor && !IsOpen() && !AllowReal(outfit.items,actor,outfit.id))ReconcileOutside(self,actor,outfit);
         return applied;
     }
     bool ApplyPlayer(void* self, RE::Actor* actor, const Outfit& outfit) {
         Remember(actor, outfit);
         if(actor && IsOpen()){
-            auto handle=actor->GetHandle();auto stamp=generation;
-            FreeWear::AfterUnrestrained(actor,[self,handle,outfit,stamp]{
-                auto ref=handle.get();auto* a=ref.get();if(!a||stamp!=generation||!IsOpen())return;
+            auto handle=actor->GetHandle();auto request=RequestPreview(actor,true,"player outfit",outfit.name);
+            FreeWear::AfterUnrestrained(actor,[self,handle,outfit,request]{
+                auto ref=handle.get();auto* a=ref.get();if(!a||!CurrentPreview(a,request,true,"player outfit",outfit.name))return;
                 struct Restore {bool resolving=resolvingPlayer,actual=playerActual;RE::Actor* actor=playerActor;~Restore(){resolvingPlayer=resolving;playerActual=actual;playerActor=actor;}} restore;
-                resolvingPlayer=true;playerActor=a;playerActual=false;applyPlayer(self,a,outfit);
+                resolvingPlayer=true;playerActor=a;playerActual=false;applyPlayer(self,a,outfit);SchedulePreviewPose(a);
             });
             return true;
         }
@@ -244,7 +349,21 @@ namespace {
         bool free=false;
         {std::lock_guard lock(stateMutex);auto it=actor?actualModes.find(actor->GetFormID()):actualModes.end();free=it!=actualModes.end() && it->second.free;}
         if(free)FreeWear::StripOutfit(actor,outfit);
-        Preserve(actor);auto result=setDefault(self,actor,outfit,update);AppearanceTrace::Snapshot(actor,"after Tailor default outfit");MuAppearance::After(actor);return result;
+        if(!IsOpen()){
+            std::vector<RE::TESObjectARMO*> visible;
+            if(free && outfit)for(auto* item:outfit->outfitItems){
+                auto* armor=item?item->As<RE::TESObjectARMO>():nullptr;
+                if(armor && cosmetics.contains(armor->GetFormID()))visible.push_back(armor);
+            }
+            FreeWear::SetCosmeticVisibility(actor,visible);
+        }
+        auto cleanup=PreviewCleanup::Capture(actor,outfit);
+        AppearanceTrace::SnapshotEquipment(actor,"before Tailor default outfit");
+        Preserve(actor);auto result=setDefault(self,actor,outfit,update);
+        PreviewCleanup::Finish(cleanup,actor,result);
+        AppearanceTrace::Snapshot(actor,"after Tailor default outfit");
+        AppearanceTrace::SnapshotEquipment(actor,"after Tailor default outfit");
+        MuAppearance::After(actor);SchedulePreviewPose(actor);return result;
     }
     bool Confirm(void* self, int situation) {
         manager = self;
@@ -284,6 +403,8 @@ namespace {
     void Name(const char* text, void* context) { *static_cast<std::string*>(context) = text ? text : ""; }
     void Close(void* self, std::uint8_t reason) {
         const bool wasOpen = IsOpen();
+        PreviewAnimations::ClearAll();
+        {std::lock_guard lock(stateMutex);poseChecks.clear();previewRequests.Clear();previewActor=0;}
         closeUI(self, reason);
         std::vector<RE::FormID> confirmed(confirmedActors.begin(),confirmedActors.end());confirmedActors.clear();
         // Focus loss/target switch must also restore temporarily removed devices.
@@ -318,7 +439,7 @@ namespace {
                 std::vector<RE::TESObjectARMO*> devices;
                 for(const auto& item:request.outfit.items){auto* armor=RE::TESDataHandler::GetSingleton()->LookupForm<RE::TESObjectARMO>(item.id,item.plugin);if(armor && inventories.contains(armor->GetFormID()))devices.push_back(armor);else if(armor)if(auto found=cosmetics.find(armor->GetFormID());found!=cosmetics.end())devices.push_back(pairs[found->second].inv);}
                 std::vector<RE::TESObjectARMO*> newlyGranted;
-                if(!actual && !FreeWear::Grant(actor,devices,&newlyGranted)){logger::warn("Free wear: confirmation could not grant scoped permission; quest/custom or pre-existing locked device was left alone");return;}
+                if(!actual)FreeWear::GrantSupported(actor,devices,&newlyGranted);
                 {
                     std::lock_guard lock(stateMutex);
                     actualModes[actor->GetFormID()] = {request.outfit.id, Fingerprint(request.outfit.items), !actual};
@@ -430,7 +551,8 @@ namespace {
 }
 bool Ready() { return ready; }
 std::size_t PairCount() { return pairs.size(); }
-void Clear() { std::lock_guard lock(stateMutex); ++generation; actualModes.clear(); pending.clear(); lastApplied.clear(); confirmedActors.clear(); FreeWear::Clear(); MuAppearance::Clear(); }
+void Clear() { std::lock_guard lock(stateMutex); ++generation; actualModes.clear(); pending.clear(); lastApplied.clear(); confirmedActors.clear(); poseChecks.clear(); reconciles.clear(); previewRequests.Clear(); previewActor=0; PreviewAnimations::ClearAll(); PreviewCleanup::Clear(); AppearanceTrace::Clear(); FreeWear::Clear(); MuAppearance::Clear(); }
+void AfterLoad(){std::lock_guard lock(stateMutex);auto actors=FreeWear::ManagedActors();for(const auto& [id,_]:actualModes)actors.push_back(id);MuAppearance::AfterLoad(actors);}
 void RegisterSerialization() {
     auto* stream = SKSE::GetSerializationInterface(); stream->SetUniqueID(0x54444442);
     stream->SetSaveCallback(Save); stream->SetLoadCallback(LoadSave);

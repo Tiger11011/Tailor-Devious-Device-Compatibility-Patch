@@ -1,7 +1,9 @@
-# Corresponding dependency source — 0.6.6
+# Corresponding dependency source — 0.6.14
 
-This is a source/notice packaging revision. No C++, Papyrus, generator, game
-configuration or tested binary was changed or recompiled.
+This release promotes the gameplay-tested 0.6.14 build. Release preparation
+does not change or recompile its functional source or tested runtime files.
+The retained 0.6.14 linker inputs and current dependency library/configuration
+hashes were rechecked against this manifest on 2026-10-21.
 
 The **matching release Source.zip** contains `dependency-sources/archives/`:
 the eight original upstream source archives listed in `DEPENDENCIES.json`.
@@ -11,7 +13,7 @@ Git clones intentionally do not store these archives in Git history. From a
 clone, run `python dependency-sources/fetch_sources.py --download` to retrieve
 the same archives. Without `--download`, the command only verifies local files.
 The matching release is:
-https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.6
+https://github.com/Tiger11011/Tailor-Devious-Device-Compatibility-Patch/releases/tag/v0.6.14
 
 | Component | Actual resolved version | Use |
 | --- | --- | --- |
@@ -64,7 +66,7 @@ normalizing line endings; it therefore has no change for `ftconfig.h`.
 ## Building with the recorded dependencies
 
 See `../BUILD.md` for the DLL and independent Papyrus helper commands. The
-0.6.6 code uses the same recorded dependency versions. Its transitive
+0.6.14 code uses the same recorded dependency versions. Its transitive
 FreeType/zlib resolution is not a complete lockfile, so do not rely on a future
 default package-repository checkout resolving the same versions.
 
@@ -90,12 +92,12 @@ Ninja, pkgconf) and Skyrim's PapyrusCompiler are obtained separately; they
 are not game content or missing library implementations. Source access is
 complete for the enumerated libraries without downloading binary packages.
 This revision verifies source availability, hashes, recorded configurations
-and the exact game-tested 0.6.6 runtime files. It does **not** claim a clean-room or bit-identical
+and the exact game-tested 0.6.14 runtime files. It does **not** claim a clean-room or bit-identical
 rebuild; build outputs can differ across toolchains and environments.
 
 ## 中文
 
-这是源码和说明修订，不修改或重新编译已通过测试的功能。完整 Source.zip
+本次正式发布直接采用已通过测试的 0.6.14，不修改或重新编译其功能；已重新核对本版链接记录与依赖库、配置文件哈希。完整 Source.zip
 已附带上表 8 项依赖的原始源码压缩包、SHA-256、实际构建配置、构建配方和
 配置过的头文件。Git 仓库本身不存放这些压缩包；从 Git 克隆后，可运行
 `python dependency-sources/fetch_sources.py --download` 获取并校验同一批文件。

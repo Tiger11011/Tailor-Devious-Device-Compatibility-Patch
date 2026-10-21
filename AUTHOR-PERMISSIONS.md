@@ -12,7 +12,7 @@ adds a Tailor UI button, requires Tailor separately, and does not redistribute
 Tailor itself, **coldsun1187** replies: “Sounds good, you have permission.”
 The screenshot shows relative timestamps only; the date above is the date of
 this record, not an asserted grant date. Retain the original conversation as
-well. The `0.6.6` Source.zip includes this screenshot; the FOMOD
+well. The `0.6.14` Source.zip includes this screenshot; the FOMOD
 installer does not. The earlier `0.6.4-permissions.1` archives remain unchanged.
 
 This permission record concerns this compatibility patch. It does not claim
@@ -30,7 +30,7 @@ Tailor Devious Device Compatibility Patch 的许可。**
 界面添加按钮、以 Tailor 为独立前置且不转载 Tailor 本体的兼容补丁；
 **coldsun1187** 对此回复：“Sounds good, you have permission.”
 （可以，你获得了许可。）截图只显示相对时间，上方日期仍是记录日期，
-不代表原始授权日期。请同时保留原始对话。`0.6.6` 源码包包含此截图，FOMOD 安装包不包含。此前的
+不代表原始授权日期。请同时保留原始对话。`0.6.14` 源码包包含此截图，FOMOD 安装包不包含。此前的
 `0.6.4-permissions.1` 压缩包保持原样。
 
 这项许可针对本兼容补丁，不扩大为转载 Tailor 本体、他人汉化、DD、Mu、

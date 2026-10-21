@@ -1,0 +1,17 @@
+Open Animation Replacer public Conditions API support sources are used by this
+patch's optional cosmetic fitting pose integration.
+
+Author: ersh (ersh1) and Open Animation Replacer contributors.
+Primary project: https://github.com/ersh1/OpenAnimationReplacer
+Original GPL version 3 license and exceptions are retained in:
+  OpenAnimationReplacer-COPYING.txt
+  OpenAnimationReplacer-EXCEPTIONS.txt
+
+The exact retained source files, SHA-256 manifest, and provenance are included in
+the corresponding source package under Tailor-DD-Effects/src/OAR. No separate
+permissive license for those files is asserted. The installed Open Animation
+Replacer DLL and DD NG animations remain separately installed dependencies.
+
+The seven bridge-owned OAR JSON submods reference the user's installed DD NG
+animation folders. This patch does not redistribute DD animation files and does
+not modify the original DD/OAR files.

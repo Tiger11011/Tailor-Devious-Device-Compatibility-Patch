@@ -7,4 +7,5 @@ namespace Equipment {
     std::size_t PairCount();
     void RegisterSerialization();
     void Clear();
+    void AfterLoad();
 }

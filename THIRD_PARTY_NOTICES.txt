@@ -58,10 +58,21 @@ exception; no separate individual DD author approval is claimed.
 The Apache license of NG's native plugin does not relicense all DD assets/scripts.
 No Tailor.dll, third-party translation, DD/Mu/RaceMenu/PapyrusUtil implementation,
 game/mod assets, personal presets/generated data or startup diagnostics are bundled.
-This revision changes documentation/notices only; tested DLL/PEX and functional
-source, default Off and language choices remain unchanged.
+0.6.14 release preparation retains the gameplay-tested DLL/PEX/ESP, functional
+source, OAR JSON, default Off and language choices without rebuilding.
 
 ImGui embedded ProggyClean font: Copyright (c) 2004, 2005 Tristan Grimmer; MIT.
 Full notice: licenses/ProggyClean-MIT.txt. Embedded payload already present in tested DLL; no font or binary changed.
 
-Tailor author permission / Tailor 作者许可（记录于 2026-10-18）：维护者确认已取得 ColdSun 对发布本兼容补丁的许可。ColdSun has granted permission to publish this compatibility patch, as confirmed by the maintainer. See AUTHOR-PERMISSIONS.md. Original correspondence is not included; other component rights and notices remain unchanged.
+Tailor author permission / Tailor 作者许可（记录于 2026-10-18）：维护者确认已取得 ColdSun 对发布本兼容补丁的许可。ColdSun has granted permission to publish this compatibility patch, as confirmed by the maintainer. See AUTHOR-PERMISSIONS.md. The permission screenshot is in Source.zip and the repository, not the installer; other component rights and notices remain unchanged.
+
+Open Animation Replacer public Conditions API support code: ersh (ersh1) and
+contributors. The five unmodified API support sources, exact hashes, provenance,
+GPL COPYING and upstream EXCEPTIONS are in Tailor-DD-Effects/src/OAR. Installer
+notices: licenses/OpenAnimationReplacer-COPYING.txt, -EXCEPTIONS.txt, -NOTICE.txt.
+OAR runtime and DD NG animations are separate prerequisites; only our JSON
+references are installed. No animation assets or OAR DLL are redistributed.
+
+Partial Animation Replacer: naitro2010 and contributors. Optional runtime
+interoperability with the supported separately installed DLL only; no PAR
+implementation/header/DLL/PDB/configuration or pose asset is redistributed.

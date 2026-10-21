@@ -1,7 +1,7 @@
 {
-  "packageRevision": "0.6.4-permissions.1",
-  "functionalVersion": "0.6.4",
-  "evidence": "Retained accepted-build linker inputs, package manifests and verified upstream source archive hashes; cached header comparison. This does not assert a bit-identical rebuild.",
+  "packageRevision": "0.6.14",
+  "functionalVersion": "0.6.14",
+  "evidence": "0.6.14 retained linker inputs and exact installed dependency libraries/configured headers rechecked against these pinned hashes. No release-time rebuild and no claim of bit-identical independent rebuild.",
   "recipeRepository": "https://github.com/xmake-io/xmake-repo",
   "recipeCommit": "bd29d77f242e247589457638272d9936a24a3fe0",
   "dependencies": [
@@ -184,5 +184,6 @@
       "implementationBundled": false,
       "compileOnlyDeclarationsBundled": true
     }
-  ]
+  ],
+  "verifiedForReleaseOn": "2026-10-21"
 }

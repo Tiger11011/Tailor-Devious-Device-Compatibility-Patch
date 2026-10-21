@@ -1,6 +1,6 @@
 {
-  "checkedOn": "2026-10-19",
-  "revision": "0.6.6",
+  "checkedOn": "2026-10-21",
+  "revision": "0.6.14",
   "scope": "All direct patch/helper/generator calls/includes, retained source references, accepted link/package manifests, FOMOD resources and bundled sources/notices. Not an attribution claim for every unrelated mod in a user profile.",
   "components": [
     {
@@ -341,13 +341,44 @@
         "acceptedDllOffset": 1178672
       },
       "originalImplementationBundled": true
+    },
+    {
+      "name": "Partial Animation Replacer",
+      "category": "optional separately installed runtime supplied with DD NG",
+      "credit": "naitro2010 and contributors",
+      "sourceReference": "https://github.com/naitro2010/PartialAnimationReplacer",
+      "evidence": {
+        "Tailor-DD-Effects/src/PartialPoseCompatibility.cpp": [
+          "Reviewed PAR 0.2.0 DLL/PDB",
+          "Opaque actor/cache and Replacer interfaces",
+          "Calls original PAR condition evaluator only for active fitting NPC/root"
+        ]
+      },
+      "reviewedDllSHA256": "fa07d8355ee075c4d42a02a7c426524e88d1c027998b0446660c58b768b8030a",
+      "licenseOrPermission": "Independent runtime interoperability only; no PAR implementation, headers, DLL/PDB, configurations or pose data redistributed; no general redistribution permission inferred.",
+      "originalImplementationBundled": false
+    },
+    {
+      "name": "Open Animation Replacer",
+      "category": "separately installed runtime and bundled public Conditions API support code",
+      "credit": "ersh (ersh1) and contributors",
+      "sourceReference": "https://github.com/ersh1/OpenAnimationReplacer",
+      "evidence": {
+        "source": "Tailor-DD-Effects/src/OAR/README.md",
+        "perFileHashes": "Tailor-DD-Effects/src/OAR/source-hashes.json",
+        "bundledNotices": "licenses/OpenAnimationReplacer-*",
+        "ownConfigurationFiles": 8
+      },
+      "licenseOrPermission": "Original GPL version 3 COPYING and upstream EXCEPTIONS retained verbatim; no separate permissive license asserted. No OAR DLL or DD animation assets bundled.",
+      "apiSupportSourceBundled": true,
+      "runtimeImplementationBundled": false
     }
   ],
   "indirectRequirements": "DD/Mu/Tailor own prerequisite chains remain governed by their installed release lists. No indirect mod code/assets are repackaged here.",
   "bugFixPurposeConfirmedByMaintainer": true,
   "separateDDAuthorPublicationApprovalVerified": false,
-  "runtimeDlldigest": "561c55693a066cac0678a39fe44524449aecf83fe19476454cfb42ea7e32e78a",
-  "helperPexDigest": "82162769dba8821dd75429a39ebd438a8dc5f3a80ef1370a2c83849158e0a311",
+  "runtimeDlldigest": "e34a3e1cbf44508b268b5f058baa4741fedc2cb1ed6bd1ab1ad9989a6230d4f2",
+  "helperPexDigest": "8dd73193e0a3fd7eb162e98eda120ebcb0f47419a105943af65f7f1e2c7b3280",
   "recompiled": false,
   "additionalNoticeManifest": "licenses/RESOURCE-NOTICE-SOURCES.json",
   "sourceArchiveScope": "dependency-sources/VENDORED-SOURCE-SCOPE.md; no optional upstream sample/test/debug binaries.",
@@ -363,5 +394,6 @@
     "originalGrantDate": null,
     "record": "AUTHOR-PERMISSIONS.md"
   },
-  "automaticFitting": "Own empty ESP pool and native runtime scanner; no third-party clothing models or user ledger bundled."
+  "automaticFitting": "Own empty ESP pool and native runtime scanner; no third-party clothing models or user ledger bundled.",
+  "releasePreparation": "Promotes the gameplay-tested 0.6.14 DLL/PEX/ESP/OAR configuration without rebuilding or changing functional source. See VALIDATION-0.6.14.md."
 }

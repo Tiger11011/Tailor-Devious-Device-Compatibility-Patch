@@ -3,6 +3,7 @@
 #include "EquipmentBridge.h"
 #include "FreeWear.h"
 #include "MuAppearance.h"
+#include "PreviewAnimations.h"
 
 namespace {
     struct Fonts { ImFont* body; ImFont* medium; ImFont* bold; ImFont* heading; };
@@ -172,8 +173,11 @@ namespace {
     }
     void OnMessage(SKSE::MessagingInterface::Message* message) {
         if (!message) return;
+        if (message->type == SKSE::MessagingInterface::kPostLoad) PreviewAnimations::Init();
         if (message->type == SKSE::MessagingInterface::kDataLoaded) { LoadConfig(); Install(); }
         if (message->type == SKSE::MessagingInterface::kPreLoadGame || message->type == SKSE::MessagingInterface::kNewGame) Equipment::Clear();
+        if (message->type == SKSE::MessagingInterface::kNewGame) MuAppearance::Clear(true);
+        if (message->type == SKSE::MessagingInterface::kPostLoadGame || message->type == SKSE::MessagingInterface::kNewGame) Equipment::AfterLoad();
     }
 }
 
@@ -185,7 +189,7 @@ SKSEPluginLoad(const SKSE::LoadInterface* skse) {
     auto sink = std::make_shared<spdlog::sinks::basic_file_sink_mt>(path->string(), true);
     spdlog::set_default_logger(std::make_shared<spdlog::logger>("TailorDDBridge", sink));
     spdlog::set_level(spdlog::level::info); spdlog::flush_on(spdlog::level::info);
-    logger::info("Tailor DD bridge 0.6.6 automatic fitting data local test; DD token ownership and geometry-gated Mu notifications");
+    logger::info("Tailor DD bridge 0.6.14 local test; scoped PAR stale-pose revalidation; retained Pet PickNewIdle source guard; runtime verification pending");
     SKSE::GetPapyrusInterface()->Register(FreeWear::RegisterPapyrus);
     SKSE::GetPapyrusInterface()->Register(MuAppearance::RegisterPapyrus);
     Equipment::RegisterSerialization();

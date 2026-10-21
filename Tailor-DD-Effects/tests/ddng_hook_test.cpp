@@ -33,7 +33,26 @@ int wmain(int argc,wchar_t** argv){
     assert(std::equal(prefix.begin(),prefix.end(),target)); // prepared hook is inert
     assert(MH_EnableHook(target)==MH_OK);assert(!std::equal(prefix.begin(),prefix.end(),target));
     assert(MH_DisableHook(target)==MH_OK);assert(MH_RemoveHook(target)==MH_OK);
-    assert(std::equal(prefix.begin(),prefix.end(),target));assert(MH_Uninitialize()==MH_OK);
+    assert(std::equal(prefix.begin(),prefix.end(),target));
+    constexpr std::array<unsigned char,14> hider{0x48,0x83,0xec,0x28,0x0f,0xb6,0x91,0x88,0,0,0,0x83,0xea,1};
+    target=mapped+0x78c80;assert(std::equal(hider.begin(),hider.end(),target));trampoline=nullptr;
+    assert(MH_CreateHook(target,reinterpret_cast<void*>(&Dummy),&trampoline)==MH_OK);assert(trampoline);
+    assert(std::equal(hider.begin(),hider.end(),target));
+    assert(MH_EnableHook(target)==MH_OK);assert(!std::equal(hider.begin(),hider.end(),target));
+    assert(MH_DisableHook(target)==MH_OK);assert(MH_RemoveHook(target)==MH_OK);
+    assert(std::equal(hider.begin(),hider.end(),target));
+    // Unlike the original hider-construction test, explicitly check the real
+    // optimized callsite. RDX is NOT assigned before CheckNPCArmor. Hook
+    // relocation alone cannot validate the source-level parameter ABI.
+    constexpr std::array<unsigned char,11> callsite{0x4d,0x8b,0xc4,0x49,0x8b,0xcd,0xe8,0xec,0xfa,0xff,0xff};
+    assert(std::equal(callsite.begin(),callsite.end(),mapped+0x79189));
+    constexpr std::array<unsigned char,28> worn{0x48,0x89,0x5c,0x24,8,0x4c,0x89,0x44,0x24,0x18,0x55,0x56,0x57,0x41,0x54,0x41,0x55,0x41,0x56,0x41,0x57,0x48,0x81,0xec,0xa0,0,0,0};
+    target=mapped+0x79000;assert(std::equal(worn.begin(),worn.end(),target));trampoline=nullptr;
+    assert(MH_CreateHook(target,reinterpret_cast<void*>(&Dummy),&trampoline)==MH_OK);assert(trampoline);
+    assert(std::equal(worn.begin(),worn.end(),target));
+    assert(MH_EnableHook(target)==MH_OK);assert(!std::equal(worn.begin(),worn.end(),target));
+    assert(MH_DisableHook(target)==MH_OK);assert(MH_RemoveHook(target)==MH_OK);
+    assert(std::equal(worn.begin(),worn.end(),target));assert(MH_Uninitialize()==MH_OK);
     VirtualFree(mapped,0,MEM_RELEASE);
-    std::cout<<"DD NG reviewed filter: relocation, activation, restoration passed; no DD code executed\n";
+    std::cout<<"DD NG filter/hider/worn boundary relocation and actual optimized callsite checked; no DD code executed\n";
 }

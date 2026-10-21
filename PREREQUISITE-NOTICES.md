@@ -1,6 +1,6 @@
 # Prerequisite notices and permission status / 前置许可与待确认事项
 
-Checked **2026-10-18**. This is an evidence record, not a new license for other
+Updated **2026-10-21** for 0.6.14. This is an evidence record, not a new license for other
 authors' mods and not a guarantee of legal or Nexus publication approval.
 See CREDITS.md for attribution and RESOURCE-AUDIT.json for file/call evidence.
 
@@ -8,7 +8,7 @@ See CREDITS.md for attribution and RESOURCE-AUDIT.json for file/call evidence.
 
 ColdSun has granted permission to publish this compatibility patch, as confirmed
 by the maintainer on 2026-10-18. See AUTHOR-PERMISSIONS.md for the recorded scope
-and evidence status. The author correspondence is not reproduced. This updates
+and evidence status. A permission screenshot is retained in the repository and Source.zip, excluded from the installer. This updates
 Tailor's project-specific permission status; existing licenses and other authors'
 permissions remain separate.
 
@@ -53,6 +53,16 @@ of purpose needs a fresh permission review. An author may interpret the scope
 differently; retaining the terms and seeking clarification remains prudent.
 
 ## Other separately installed mods
+
+0.6.14 optional PAR adapter: Partial Animation Replacer, naitro2010 and
+contributors (https://github.com/naitro2010/PartialAnimationReplacer), is provided
+by the user's separate DD NG installation. Only the reviewed PAR 0.2.0 binary
+is accepted. Independently authored opaque call adapters do not copy PAR's
+implementation or manipulate its C++ containers. No PAR DLL/PDB, source,
+configuration, animations or bone-pose data are distributed. No general
+redistribution permission is inferred. No additional runtime is added to the
+installer. 中文：PAR 为用户另装 DD NG 已提供的可选组件；本补丁只做受版本检查
+的运行时兼容，不随包分发其实现或资源，也不推定资源再分发许可。
 
 | Project | Evidence and treatment |
 | --- | --- |
@@ -107,3 +117,12 @@ DD 5.2 自带条款的纯 bug 修复例外处理。该记录不是“已经取�
 Tailor 作者 ColdSun 的发布许可现已由维护者确认取得，见 AUTHOR-PERMISSIONS.md；不将此记录扩展为其他作者的授权。
 
 ImGui also retains its MIT-licensed ProggyClean default-font payload inside the accepted DLL. This is separate from the fixed-text Windows-font PNG and from Tailor's runtime fonts. Tristan Grimmer's copyright and full license are retained as ProggyClean-MIT.txt. No font payload or tested binary was changed.
+
+## Open Animation Replacer public API
+
+OAR is a separate runtime prerequisite for the fitting pose integration, by
+ersh (ersh1) and contributors. Five unmodified public Conditions API support
+sources are compiled into the patch. Their original GPL COPYING, upstream
+EXCEPTIONS, source URLs and per-file SHA-256 values are retained in src/OAR and
+the installer notices. No separate permissive license is inferred, and the OAR
+DLL or DD animation assets are not redistributed. See CREDITS.md.

@@ -1,0 +1,30 @@
+[
+  {
+    "file": "COPYING",
+    "sha256": "72d2f09334f8b87dded94a833ba7da05e5280e77a037ca23b251f96eae4cf719"
+  },
+  {
+    "file": "EXCEPTIONS",
+    "sha256": "22fcb547441914a84d16d47715a064e9d2aa09addd01c3601f0727c0a14fa1da"
+  },
+  {
+    "file": "OpenAnimationReplacer-ConditionTypes.cpp",
+    "sha256": "215013eb8ba838f5ebf60e610fd42affef792715b8d1e52ba344da20dfc9f0d1"
+  },
+  {
+    "file": "OpenAnimationReplacer-ConditionTypes.h",
+    "sha256": "94172605a19418214d97dd4be40aee143104366bf1bc27588d87285189aa56ca"
+  },
+  {
+    "file": "OpenAnimationReplacer-SharedTypes.h",
+    "sha256": "b5780f4ce9802e8fd6a0a1a83ad2b6ab17a0ee918e717498fcb2efaf3b29a94d"
+  },
+  {
+    "file": "OpenAnimationReplacerAPI-Conditions.cpp",
+    "sha256": "be9c0146f308d654c73610c11cb5a50d71f8387d2d13e651c7da1c32af2c419b"
+  },
+  {
+    "file": "OpenAnimationReplacerAPI-Conditions.h",
+    "sha256": "3ee39711b33e2def71db8fa63c8c4479952ad064e784c4c1a87dae4fc3b73e86"
+  }
+]

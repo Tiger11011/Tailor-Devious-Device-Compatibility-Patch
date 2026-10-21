@@ -3,25 +3,27 @@ from pathlib import Path, PurePosixPath
 import argparse,hashlib,json,subprocess,sys,zipfile,runpy,xml.etree.ElementTree as ET
 
 project=Path(__file__).resolve().parents[1]; repo=project.parent
-version='0.6.6'; package_revision='0.6.6-credits.2'
+version='0.6.14'; package_revision='0.6.14'
 prefix=f'Tailor-Devious-Device-Compatibility-Patch-{package_revision}'
 parser=argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--dll',type=Path,required=True)
 parser.add_argument('--pex',type=Path,required=True)
+parser.add_argument('--reference-fomod',type=Path,required=True,help='Previously gameplay-verified 0.6.14 local-test archive; all runtime files must match')
 parser.add_argument('--dependency-source-dir',type=Path,required=True,help='Directory containing the eight verified upstream source archives')
 parser.add_argument('--output',type=Path,default=project/'releases'/prefix)
 args=parser.parse_args();out=args.output.resolve();out.mkdir(parents=True,exist_ok=True)
 def sha(data):return hashlib.sha256(data).hexdigest()
 dll,pex=args.dll.read_bytes(),args.pex.read_bytes()
-assert sha(dll)=='d9f3188a177b2cf3a5fb930ff6dae29b17120f6e4cbec6920ce3296d00566811'
+assert sha(dll)=='e34a3e1cbf44508b268b5f058baa4741fedc2cb1ed6bd1ab1ad9989a6230d4f2'
 assert sha(pex)=='8dd73193e0a3fd7eb162e98eda120ebcb0f47419a105943af65f7f1e2c7b3280'
-assert b'Tailor DD bridge 0.6.6' in dll and b'TailorDDStartupTrace' not in dll
+assert b'Tailor DD bridge 0.6.14 local test' in dll and b'TailorDDStartupTrace' not in dll
 docs=project/'release-docs';old=repo/'Tailor-DD-Bridge/package/Common'
 notices=(repo/'THIRD_PARTY_NOTICES.txt').read_bytes()
 base={'SKSE/Plugins/TailorDDBridge.dll':dll,'Scripts/TailorDDFreeWear.pex':pex,
       'LICENSE':(repo/'LICENSE').read_bytes(),'COPYRIGHT.md':(repo/'COPYRIGHT.md').read_bytes(),'THIRD_PARTY_NOTICES.txt':notices}
 base['SOURCE-ACCESS.md']=(repo/'SOURCE-ACCESS.md').read_bytes()
-base['VALIDATION-0.6.6.md']=(repo/'VALIDATION-0.6.6.md').read_bytes()
+base['VALIDATION-0.6.14.md']=(repo/'VALIDATION-0.6.14.md').read_bytes()
+base['Release-Notes.md']=(docs/'Release-Notes.md').read_bytes()
 pool=project/'build/auto-fitting/TailorDDAutoFitting.esp'
 runpy.run_path(str(project/'tests/build_auto_fitting_pool.py'))['build'](pool)
 assert sha(pool.read_bytes())=='e5cb1696d58abcb67051504078a455600360fdbef55eb01cd4a0529dda0bcfb9'
@@ -37,6 +39,14 @@ for p in (project/'licenses').iterdir():
   name='licenses/'+p.name
   assert name not in base
   base[name]=p.read_bytes()
+# The preview OAR configuration and its API notices are part of the tested
+# runtime. Keep them byte-identical; they contain references, no animation assets.
+for p in (project/'package/Common').rglob('*'):
+ if p.is_file():
+  name=p.relative_to(project/'package/Common').as_posix()
+  assert name not in base and p.suffix.lower() in {'.json','.txt'}
+  assert name.startswith(('meshes/','licenses/'))
+  base[name]=p.read_bytes()
 license_sources=json.loads(base['licenses/LICENSE-SOURCES.json'])
 assert license_sources['revision']=='a6088e22b06f6e97ab617d2f79420d6a99228f52'
 for row in license_sources['files']:
@@ -46,7 +56,8 @@ resource_notices=json.loads(base['licenses/RESOURCE-NOTICE-SOURCES.json'])
 for row in resource_notices['files']:
  assert sha(base['licenses/'+row['file']])==row['sha256']
 resource_audit=json.loads(base['RESOURCE-AUDIT.json'])
-assert len(resource_audit['components'])==29 and resource_audit['bugFixPurposeConfirmedByMaintainer'] is True
+assert {'Open Animation Replacer','Partial Animation Replacer'} <= {row['name'] for row in resource_audit['components']}
+assert resource_audit['bugFixPurposeConfirmedByMaintainer'] is True
 assert resource_audit['tailorAuthorPermission']['granted'] is True
 assert resource_audit['tailorAuthorPermission']['evidenceType']=='Maintainer confirmation'
 for name in ['README-English.md','README-中文.md']:base[name]=(docs/name).read_bytes()
@@ -60,13 +71,24 @@ def writezip(path,entries):
  with zipfile.ZipFile(path,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as z:
   for name,data in sorted(entries.items()):
    assert not PurePosixPath(name).is_absolute() and '..' not in PurePosixPath(name).parts
-   info=zipfile.ZipInfo(name,date_time=(2026,10,19,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED
+   info=zipfile.ZipInfo(name,date_time=(2026,10,21,0,0,0));info.compress_type=zipfile.ZIP_DEFLATED
    z.writestr(info,data)
  with zipfile.ZipFile(path) as z:assert z.testzip() is None
 
 assert not any(Path(n).name == 'PERMISSIONS.png' for n in files)
+assert sha(args.reference_fomod.read_bytes())=='aa2113d0e7f3a4e7ec069d3fa6df2b86b76c03c7280a63a7750ac38432ae31ff'
+def runtime_name(name):
+ return name.endswith(('.dll','.pex','.esp')) or name.startswith(('Options/','Common/meshes/'))
+with zipfile.ZipFile(args.reference_fomod) as z:
+ assert z.testzip() is None
+ tested={n:z.read(n) for n in z.namelist() if runtime_name(n)}
+runtime={n:b for n,b in files.items() if runtime_name(n)}
+assert runtime==tested, 'Release runtime differs from gameplay-verified 0.6.14'
+runtime_hashes={n:sha(b) for n,b in runtime.items()}
 installer=out/(prefix+'-FOMOD.zip');writezip(installer,files)
 config=ET.fromstring(files['fomod/ModuleConfig.xml']);ET.fromstring(files['fomod/info.xml'])
+assert 'LOCAL' not in config.find('moduleName').text
+assert ET.fromstring(files['fomod/info.xml']).find('Version').text==version
 group=config.find('./installSteps/installStep/optionalFileGroups/group')
 assert group.attrib['type']=='SelectExactlyOne'
 choices=group.findall('./plugins/plugin');assert [p.attrib['name'] for p in choices]==['中文','English']
@@ -101,7 +123,7 @@ assert not any('startuptrace' in n.lower() or Path(n).name.lower()=='tailor.dll'
 blocked={'.dll','.exe','.pex','.esp','.esm','.esl','.nif','.dds','.ttf','.otf','.pdb','.obj','.lib','.a','.so','.dylib','.zip','.7z','.log','.ess','.skse','.pyc','.pch','.ipch'}
 source={}
 def addtree(folder,prefix,untracked=False,roots=None):
- command=['git','-C',str(folder),'ls-files','-z','--cached']
+ command=['git','-c','safe.directory='+str(folder),'-C',str(folder),'ls-files','-z','--cached']
  if untracked:command+=['--others','--exclude-standard']
  listing=subprocess.check_output(command).decode('utf8').split('\0')
  for name in listing:
@@ -109,13 +131,14 @@ def addtree(folder,prefix,untracked=False,roots=None):
   if roots is not None and len(Path(name).parts)>1 and Path(name).parts[0] not in roots:continue
   p=folder/name
   if not p.is_file() or p.suffix.lower() in blocked:continue
+  if p.name=='installed-OAR-3.1.6-conditions-export.txt':continue
   if any(part in ['.git','build','deployment','evidence','releases','diagnostics','__pycache__'] or part.startswith('.xmake') for part in Path(name).parts):continue
   source[(prefix+'/' if prefix else '')+Path(name).as_posix()]=p.read_bytes()
 addtree(repo,'',True)
 common=repo/'Tailor-DD-Compat/lib/commonlibsse-ng'
-assert subprocess.check_output(['git','-C',str(common),'rev-parse','HEAD'],text=True).strip()=='8b032fa992750d654d6d38a33731714d8b86be1f'
+assert subprocess.check_output(['git','-c','safe.directory='+str(common),'-C',str(common),'rev-parse','HEAD'],text=True).strip()=='8b032fa992750d654d6d38a33731714d8b86be1f'
 vr=common/'extern/openvr'
-assert subprocess.check_output(['git','-C',str(vr),'rev-parse','HEAD'],text=True).strip()=='60eb187801956ad277f1cae6680e3a410ee0873b'
+assert subprocess.check_output(['git','-c','safe.directory='+str(vr),'-C',str(vr),'rev-parse','HEAD'],text=True).strip()=='60eb187801956ad277f1cae6680e3a410ee0873b'
 addtree(common,'Tailor-DD-Compat/lib/commonlibsse-ng',roots={'include','src','cmake','scripts','res','licenses'})
 addtree(vr,'Tailor-DD-Compat/lib/commonlibsse-ng/extern/openvr',roots={'headers','src','cmake'})
 vendored={n:sha(data) for n,data in source.items() if n.startswith('Tailor-DD-Compat/lib/commonlibsse-ng/')}
@@ -129,6 +152,11 @@ for row in dependency_manifest['dependencies']:
  source['dependency-sources/'+row['sourceArchive']]=data
 assert len(dependency_manifest['dependencies'])==8
 assert 'Tailor-DD-Effects/Papyrus/TailorDDFreeWear.psc' in source
+for p in (project/'src').rglob('*'):
+ if p.is_file() and p.name!='installed-OAR-3.1.6-conditions-export.txt':
+  assert source[p.relative_to(repo).as_posix()]==p.read_bytes(),p
+for row in json.loads(source['Tailor-DD-Effects/src/OAR/source-hashes.json']):
+ assert sha(source['Tailor-DD-Effects/src/OAR/'+row['file']])==row['sha256']
 assert 'Tailor-DD-Compat/lib/commonlibsse-ng/extern/openvr/headers/openvr.h' in source
 assert not any(b'C:\\Users\\Admin' in data or b'D:\\Modding\\MO2' in data for name,data in source.items() if name.startswith(('Tailor-DD-Effects/','Tailor-DD-SafeFitting/')))
 assert not any('StartupTrace' in name or 'NpcSaveScope' in name or Path(name).name.lower()=='tailor.dll' for name in source)
@@ -140,7 +168,7 @@ for name in ['Release-Notes.md','README-English.md','README-中文.md','Nexus-De
  (out/name).write_bytes((docs/name).read_bytes())
 packages=[{'file':p.name,'bytes':p.stat().st_size,'sha256':sha(p.read_bytes())} for p in [installer,sourcezip]]
 (out/'SHA256SUMS.txt').write_text(''.join(f"{r['sha256']}  {r['file']}\n" for r in packages),encoding='utf8')
-report={'version':version,'packageRevision':package_revision,'sourceAndNoticeOnlyRevision':True,'automaticFitting':True,'manualGeneratorRequired':False,'preliminaryRestartRequired':False,'poolSha256':sha(pool.read_bytes()),'runtimeLogRemovalCallbacks':11,'runtimeLogEquipCallbacks':14,'runtimeTokenFailures':0,'dependencySourceArchivesVerified':8,'upstreamLicenseRevision':license_sources['revision'],'upstreamLicenseHashesVerified':True,'dllSha256':sha(dll),'helperSha256':sha(pex),'packages':packages,'installerFileCount':len(files),'sourceFileCount':len(source),'bothLanguageInstallMappingsVerified':True,'languageDifferences':differences,'defaultsOff':True,'originalTailorOrTranslationIncluded':False,'personalGeneratedDataIncluded':False,'startupDiagnosticsIncluded':False,'userConfirmedRuntimeScenario':'Local NPC DD switching and Mu fully-covered-to-visible-head appearance recovery','fullCompatibilityMatrixVerified':False,'MO2InstallerGuiRetested':False}
+report={'version':version,'packageRevision':package_revision,'releasePreparationRecompiledRuntime':False,'automaticFitting':True,'manualGeneratorRequired':False,'preliminaryRestartRequired':False,'poolSha256':sha(pool.read_bytes()),'dependencySourceArchivesVerified':8,'upstreamLicenseRevision':license_sources['revision'],'upstreamLicenseHashesVerified':True,'dllSha256':sha(dll),'helperSha256':sha(pex),'packages':packages,'installerFileCount':len(files),'sourceFileCount':len(source),'bothLanguageInstallMappingsVerified':True,'languageDifferences':differences,'defaultsOff':True,'originalTailorOrTranslationIncluded':False,'personalGeneratedDataIncluded':False,'startupDiagnosticsIncluded':False,'gameplayVerifiedRuntimeFilesIdentical':True,'runtimeFiles':runtime_hashes,'validationRecord':'VALIDATION-0.6.14.md','userConfirmedRuntimeScenario':'NPC DD outfit switching, ordinary-outfit and Pet pose updates after armbinder removal; corroborated by 2026-10-21 logs','fullCompatibilityMatrixVerified':False,'MO2InstallerGuiRetested':False}
 (out/'PACKAGE-CHECK.json').write_text(json.dumps(report,ensure_ascii=False,indent=2),encoding='utf8')
-(out/'上传说明.txt').write_text('主文件：'+installer.name+'\n对应开发源码：'+sourcezip.name+'\n安装包修订：'+package_revision+'；游戏内功能版本为 0.6.6。\n本发布保留本轮已实测的 0.6.6 DLL 和 PEX，不重新编译。不要覆盖或删除旧 GitHub 标签。\nSource.zip 内已附 8 项实际版本依赖源码、配方、配置差异和校验清单，不要安装到 MO2。\nNexus 主文件旁提供本修订的对应 Source.zip（Optional Files），或清楚链接完全对应的 GitHub 发布页。\nNexus 页面说明使用维护者最终定稿，见 Nexus-Description-English.txt / Nexus-Description-中文.txt；详细技术说明另见 INSTALLATION-English.md / INSTALLATION.zh-CN.md。\n前置、受支持版本及安装顺序见双语说明。FOMOD 默认关闭，二选一语言，不包含 Tailor 或他人汉化。\n新用户只需 FOMOD 并启用 TailorDDAutoFitting.esp；不需生成器。旧用户保留已有 Generated Data，备份自动编号 JSON，不要压缩/重新编号 ESP。\n不上传私人 Generated Data、存档、日志、备份和启动诊断工具。本目录尚未自动上传至 Nexus。\n',encoding='utf8')
+(out/'上传说明.txt').write_text('Main Files：'+installer.name+'\nOptional Files（对应开发源码，不要安装）：'+sourcezip.name+'\n版本：0.6.14。直接沿用已实测的 DLL、PEX、ESP、OAR 配置与默认设置，不重新编译。\nSource.zip 内附 8 项依赖源码、配方、配置差异、OAR API 与许可、作者许可截图和构建说明。安装包不含许可截图。\n也可在 Nexus 二进制下载处明确链接完全对应的 GitHub v0.6.14 发布页获取 Source.zip。\n中英文页面说明见 Nexus-Description-English.txt / Nexus-Description-中文.txt；详细说明见 INSTALLATION-English.md / INSTALLATION.zh-CN.md。\n安装 FOMOD 二选一语言并启用 TailorDDAutoFitting.esp 即可，无需手动生成数据或先启动再退出。开关默认关闭。\n请备份 TailorDDBridge.AutomaticSlots.json，不要压缩或重新编号 ESP。\n不上传私人 Generated Data、存档、日志或临时诊断工具。本次仅准备 Nexus 文件，不代为上传 Nexus。\n',encoding='utf8')
 print(json.dumps(report,ensure_ascii=False,indent=2))

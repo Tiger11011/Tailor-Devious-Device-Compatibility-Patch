@@ -6,8 +6,12 @@ namespace FreeWear {
     void SetPairs(std::vector<Pair> pairs);
     bool RegisterPapyrus(RE::BSScript::IVirtualMachine* vm);
     bool Grant(RE::Actor* actor,const std::vector<RE::TESObjectARMO*>& devices,std::vector<RE::TESObjectARMO*>* newlyGranted=nullptr);
+    std::size_t GrantSupported(RE::Actor* actor,const std::vector<RE::TESObjectARMO*>& devices,std::vector<RE::TESObjectARMO*>* newlyGranted=nullptr);
+    bool IsGranted(RE::Actor* actor,RE::TESObjectARMO* device);
+    void SetCosmeticVisibility(RE::Actor* actor,const std::vector<RE::TESObjectARMO*>& copies);
     void Revoke(RE::Actor* actor,const std::vector<RE::TESObjectARMO*>& devices);
     void Clear();
+    std::vector<RE::FormID> ManagedActors();
     void Save(SKSE::SerializationInterface* stream);
     void Load(SKSE::SerializationInterface* stream,std::uint32_t version,std::uint32_t length);
     void AfterUnrestrained(RE::Actor* actor,std::function<void()> action);

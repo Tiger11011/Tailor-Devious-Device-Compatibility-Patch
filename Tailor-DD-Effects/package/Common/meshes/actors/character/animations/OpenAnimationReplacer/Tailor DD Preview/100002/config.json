@@ -1,0 +1,18 @@
+{
+  "name": "Tailor fitting - Front cuffs",
+  "priority": 2110000002,
+  "interruptible": true,
+  "overrideAnimationsFolder": "../DD to OAR/100002",
+  "conditions": [
+    {
+      "condition": "IsChild",
+      "requiredVersion": "1.0.0.0",
+      "negated": true
+    },
+    {
+      "condition": "TailorDDPreviewFrontCuffs",
+      "requiredPlugin": "TailorDDBridge",
+      "requiredVersion": "0.6.7.0"
+    }
+  ]
+}
