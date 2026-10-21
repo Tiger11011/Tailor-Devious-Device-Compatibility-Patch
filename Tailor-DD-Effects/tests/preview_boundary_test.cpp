@@ -36,7 +36,7 @@ int main(){
 
     CosmeticVisibility::Table visible{{0xff001234,{0x01000010,{0x02000010}}}};
     assert(CosmeticVisibility::Allows(visible,0xff001234,0x01000010,0x02000010));
-    assert(!CosmeticVisibility::Allows(visible,0xff0008b8,0x01000010,0x02000010));
+    assert(!CosmeticVisibility::Allows(visible,0xff001235,0x01000010,0x02000010));
     assert(!CosmeticVisibility::Allows(visible,0xff001234,0x01000011,0x02000010));
     assert(!CosmeticVisibility::Allows(visible,0xff001234,0x01000010,0x03000010));
     assert(!CosmeticVisibility::Allows(visible,0xff001234,0x01000010,0x02000011));
